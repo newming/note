@@ -1,0 +1,9 @@
+{
+  "author" : "newming",
+  "title" : "notebook",
+  "description" : "我的学习笔记",
+  "plugins": ["splitter"],
+  "pluginsConfig": {
+
+  }
+}
