@@ -100,3 +100,31 @@ $.ajax({
   submit_btn.val("Upload").prop( "disabled", false); //enable submit button once ajax is done
 });
 ```
+
+#### 5.基础数据类型转换问题
+
+```js
+null == undefined  // true
+[] == '' // true
+[].toString() == '' // true,是上一个的解释
+![] == false // true
+[] == [] //false
+({}) == '' // false
+({}).toString() == '[object Object]' // 上一个的解释
+```
+
+#### 5.for 循环中的 break,continue
+```js
+for (var i = 0; i < 10; i++) {
+  if (i<=5) {
+    i+=2;
+    continue
+  }
+  i+=3;
+  break;
+  console.log(i);
+}
+console.log(i);//9
+// 打印几次，值
+// 在循环体中出现和continue,break后，这两个关键字后边的代码就都不会执行了，但是continue会继续下一轮循环，break会直接结束循环
+```
