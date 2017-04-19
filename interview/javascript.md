@@ -113,7 +113,7 @@ null == undefined  // true
 ({}).toString() == '[object Object]' // 上一个的解释
 ```
 
-#### 5.for 循环中的 break,continue
+#### 6.for 循环中的 break,continue
 ```js
 for (var i = 0; i < 10; i++) {
   if (i<=5) {
@@ -127,4 +127,73 @@ for (var i = 0; i < 10; i++) {
 console.log(i);//9
 // 打印几次，值
 // 在循环体中出现和continue,break后，这两个关键字后边的代码就都不会执行了，但是continue会继续下一轮循环，break会直接结束循环
+```
+
+#### 7.let 的块级作用域
+```js
+for (let i = 0; i < 5; i++) {
+  setTimeout(function () {
+    console.log(i); // 0,1,2,3,4
+  },i*1000)
+}
+for (var i = 0; i < 5; i++) {
+  setTimeout(function () {
+    console.log(i); // 5,5,5,5,5
+  },i*1000)
+}
+```
+
+#### 8.预解析
+```js
+if (!("a" in window)) {
+  var a ="猜猜我有没有？？？" ;
+}
+alert(a); // undefined
+// a会预解析，所以 'a' in window 为 true，a的赋值则得不到执行。
+```
+
+#### 9.预解析闭包
+
+```js
+function fo(){
+	var i=0;
+	return function(n){
+		return n+i++;
+	}
+};
+
+var f=fo();
+var a = f(15); // 15
+var b = fo()(15); // 15
+var c = fo()(20); // 20
+var d = f(20); // 21
+```
+
+#### 10.预解析，闭包，this，作用域
+
+```js
+var number = 2;
+var obj = {
+	number: 4,
+	fn1: (function() {		 
+		this.number *= 2;
+		number=number*2;
+    console.log(number);// NaN
+ 		var number=3;
+		return function() {
+			this.number *= 2;
+			number*=3;
+			alert(number);
+		}
+	})(),
+	db2:function(){this.number*=2}
+};
+
+var fn1 = obj.fn1;
+alert(number);//4
+fn1();//9
+obj.fn1();//27
+
+alert(window.number); //8
+alert(obj.number); //8
 ```

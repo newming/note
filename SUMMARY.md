@@ -8,6 +8,7 @@
   2. [数据类型转换](javascript/typetransform.md)
   3. [for-in循环](javascript/for-in.md)
   3. [数组排序](javascript/arrsort.md)
+  4. [数组去重](javascript/rmduplicate.md)
 * [3. React 技术栈](react/README.md)
   1. [JSX 语法介绍](react/jsx.md)
   2. [redux 快速上手](react/reduxguide.md)
