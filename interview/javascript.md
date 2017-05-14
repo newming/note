@@ -197,3 +197,15 @@ obj.fn1();//27
 alert(window.number); //8
 alert(obj.number); //8
 ```
+
+#### 11.括号表达式
+```js
+(1,2,3)+3 //6
+//括号表达式：一个括号中放多项内容，用逗号隔开，获取到最后一项
+
+function fn() {console.log(this)}
+var obj = {fn: fn};
+(fn,obj.fn)(); // 执行的是obj.fn()，但是注意this为window，并不是obj。这里有多项的时候，会将最后一项的函数体内容复制出来执行，指向window，和自执行方法一样
+
+(obj.fn)() // obj，只有一项时是正常表现
+```
