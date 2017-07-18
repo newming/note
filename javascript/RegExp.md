@@ -119,3 +119,67 @@ exec 正则捕获方法。捕获到的内容是一个数组。每一次捕获的
 - 数组第一项是当前捕获的内容
 - index: 捕获内容在字符串中开始的索引
 - input: 原始字符串
+
+正则捕获的特点：
+- 懒惰性，每次执行exec方法只捕获第一个匹配的内容，通过在结尾加 /g 修饰符解决
+- 贪婪性，正则的捕获每次都是按匹配最长的结果
+
+修饰符： g, i, m
+
+##### 懒惰性
+懒惰性：加了全局修饰符g，正则每一次捕获结束后，正则的 lastIndex 值都会变成最新的值，下一次捕获从最新的位置开始查找，通过这样的方式，可以把所有需要捕获的内容获取到
+
+```js
+var reg = /\d+/g;
+console.dir(reg);
+var str = 'new1993ming1103'
+
+console.log(reg.lastIndex) // 0
+console.log(reg.exec(str)) // ["1993", index: 3, input: "new1993ming1103"]
+
+console.log(reg.lastIndex) // 7
+console.log(reg.exec(str)) // ["1103", index: 11, input: "new1993ming1103"]
+
+console.log(reg.lastIndex) // 15
+console.log(reg.exec(str)) // null
+
+// 捕获并保存全部的数据
+var res = []
+var test = reg.exec(str)
+while(test){
+  res.push(test[0])
+  test = reg.exec(str)
+}
+console.log(res)
+```
+
+##### 贪婪性
+
+```js
+var reg = /\d+/;
+var str = 'newming1993'
+console.log(reg.exec(str)) // 1993 贪婪性，捕获匹配到最长的结果
+```
+
+如何解决=>在量词元字符后面加 ?
+
+```js
+var reg = /\d+?/
+```
+
+? 在正则中的多个意思
+```js
+var reg = /\d?/; // 放在普通元字符后面，代表出现0-1次
+var reg = /\d+?/; // 放在量词元字符后面，代表取消捕获时的贪婪性
+
+```
+
+### 字符串中的match方法
+把所有和正则匹配的字符都获取到。但是 match 方法也有它的局限性，在分组捕获的情况下，match只能捕获到大正则匹配的内容，而小正则匹配的内容是无法捕获的
+
+```js
+var reg = /\d+?/g;
+var str = 'newming1993and1103';
+var ary = str.match(reg);
+console.log(ary)
+```

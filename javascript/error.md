@@ -25,7 +25,7 @@ try {
 
 也可以手动抛出错误，阻止代码执行
 ```js
-throw new Error('抱歉错处了');
+throw new Error('抱歉出错了');
 throw new ReferenceError('引用错误')
 throw new TypeError('类型错误')
 throw new RangeError('引用错误')
