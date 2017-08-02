@@ -27,10 +27,30 @@ replace 方法第一项参数为正则的时候的实现原理：首先同正则
 
 ```js
 var str = 'new1993new1103'
-
 str = str.replace(/new/g, function () {
   console.log(arguments); // 打印两次，每次打印的同exec执行几次的结果非常相似
+  console.log(RegExp.$1); // 获取第一个分组匹配的内容 这里没有分组，所以空
   return 'nweming'
+})
+console.log(str);
+
+var str = 'new1993new1103'
+var reg = /(\d+)/g
+str = str.replace(reg, function () {
+  console.log(RegExp.$1); // 1103, 注意不加g是有区别的
+  return 'ming'
+})
+console.log(str);
+```
+
+### 小案例
+
+```js
+var str = '19931103'
+var ary = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖']
+str = str.replace(/\d/g, function () {
+  // console.log(arguments[0]);
+  return ary[arguments[0]]
 })
 console.log(str);
 ```
