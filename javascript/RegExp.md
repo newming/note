@@ -103,13 +103,35 @@ var reg = /^(\d+)newming(\d+)$/;
 reg.test('1234newming4321') // true
 ```
 
+### 分组的作用一：改变 x|y 默认的优先级
 ```js
-// 分组的作用一：改变 x|y 默认的优先级
 var reg=/^18|19$/
 // 可以匹配 18，19，181，189,1819,819,119，默认的 | 匹配优先级比较混乱
 
 var reg=/^(18|19)$/
 // 只能匹配18或19
+```
+
+### 分组的作用二：分组引用
+```js
+// \1代表和第一个分组出现的内容一模一样，\2代表出现的内容和第二个分组的内容一模一样，注意要在有这个分组后才可以用。这里要注意是一模一样
+var reg = /^(\w)\1(\w)\2$/
+console.log(reg.test('nnmm')) // true
+console.log(reg.test('n0m3')) // false
+```
+
+### 分组的作用三：分组捕获
+正则在捕获的时候不仅仅把大正则匹配的内容捕获到，还可以把小分组匹配的内容捕获到
+
+```js
+var reg = /^(\d{2})(\d{4})(\d{4})(\d{2})(\d{2})(\d{2})(\d)(\d|X)$/;
+var str = '130722199311032517'
+console.log(reg.exec(str)); // ["130722199311032517", "13", "0722", "1993", "11", "03", "25", "1", "7", index: 0, input: "130722199311032517"]
+// 第一个是所有分组捕获到的内容，之后分别是每个小的分组捕获到的内容
+var reg = /^(\d{2})(\d{4})(\d{4})(\d{2})(\d{2})(?:\d{2})(\d)(\d|X)$/;
+var str = '130722199311032517'
+console.log(reg.exec(str)); // ["130722199311032517", "13", "0722", "1993", "11", "03", "1", "7", index: 0, input: "130722199311032517"] 注意结果少了 25
+// ?: 在分组中的作用，只匹配，不捕获
 ```
 
 ### 正则捕获
@@ -165,13 +187,14 @@ console.log(reg.exec(str)) // 1993 贪婪性，捕获匹配到最长的结果
 
 ```js
 var reg = /\d+?/
+var str = 'newming1993'
+console.log(reg.exec(str)) // 1
 ```
 
 ? 在正则中的多个意思
 ```js
 var reg = /\d?/; // 放在普通元字符后面，代表出现0-1次
 var reg = /\d+?/; // 放在量词元字符后面，代表取消捕获时的贪婪性
-
 ```
 
 ### 字符串中的match方法
@@ -182,4 +205,20 @@ var reg = /\d+?/g;
 var str = 'newming1993and1103';
 var ary = str.match(reg);
 console.log(ary)
+
+var reg = /^(\d{2})(\d{4})(\d{4})(\d{2})(\d{2})(?:\d{2})(\d)(\d|X)$/;
+var str = '130722199311032517'
+console.log(str.match(reg)); // ["130722199311032517", "13", "0722", "1993", "11", "03", "1", "7", index: 0, input: "130722199311032517"] 同正则捕获一样
+
+// 不同点
+var reg = /newming(\d+)/g;
+var str = 'newming123newming456newming789'
+
+console.log(reg.exec(str)) // ["newming123", "123", index: 0, input: "newming123newming456newming789"]
+console.log(reg.exec(str)) // ["newming456", "456", index: 10, input: "newming123newming456newming789"]
+console.log(reg.exec(str)) // ["newming789", "789", index: 20, input: "newming123newming456newming789"]
+// 这里执行三次exec，每一次不仅仅把大正则捕获到，还会捕获到小正则
+
+console.log(str.match(reg)) // ["newming123", "newming456", "newming789"]
+// match 执行一次就可以将大正则所有内容捕获，不会再去捕获小正则
 ```
