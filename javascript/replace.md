@@ -112,4 +112,24 @@ str.replace(reg, function () {
   obj[arguments[1]] = arguments[2]
 })
 console.log(obj);
+
+// 6.时间格式化
+var str = '2017-6/10 16:9:23'
+var reg = /^(\d{4})[-/](\d{1,2})[-/](\d{1,2}) +(\d{1,2}):(\d{1,2}):(\d{1,2})$/g
+var ary = []
+str.replace(reg, function () {
+  // console.log(arguments);
+  ary = [].slice.call(arguments, 1, 7)
+  console.log(ary)
+})
+var resStr = '{0}年{1}月{2}日 {3}时{4}分{5}秒'
+var resReg = /{(\d+)}/g
+resStr = resStr.replace(resReg, function () {
+  var num = arguments[1]
+  var val = ary[num]
+  console.log(arguments, val);
+  val = val < 10 ? '0' + val : val
+  return val
+})
+console.log(resStr);
 ```
