@@ -75,29 +75,29 @@ var max = Math.max.apply(null,arr)
 ```js
 // 去掉最高分，去掉最低分
 // 1...
-// function avgFn() {
-//   console.log(arguments);// 注意arguments是一个类数组，不是数组
-//   // 1.把arguments转化为数组
-//   let arr = [];
-//   for (var i = 0; i < arguments.length; i++) {
-//     arr[arr.length] = arguments[i]
-//   }
-//   // 2.数组进行排序，去掉首尾
-//   arr.sort(function (a,b) {
-//     return a - b
-//   })
-//   arr.shift()
-//   arr.pop()
-//   // 3.求和求平均
-//   var total=0;
-//   for (var i = 0; i < arr.length; i++) {
-//     total+=arr[i]
-//   }
-//   return (total/arr.length).toFixed(2)
-// }
-//
-// var res = avgFn(3,5,6,7,10,7);
-// console.log(res);
+function avgFn() {
+  console.log(arguments);// 注意arguments是一个类数组，不是数组
+  // 1.把arguments转化为数组
+  let arr = [];
+  for (var i = 0; i < arguments.length; i++) {
+    arr[arr.length] = arguments[i]
+  }
+  // 2.数组进行排序，去掉首尾
+  arr.sort(function (a,b) {
+    return a - b
+  })
+  arr.shift()
+  arr.pop()
+  // 3.求和求平均
+  var total=0;
+  for (var i = 0; i < arr.length; i++) {
+    total+=arr[i]
+  }
+  return (total/arr.length).toFixed(2)
+}
+
+var res = avgFn(3,5,6,7,10,7);
+console.log(res);
 
 // 2...
 function avgFn() {

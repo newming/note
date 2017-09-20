@@ -175,7 +175,7 @@ var d = f(20); // 21
 var number = 2;
 var obj = {
 	number: 4,
-	fn1: (function() {		 
+	fn1: (function() {
 		this.number *= 2;
 		number=number*2;
     console.log(number);// NaN
