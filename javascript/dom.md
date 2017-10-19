@@ -162,9 +162,8 @@ function prev(ele) {
   return pre
 }
 prev(li3)
-console.log(pre);
 
-// 2. previousElementSibling 标准浏览器
+// 2. 获取上一个兄弟节点，previousElementSibling 标准浏览器
 
 // 3.获取所有的上级兄弟节点
 var li3 = document.getElementById('li3')
@@ -180,13 +179,12 @@ function prevAll(ele) {
   return ary
 }
 prevAll(li3)
-console.log(pre);
 
 // 4. 获取当前元素的索引
 function index(curEle) {
   // 有几个哥哥就是几
   var ary = [];
-  var pre = ele.previousElementSibling;
+  var pre = curEle.previousElementSibling;
   while (pre) {
     ary.unshift(pre)
     pre = pre.previousElementSibling;
