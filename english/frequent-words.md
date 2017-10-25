@@ -15,3 +15,5 @@
 - continuous integration 持续集成
 - authority 权利，权限
 - authorise 授权，批准，委托
+- stability: 稳定性
+- standard: 标准的

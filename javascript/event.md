@@ -25,6 +25,7 @@ dom.onclick = function (e) {
 // KeyboardEvent 对象，键盘事件对象
 // e.keyCode: 当前键盘上每一个键对应的值。如enter->13,space->32等
 ```
+### 传播机制
 
 默认事件的传播机制：
 ```js
