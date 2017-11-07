@@ -172,12 +172,24 @@ s.includes('Hello', 6) // false
 // 11. 实例：模板编译
 // 太难看不懂唉，等着
 
-// 12. String.raw()
+// 12. 标签模版
+let user = {
+  name: 'newming',
+  sex: 1
+}
+
+function tag(s, v1, v2) {
+  console.log(s, v1, v2)
+  return s[0] + v1 + s[1] + v2 + s[3]
+}
+console.log(tag`hello, i am ${user.name},and i am a ${user.sex ? 'boy' : 'girl'}`)
+
+// 13. String.raw()
 // ES6还为原生的String对象，提供了一个raw方法。
 
 // String.raw方法，往往用来充当模板字符串的处理函数，返回一个斜杠都被转义（即斜杠前面再加一个斜杠）的字符串，对应于替换变量后的模板字符串。
 
-String.raw`Hi\n${2+3}!`;
+ 
 // "Hi\\n5!"
 
 String.raw`Hi\u000A!`;
