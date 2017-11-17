@@ -96,6 +96,11 @@ writeStream.write('123', 'utf8', (err) => {
 - fs.appendFile
 - fs.appendFileSync
 
+### 监视文件
+
+- fs.watchFile
+- fs.watch
+
 ### 文件操作其他 api
 
 - fs.stat(path, cb): 查看文件的状态
@@ -105,6 +110,17 @@ writeStream.write('123', 'utf8', (err) => {
 - fs.mkdir: 创建文件夹
 - fs.rmdir: 删除空文件夹
 - fs.readdir: 读取一个文件夹
+
+```js
+// 创建文件夹，只能一级级创建，见下方例子
+fs.mkdir(path.join(__dirname, 'demo'), err => {
+  console.log(err)
+})
+// 多级创建不可以，可以通过递归一级级创建 win 路径 demo\\demo2
+fs.mkdir(path.join(__dirname, 'demo/demo2'), err => {
+  console.log(err)
+})
+```
 
 ### 缓存区处理（二进制数据）
 
@@ -157,8 +173,8 @@ const path = require('path')
 let target = path.join(__dirname, process.argv[2] || './')
 
 function load(target, depth) { // 缩进等级
-  // let prefix = '│ '.repeat(depth) // 锁进前缀 es6 写法
-  let prefix = new Array(depth + 1).join('│ ') // 锁进前缀
+  // let prefix = '│ '.repeat(depth) // 缩进前缀 es6 写法
+  let prefix = new Array(depth + 1).join('│ ') // 缩进前缀
   let dirinfos = fs.readdirSync(target)
 
   let dirs = [], files = []
@@ -183,4 +199,37 @@ function load(target, depth) { // 缩进等级
 }
 
 load(target, 0)
+```
+
+#### 循环创建层级目录
+
+```js
+const fs = require('fs')
+const path = require('path')
+
+function mkdirs(pathname, callback) {
+  // 注意不能乱用 __dirname
+  let root = path.dirname(module.parent.filename) // 拿到调用这个模块的文件位置
+  // 判断是否是一个绝对路径
+  pathname = path.isAbsolute(pathname) ? pathname : path.join(root, pathname)
+
+  // 获取要创建的部分 root: /Users/newming/doc, 目标: /Users/newming/doc/demo/demo1
+  let relativePath = path.relative(root, pathname)
+  let folders = relativePath.split(path.sep)
+
+  try {
+    let pre = ''
+    folders.forEach( folder => {
+      if (!fs.existsSync(path.join(root, pre, folder))) {
+        fs.mkdirSync(path.join(root, pre, folder))
+      }
+      pre += '/' + folder
+    })
+    callback && callback(null)
+  } catch (error) {
+    callback && callback(error)
+  }
+}
+
+module.exports = mkdirs
 ```
