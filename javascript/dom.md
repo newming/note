@@ -64,8 +64,8 @@ oBox.children // 获取所有的元素子节点
 oBox.parentNode // 获取元素的父亲节点
 oBox.previousSibling // 获取元素位于相同节点树层级的前一个元素，注意空格回车文本节点也会获取。(哥哥)
 oBox.nextSibling // 获取元素位于相同节点树层级的后一个元素。(弟弟)
-oBox.firstChild // 获取第一个子元素的第一个
-oBox.lastChild // 获取第一个子元素的最后一个
+oBox.firstChild // 获取第一个子元素
+oBox.lastChild // 获取元素的最后一个
 ```
 
 ### 节点

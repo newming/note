@@ -1,5 +1,7 @@
 # Java 入门
 
+Java 入门第一季——看完后感觉语法很啰嗦
+
 - JVM: Java Virtual Machine，解释器
 - JDK: Java Development Kit，Java 开发工具包
 - JRE: Java Runtime Environment，Java 运行时环境
@@ -70,3 +72,24 @@ java Hello # 注意，不可以带后缀
 - while(){...}
 - do{...}while() // 至少执行一次
 - for(){...}
+
+### 数组
+
+```java
+int[] arr = new int[3]; //指定位数
+int[] arr = {1,2,3};
+// 二维数组
+int[][] arr = {{4,5,6}, {7,8,9}};
+arr[1][2]; // 9 类似与 [[4,5,6], [7,8,9]] 
+```
+
+### 方法
+
+```java
+public int funName (para) {
+  // body
+  return int
+}
+```
+
+> 后边的都直接练习了

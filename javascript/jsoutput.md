@@ -1,5 +1,7 @@
 # 页面中常用的几种输出方式
 
+[调试技巧](https://coolshell.cn/articles/17634.html)
+
 - 在浏览器控制台输出
   - console.log('aaa');
   - console.dir(obj) 在控制台输出一个对象的详细信息
