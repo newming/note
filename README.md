@@ -8,3 +8,10 @@
 - gitbook fetch [version]
 - 编译代码的帮助命令 gitbook help
 - gitbook serve 生成静态文件
+
+### 脑残网站
+
+- [甩葱歌](http://leekspin.com/)
+- [厕纸网](http://papertoilet.com/)
+- [e](http://muchbetterthanthis.com/)
+- [蛇](http://www.staggeringbeauty.com/)

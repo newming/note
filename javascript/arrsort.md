@@ -81,8 +81,8 @@ function sortA(arr){
       }
   }
   // 通过递归，上一轮比较好的数组合并，并且再次进行比较。
-  return sortA(left).concat(cur,sortA(right));
-  console.log(sortA(left).concat(cur,sortA(right)););
+  console.log(sortA(left).concat(cur,sortA(right)))
+  return sortA(left).concat(cur,sortA(right))
 }
 console.log(sortA(arr));
 ```

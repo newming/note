@@ -1,7 +1,7 @@
 # call vs apply
 
 ## call(this,parameter1,parameter2...)
-call 方法的作用是：改变某一涵数中的this关键字,然后执行该方法。例如 fn.call(obj) 在执行call方法时，让 fn 中的参数变为了第一个参数 obj，然后执行fn
+call 方法的作用是：改变某一涵数中的this关键字,然后执行该方法。例如 fn.call(obj) 在执行call方法时，让 fn 中的 this 变为了第一个参数 obj，然后执行fn
 
 - 首先fn通过__proto__找到 Function.prototype上的call方法
 - 原型上的call方法执行，形成一个私有作用域（型参赋值->预解析->代码执行）
