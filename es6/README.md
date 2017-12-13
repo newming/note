@@ -6,3 +6,5 @@
 - RegExp: 正则拓展
 - Number: 数值拓展
 - Array: 数组拓展
+- Function: 函数拓展
+- Object: 对象拓展
