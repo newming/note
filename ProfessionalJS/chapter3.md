@@ -248,6 +248,118 @@ console.log('the result is' + (a + b))
 
 2. 全等和不全等 === 和 !==
 
-在比较之前不转换操作数，其余同相等和不相等
+在比较之前不转换操作数，其余同相等和不相等操作符相同。
 
-72
+```js
+null == undefined // true
+null === undefined // false
+```
+
+##### 3.5.8 条件操作符(三目运算符)
+
+```js
+var a = b > 3 ? 1 : 0
+```
+
+##### 3.5.9 赋值操作符(=)
+
+简单的赋值操作(=)将右侧的值赋给左侧的变量
+
+复合赋值操作: *=, /=, %=, +=, -=, <<=, >>=, >>>=。设计这些操作符的主要目的就是简化赋值操作，使用它们不会带来任何性能提升。
+
+##### 3.5.10 逗号操作符
+
+使用逗号操作符可以在一条语句中执行多个操作，如下面的例子所示：
+
+```js
+var a = 1, b = 2, c = 3;
+```
+
+> 逗号操作符多用于声明变量；但除此之外，逗号操作符还可以用于赋值。在用于赋值的时候，逗号操作符总会返回表达式中的最后一项。
+
+```js
+var num = (5, 1, 4, 8); // num 的值为 0
+```
+
+### 3.6 语句
+
+##### 3.6.1 if 语句
+
+```js
+// 推荐写法，其他各种省略不要写
+if (condition1) {
+  statement1
+} else if (condition2) {
+  statement2
+} else {
+  statements
+}
+```
+
+##### 3.6.2 do-while 语句
+
+do-while 语句是一种后测试循环语句，即只有循环体中的代码执行之后，才会测试出口条件。换句话说，在对条件表达式求值之前，循环体内的代码至少会被执行一次。
+
+```js
+do {
+  statement
+} while (expression)
+```
+
+##### 3.6.3 while 语句
+
+while 语句属于前测试循环语句。
+
+```js
+while (expression) statement
+```
+
+##### 3.6.4 for 语句
+
+for 语句属于前测试循环语句。但它具有在执行之前初始化变量和定义循环后要执行的代码的能力。
+
+> 使用 while 循环做不到的，使用 for 循环也同样做不到。
+
+```js
+for (;;) {
+  doSomething() // 无限循环
+}
+
+// 同 while
+var count = 10
+var i = 0
+for (; i < count; ) {
+  alert(i)
+  i ++
+}
+```
+
+##### 3.6.5 for-in 语句
+
+for-in 语句是一种精准的迭代语句，可以用来枚举对象的属性。
+
+```js
+for (property in expression) statement
+```
+
+##### 3.6.6 label 语句
+
+使用 label 语句可以在代码中添加标签，以便将来使用。
+
+```js
+label: statement
+
+// example
+start: for (var i=0; i< 10; i++) {
+  alert(i)
+}
+// 这个例子中定义的 start 标签可以在将来由 break 或 continue 语句引用。加标签的语句一般都要与 for 语句等循环语句配合使用。
+```
+
+这个没用过，[mdn 文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/label)
+
+##### 3.6.7 break 和 continue 语句
+
+注意 break 和 continue 的区别。前者是立即退出循环，后者是进行下次循环代码。
+
+79

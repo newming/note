@@ -45,7 +45,7 @@ offsetTop/offsetLeft 当前元素的外边框(border)相对父级参照物的内
 function offset (curEle) {
   let totalLeft = null,
     totalTop = null,
-    par = curEle.offsetParset
+    par = curEle.offsetParent
   // 首先累加自己本身的偏移
   totalLeft += curEle.offsetLeft
   totalTop += curEle.offsetTop
