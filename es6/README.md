@@ -8,3 +8,5 @@
 - Array: 数组拓展
 - Function: 函数拓展
 - Object: 对象拓展
+- Symbol: 新增原始数据类型
+- Set,Map: Set, Map
