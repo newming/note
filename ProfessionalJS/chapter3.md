@@ -362,4 +362,41 @@ start: for (var i=0; i< 10; i++) {
 
 注意 break 和 continue 的区别。前者是立即退出循环，后者是进行下次循环代码。
 
-79
+##### 3.6.8 with 语句
+
+`with` 语句的作用是将代码的作用域设置到一个特定的对象中。
+
+```js
+with (expression) statement;
+```
+
+定义 `with` 语句的目的只要是为了简化多次编写同一个对象的工作，如下面的例子所示：
+
+```js
+var qs = location.search.substring(1)
+var hostname = location.hostname
+var url = location.href
+
+// 使用 with 语句简化
+with (location) {
+  var qs = search.substring(1)
+  var hostname = hostname
+  var url = href
+}
+```
+
+这里在 with 语句的代码块中，每个变量首先会被认为是一个局部变量，而如果局部环境中找不到该变量的定义，就会查询 location 对象中是否具有同名属性，如果有则将这个属性值当作变量的值。
+
+> 严格模式下不允许使用 with 语句，否则将视为语法错误。
+
+##### 3.6.9 switch 语句
+
+> 注意 switch 语句在比较值时使用的是全等操作符，因此不会发生类型转换。
+
+### 3.7 函数
+
+##### 3.7.1 理解参数
+
+##### 3.7.2 理解参数
+
+### 3.8 小节

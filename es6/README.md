@@ -9,4 +9,5 @@
 - Function: 函数拓展
 - Object: 对象拓展
 - Symbol: 新增原始数据类型
-- Set,Map: Set, Map
+- Set,Map: Set, Map, WeakSet, WeakMap
+- Proxy: 暂时没看懂

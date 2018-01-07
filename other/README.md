@@ -1,5 +1,7 @@
 # 杂七杂八
 
+[github表情符](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
+
 ```js
 window.print() // 调出打印面板
 
