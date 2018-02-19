@@ -169,6 +169,22 @@ s.includes('Hello', 6) // false
 // 10. 模板字符串
 // 这里强调一点：模板字符串可以表示多行字符串，所有的空格和缩紧都会被保留在输出之中，而传统的 '' 不可以换行
 
+// 模版字符串的字符拆分
+function test(template, name, age) {
+    console.log(template)
+    console.log(name)
+    console.log(age)
+}
+
+let name = 'newming'
+let age = 123
+test`hello ${name} world ${age}`
+/*
+* ['hello ', ' world', '']
+* 'newming'
+* 123
+*/
+
 // 11. 实例：模板编译
 // 太难看不懂唉，等着
 
@@ -189,7 +205,7 @@ console.log(tag`hello, i am ${user.name},and i am a ${user.sex ? 'boy' : 'girl'}
 
 // String.raw方法，往往用来充当模板字符串的处理函数，返回一个斜杠都被转义（即斜杠前面再加一个斜杠）的字符串，对应于替换变量后的模板字符串。
 
- 
+
 // "Hi\\n5!"
 
 String.raw`Hi\u000A!`;

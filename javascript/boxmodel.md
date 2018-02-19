@@ -19,10 +19,11 @@ var box = document.getElementById('box')
 - scrollLeft/scrollTop: 滚动条卷去的宽度／高度，可读写。存在最大(内容最大卷去值)最小(0)值。最大值 = dom.scrollHeight - dom.clientHeight
 
 js 盒子模型特点：
+
 - 获取的数值没有小数，都是整数，会在真实结果的基础上做四舍五入
 - 获取浏览器可视区域的宽高：document.documentElement.clientWidth,document.documentElement.clientHeight
 - 获取整个浏览器真实内容高度/宽度：document.documentElement.scrollHeight/scrollWidth
-- scrollTop/scrollLeft: document.documentElement.scrollTop/scrollLeft = 0，需要获取 document.body.scrollTop
+- scrollTop/scrollLeft: PC端获取浏览器滚动距离，document.documentElement.scrollTop/scrollLeft，mobile 需要获取 document.body.scrollTop/scrollLeft，而且需要注意，在设置 scrollTop 时，PC 通过 document.documentElement.scrollTop/scrollLeft 可以，moblie 需要通过 window.scrollTo()，所以为了兼容都用 window.scrollTo()
 - 所以，操作浏览器本身盒子模型属性时，想要都兼容，需要写两套
 - client 和 offset 系列以及 scrollWidth, scrollHeight 都是只读属性，只能获取对于的属性值，不可以修改
 - scrollTop/scrollLeft: 滚动条卷去的高度／宽度，可读写

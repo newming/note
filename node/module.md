@@ -35,7 +35,7 @@ console.log(module) // object
 // exports 是 module.exports 的别名
 var module = {}
 module.exports = {}
-var export = module.exports
+var exports = module.exports
 ```
 
 module 对象：

@@ -16,6 +16,23 @@ visibilitychange // 浏览器标签页是否隐藏
 
 ```css
 -webkit-font-smooth: antialiased; // 苹果上字体图标渲染变粗问题
+
+/* 单位 */
+/* 1in = 2.54cm = 25.4 mm = 72pt = 6pc = 96px */
 ```
 
 [css matrix](https://dev.opera.com/articles/understanding-the-css-transforms-matrix/)
+
+[canvas 3d box](http://991080.ga/)
+
+[3d盒子](http://fengyoujun.com/a/anlizhanshi/canvas/2017/0210/34.html)
+
+[7个特效](http://www.iteye.com/news/26559)
+
+[正则表达式](http://regexper.com)
+
+### webpack analyse
+
+- http://webpack.github.io/analyse/
+- https://alexkuz.github.io/stellar-webpack
+- https://alexkuz.github.io/webpack-chart
