@@ -8,47 +8,48 @@
 </head>
 <body>
   <script>
-    if (!Function.prototype.testbind) {
-      Function.prototype.testbind = function (oThis) {
-        console.log(this)
-        if (typeof this !== 'function') {
-          // closest thing possible to the ECMAScript 5
-          // internal IsCallable function
-          throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
-        }
+    // bind 兼容写法
+    // if (!Function.prototype.testbind) {
+    //   Function.prototype.testbind = function (oThis) {
+    //     console.log(this)
+    //     if (typeof this !== 'function') {
+    //       // closest thing possible to the ECMAScript 5
+    //       // internal IsCallable function
+    //       throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+    //     }
 
-        var aArgs = Array.prototype.slice.call(arguments, 1),
-          fToBind = this,
-          fNOP = function () { },
-          fBound = function () {
-            console.log(this instanceof fNOP)
-            return fToBind.apply(this instanceof fNOP
-              ? this
-              : oThis,
-              // 获取调用时(fBound)的传参.bind 返回的函数入参往往是这么传递的
-              aArgs.concat(Array.prototype.slice.call(arguments)));
-          };
-        // 维护原型关系
-        if (this.prototype) {
-          // Function.prototype doesn't have a prototype property
-          fNOP.prototype = this.prototype;
-        }
-        fBound.prototype = new fNOP();
-        // console.log(this instanceof fNOP)
+    //     var aArgs = Array.prototype.slice.call(arguments, 1),
+    //       fToBind = this,
+    //       fNOP = function () { },
+    //       fBound = function () {
+    //         console.log(this instanceof fNOP)
+    //         return fToBind.apply(this instanceof fNOP
+    //           ? this
+    //           : oThis,
+    //           // 获取调用时(fBound)的传参.bind 返回的函数入参往往是这么传递的
+    //           aArgs.concat(Array.prototype.slice.call(arguments)));
+    //       };
+    //     // 维护原型关系
+    //     if (this.prototype) {
+    //       // Function.prototype doesn't have a prototype property
+    //       fNOP.prototype = this.prototype;
+    //     }
+    //     fBound.prototype = new fNOP();
+    //     // console.log(this instanceof fNOP)
 
-        return fBound;
-      };
-    }
+    //     return fBound;
+    //   };
+    // }
 
-    var foo = function () {
-      this.b = 100
-      return this.a
-    }
+    // var foo = function () {
+    //   this.b = 100
+    //   return this.a
+    // }
 
-    var func = foo.testbind({a: 1})
+    // var func = foo.testbind({a: 1})
 
-    // console.log(func())
-    console.log(new func())
+    // // console.log(func())
+    // console.log(new func())
   </script>
 </body>
 </html>

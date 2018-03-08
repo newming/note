@@ -36,3 +36,9 @@ visibilitychange // 浏览器标签页是否隐藏
 - http://webpack.github.io/analyse/
 - https://alexkuz.github.io/stellar-webpack
 - https://alexkuz.github.io/webpack-chart
+
+### 浏览器可视化 console
+
+[官网](https://getfirebug.com/firebuglite)
+
+https://getfirebug.com/firebug-lite-debug.js

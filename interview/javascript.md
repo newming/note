@@ -1,6 +1,6 @@
 # javascript 面试题汇总
 
-#### 1.计算出字符串中出现次数最多的字符是什么，出现了多少次？
+### 1.计算出字符串中出现次数最多的字符是什么，出现了多少次？
 
 ```js
 var str = 'adfdageilkjlioafdmyuyuierhk';
@@ -17,7 +17,7 @@ while (str != '') {
 console.log(result);
 ```
 
-#### 2.点击下载图片
+### 2.点击下载图片
 方法一
 ```html
 <a href="url" download='url'>点击下载图片</a>
@@ -61,12 +61,12 @@ img.onclick = function() {
 };
 ```
 
-#### 3.前端如何读取上传文件
+### 3.前端如何读取上传文件
 ```js
 fileReader
 ```
 
-#### 4.如何读取文件上传进度
+### 4.如何读取文件上传进度
 ```js
 $.ajax({
   url : post_url,
@@ -101,7 +101,7 @@ $.ajax({
 });
 ```
 
-#### 5.基础数据类型转换问题
+### 5.基础数据类型转换问题
 
 ```js
 null == undefined  // true
@@ -113,7 +113,7 @@ null == undefined  // true
 ({}).toString() == '[object Object]' // 上一个的解释
 ```
 
-#### 6.for 循环中的 break,continue
+### 6.for 循环中的 break,continue
 ```js
 for (var i = 0; i < 10; i++) {
   if (i<=5) {
@@ -129,7 +129,7 @@ console.log(i);//9
 // 在循环体中出现和continue,break后，这两个关键字后边的代码就都不会执行了，但是continue会继续下一轮循环，break会直接结束循环
 ```
 
-#### 7.let 的块级作用域
+### 7.let 的块级作用域
 ```js
 for (let i = 0; i < 5; i++) {
   setTimeout(function () {
@@ -143,7 +143,7 @@ for (var i = 0; i < 5; i++) {
 }
 ```
 
-#### 8.预解析
+### 8.预解析
 ```js
 if (!("a" in window)) {
   var a ="猜猜我有没有？？？" ;
@@ -152,7 +152,7 @@ alert(a); // undefined
 // a会预解析，所以 'a' in window 为 true，a的赋值则得不到执行。
 ```
 
-#### 9.预解析闭包
+### 9.预解析闭包
 
 ```js
 function fo(){
@@ -169,7 +169,7 @@ var c = fo()(20); // 20
 var d = f(20); // 21
 ```
 
-#### 10.预解析，闭包，this，作用域
+### 10.预解析，闭包，this，作用域
 
 ```js
 var number = 2;
@@ -198,7 +198,7 @@ alert(window.number); //8
 alert(obj.number); //8
 ```
 
-#### 11.括号表达式
+### 11.括号表达式
 ```js
 (1,2,3)+3 //6
 //括号表达式：一个括号中放多项内容，用逗号隔开，获取到最后一项
@@ -208,4 +208,26 @@ var obj = {fn: fn};
 (fn,obj.fn)(); // 执行的是obj.fn()，但是注意this为window，并不是obj。这里有多项的时候，会将最后一项的函数体内容复制出来执行，指向window，和自执行方法一样
 
 (obj.fn)() // obj，只有一项时是正常表现
+```
+
+### 12. setTimeout 参数
+
+```js
+for (var i = 1; i <= 4; i++) {
+  var time = setTimeout(function (i) {
+    clearTimeout(time)
+    console.log(i)
+  }, 1000, i)
+}
+console.log(time) // 4
+// 1, 2, 3
+
+/*
+核心考察点
+1. setTimeout 会返回一个正整数，表示定时器的编号。这个值可以传递给clearTimeout()来取消该定时。
+2. 多次声明 time 会造成 time 的值的覆盖，最后 time 的值为 4，但是，因为 clearTimeout 在计时器内部，所以在循环刚结束后并没有执行，四个计时器并没有因为 time 的覆盖而丢失
+3. setTimeout 从第三个开始后的参数，都将作为作为参数传递给 setTimeout 内部，形成闭包
+
+所以，循环结束后，启动了 4 个计时器，time 的值为最后一次声明计时器返回的序号(4，但不一定)，1秒后依次执行计时器，每次执行到 clearTimeout 时，都将最后的一个计时器即 time 的值所代表的编号给清除掉。最终打印 1, 2, 3
+*/
 ```

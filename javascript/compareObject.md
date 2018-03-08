@@ -8,7 +8,7 @@ function deepCompare () {
     // remember that NaN === NaN returns false
     // and isNaN(undefined) returns true
     if (isNaN(x) && isNaN(y) && typeof x === 'number' && typeof y === 'number') {
-         return true;
+        return true;
     }
 
     // Compare primitives and functions.
@@ -108,13 +108,12 @@ function deepCompare () {
   }
 
   for (i = 1, l = arguments.length; i < l; i++) {
+        leftChain = []; //Todo: this can be cached
+        rightChain = [];
 
-      leftChain = []; //Todo: this can be cached
-      rightChain = [];
-
-      if (!compare2Objects(arguments[0], arguments[i])) {
-          return false;
-      }
+        if (!compare2Objects(arguments[0], arguments[i])) {
+            return false;
+        }
   }
 
   return true;
