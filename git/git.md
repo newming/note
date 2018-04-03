@@ -106,8 +106,10 @@ git commit -m '版本留言，尽量写的语义话'
 查看提交记录。
 
 ```bash
-git log --graph --pretty=oneline --abbrev-commit
 # 只显示一行并且带分支合并情况
+git log --graph --pretty=oneline --abbrev-commit
+
+git log --decorate --graph --oneline --all
 ```
 
 ### git reset
@@ -208,6 +210,12 @@ git checkout -b [yourbranch]
 git branch -d [yourbranch]
 ```
 
+删除远程分支
+
+```
+git push origin :branch
+```
+
 推送分支
 
 ```
@@ -262,4 +270,35 @@ git push origin :refs/tags/v0.1
 git config --global alias.st status
 
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+```
+
+## 多源
+
+```bash
+# 查看有哪些源
+git remote
+
+# 添加源
+git remote add upstream [giturl]
+
+# 删除源
+git remote remove origin
+
+# 重命名
+git remote rename origin new
+```
+
+## 配置文件解读
+
+```bash
+[remote "origin"]
+	url = git@github.com:newming/note.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+
+# origin 相当于是 url 的一个别名
+# fetch 的格式是 refspec: [+]src:dest  dest 是 push 使用， + 号代表 non-fast-forward
+# 可以查看 .git/refs 下的文件夹，有 heads(本地), remotes(远端), tags(标签)
+
+# non-fast-forword 强制更新，即使本地有远端没有的 commit
+git push origin +master
 ```

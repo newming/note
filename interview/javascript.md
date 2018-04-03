@@ -231,3 +231,58 @@ console.log(time) // 4
 所以，循环结束后，启动了 4 个计时器，time 的值为最后一次声明计时器返回的序号(4，但不一定)，1秒后依次执行计时器，每次执行到 clearTimeout 时，都将最后的一个计时器即 time 的值所代表的编号给清除掉。最终打印 1, 2, 3
 */
 ```
+
+### 13. 函数节流
+
+```js
+document.addEventListener('scroll', throttle(function () {
+  console.log(123)
+}))
+// 第一种
+// ---1-2-3-4-5-6-7-8-9
+// ---1-----------7----
+function throttle (func, delay = 6000) {
+  let lock = false
+  return (...args) => {
+    if (lock) return
+    func(...args)
+    lock = true
+    setTimeout(() => {lock = false}, delay)
+  }
+}
+
+// 第二种
+// ---1---2--3----------4---5--6------
+// -----------------3----------------6
+
+function throttle (func, delay = 600, I = null) {
+  return (...args) => {
+    clearTimeout(I)
+    // I = setTimeout(func.bind(null, ...args), delay)
+    I = setTimeout((...args) => func(...args), delay)
+  }
+}
+```
+
+### 14. 柯里化
+
+```js
+const curry = func => {
+  console.log(func.length)
+  const g = (...allArgs) => allArgs.length >= func.length ?
+    func(...allArgs)
+    : (...args) => g(...allArgs, ...args)
+
+  return g
+}
+
+const foo = curry((a,b,c,d) => {
+  console.log(a,b,c,d)
+})
+foo(1)(2)(3)(4) // 1 2 3 4
+foo(1)(2)(3) // 不返回
+const f = foo(1)(2)(3)
+f(5) // 1 2 3 5
+
+// 对于 curry(foo)，g 函数参数足够4个，就调用 foo(a,b,c,d)，如果小于4个就返回一个可以继续积累参数的函数
+```
