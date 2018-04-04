@@ -53,3 +53,64 @@ const unary = fn => fn.length === 1 ? fn : (arg) => fn(arg)
 // [1, 2, 3]
 // 简单分析，在 unary 函数内，fn 即为 parseInt，它拿到了三个参数，所以 unary(parseInt) 执行后返回的结果为 (arg) => fn(arg)，然后被 map 调用
 ```
+
+**once 函数**
+
+```js
+const once = fn => {
+  let done = false
+  return function () {
+    return done ? undefined : ((done = true), fn.apply(this, arguments))
+  }
+}
+
+// 使用
+var doPayment = once(() => {
+  console.log('Payment is done!')
+})
+
+doPayment() // 'Payment is done!'
+doPayment() // undefined
+```
+
+**memoized 函数**
+
+首先有一个纯函数 factorial，用来计算给定数字的阶乘。
+
+```js
+const factorial = n => {
+  if (n === 0) {
+    return 1
+  }
+
+  return n * factorial(n - 1)
+}
+```
+
+这里我们知道 factorial 函数只依赖它的参数执行，其他的什么都不需要。问题出现了，为什么不能为每一个输入存储结果呢？如果输入已经在对象中出现，为什么不能直接给出计算结果呢？为了计算 3 的阶乘，必须计算 2 的阶乘，为什么不能重用函数中的计算结果呢？这就是接下来的 memoized 函数要做的事情。
+
+```js
+const memorized = fn => {
+  const lookupTable = {}
+
+  return (arg) => lookupTable[arg] || (lookupTable[arg] = fn(arg)) // 注意括号不可以省略，表示一个整体，整个 或 操作符返回的是 fn(arg)，并且会做赋值操作
+}
+
+// 使用
+let fastFactorial = memorized(n => {
+  if (n === 0) {
+    return 1
+  }
+
+  return n * fastFactorial(n - 1)
+})
+
+console.time()
+fastFactorial(150)
+console.timeEnd()
+// 第一次 default: 0.14208984375ms
+// 第二次 default: 0.006103515625ms
+// 而且之后所有比 150 小的都不需要再次计算
+```
+
+<!-- done -->
