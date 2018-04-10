@@ -70,6 +70,10 @@ git clone [仓库地址]
 
 查看做了哪些修改。按 `q` 退出。
 
+```bash
+git diff HEAD~ HEAD -- [file]
+```
+
 ### git add
 
 `git add` 可以将文件添加到缓存去，获得 Git 的跟踪。
@@ -110,6 +114,24 @@ git commit -m '版本留言，尽量写的语义话'
 git log --graph --pretty=oneline --abbrev-commit
 
 git log --decorate --graph --oneline --all
+
+# 查看某段文本是在什么时候引入的
+git log -S[text] --oneline # 注意 -S后不能有空格
+
+# 查看某段文本的修改记录
+git log -G[text] --oneline
+
+# 查看某个文件的详细改变信息
+git log -p -- [file] # -- 好像可以省略
+
+# 查看某个文件改版的 commit
+git log --oneline [file]
+
+# 查看某段方法在某个文件的改版历史
+git log -L :[function]:[filename] # 有的时候 function 识别不出来
+git log -L start,end:file # 注意 start 及 end 写法，我是没成功算了
+git log -L 2,4:[file] # 第2行到第4行变化
+git log -L 2,+4:[file] # 第2行到第6行变化
 ```
 
 ### git reset
@@ -140,6 +162,19 @@ git rm readme.md
 
 ```
 git checkout 文件名
+```
+
+创建并切换分支
+
+```bash
+# 如果不存在这个分支就就创建
+git checkout -b [branchname]
+
+# 切换分支
+git checkout [branchname]
+
+# 创建新分支并建立跟踪
+git checkout -b [localbranch] -t origin/[remotebranch]
 ```
 
 ## 3.推送代码
@@ -219,7 +254,30 @@ git push origin :branch
 推送分支
 
 ```
-git push origin [yourbranch]
+git push origin [remotebranch]
+
+# 将本地的一个分支内容推送到 originname 的 remotebranch 分支
+git push [originname] [localbranch]:[remotebranch]
+```
+
+跟踪远程分支
+
+```bash
+# 1
+git branch --set-upstream-to=origin/[branch] [branch]
+
+# 1 的简写
+git branch -u origin/[branch] [branch]
+
+# 2 作用同 1
+git branch --track [branch] origin/[branch]
+
+# 3 直接修改congif
+git config branch.[localbranch].remote origin
+git config branch.[localbranch].merge refs/heads/[remotebranch]
+
+# 推送一个新的分支并且建立跟踪
+git push -u origin [remotebranch]
 ```
 
 ## 5.分支更新及合并
@@ -291,6 +349,11 @@ git remote rename origin new
 ## 配置文件解读
 
 ```bash
+# 查看仓库 config
+git config --list --local
+```
+
+```bash
 [remote "origin"]
 	url = git@github.com:newming/note.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
@@ -299,6 +362,114 @@ git remote rename origin new
 # fetch 的格式是 refspec: [+]src:dest  dest 是 push 使用， + 号代表 non-fast-forward
 # 可以查看 .git/refs 下的文件夹，有 heads(本地), remotes(远端), tags(标签)
 
-# non-fast-forword 强制更新，即使本地有远端没有的 commit
+# non-fast-forword 强制更新，即使本地没有远端的 commit，并且会把这次提交当作最新的，干掉了其他同志做的 commit，非常危险
 git push origin +master
+```
+
+增加一个 remote 命名空间
+
+```bash
+# 正常往 master 上提交是这样
+git push origin refs/heads/master:refs/heads/master # 后边的那串都是会自动补齐的，可以省略
+
+git remote set-branches --add origin qa/*
+# 这样会在 config 配置中增加一条 fetch 记录 fetch = +refs/heads/qa/*:refs/remotes/origin/qa/*
+
+# 之后往 qa/master 上提交的话是这样
+git push origin master:qa/master # 这样就提交到了远程 qa/master 的分支
+
+# 也可以在 config 中增加一条 push 配置，方便往 qa/master 上推送，在 fetch 下增加
+push = refs/heads/*:refs/heads/qa/*
+# 之后 git push origin 就会推到 qa/master
+```
+
+## push.default 配置的作用
+
+push.default 配置可以让我们省略 refspec 参数，它包含以下几个模式：
+
+config 配置
+
+```
+[push]
+  default=[setting]
+```
+
+config 修改
+
+```bash
+git config push.default nothing
+```
+
+五种类型：
+
+- nothing
+- current
+- upstream
+- simple
+- matching
+
+**nothing：**除非明确的给了 refspec 参数，否则就不推送任何内容。这个模式主要是为了那些希望显式声明 refspec 参数来避免错误推送的人设计的。最麻烦，最安全
+
+```bash
+git push origin master:master
+```
+
+**current：**推送当前分支用来更新接收端同名的分支。central 以及 non-central 的工作流都可以使用这个模式。
+
+```bash
+# 会将本地的分支推送到 origin 上同名的分支上，如果 origin 没有这个分支，就会创建这个分支，并且建立跟踪关系
+git push origin
+```
+
+**upstream：**当前分支配置了 [branch] 配置也就是设置了跟踪分支，那么使用这个模式的时候 push 操作把当前分支内容推送到它跟踪的那个远程分支上。只有在推送的 repository 是 pull 操作通常使用的那个 repository 的时候，使用这个模式才合理。
+
+**simple：**在 centralized 工作流里，跟 upstream 模式一样，但是如果你本地当前分支的名称和当前跟踪的远程分支名称不一致的话，Git 将拒绝这个 push 操作。当你 push 的 repository 并不是你通常 pull 的那个 repository，跟 current 模式一样。适合刚接触 Git 的使用者，是 Git 2.0 后的默认值。
+
+**matching：**把在本地和远程都有的同名分支的所有分支内容全部推送至远程 repository。2.0之前的默认值
+
+## git blame 定位代码责任人
+
+```bash
+# 整个文件修改的代码责任人
+git blame [filename]
+
+# 具体行数的代码责任人
+git blame -L 1,3 [filename] # 1-3行的内容
+git blame -L 5,+3 [filename] # 5-8行的内容，从第5行开始，包括第5行往后3行
+```
+
+## git bisect 查找问题引入版本
+
+git bisect 使用二分法查找问题引入的版本。我们需要指定一个引入问题的版本(例如 c5)，然后指定一个没有该问题的版本(例如 c1)，然后开始查找
+
+```bash
+# 一个查找流程
+git bisect start
+git bisect bad
+git bisect good C1
+git bisect bad
+git bisect good
+git bisect reset
+
+# 跳过某个 commit
+git bisect skip
+
+# 如果某次标记错误，可以做如下修改
+git bisect log > bisect.log # 将 bisect 的记录输出到 bisect.log 这个文件中
+vi bisect.log # 将其中标记错误的记录删除
+git bisect reset # 退出查找
+git bisect replay bisect.log # 重新查找，跟上我们上次查找的历史
+```
+
+## git grep 查找指定内容位置
+
+```bash
+git grep [text] # 查找指定文本
+git grep -n [text] # 查找指定文本并显示行号
+git grep --count [text] # 查找指定文本在文件中出现的次数
+git grep -p [text] *.c # 在以 .c 为文件后缀名的文件中查找包含 text 文本的函数或方法
+git grep -e 'zhangsan' # 按照某个正则查找，这里 'zhangsan' 这个是正则， -e 为参数
+git grep -e 'zhangsan' --or -e 'lisi' # 按照某个正则查找，或的关系是默认的，--or 可以省略
+git grep -e 'zhangsan' --and \(-e 'wangwu' --or --not -e 'list' \) # 有 张三 并且 (有王五或者没有李四)
+git grep -e 'zhangsan' --and \(-e 'wangwu' --or --not -e 'list' \) HEAD~ # 在前一个 commit 中查找 有 张三 并且 (有王五或者没有李四)
 ```

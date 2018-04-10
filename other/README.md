@@ -42,3 +42,5 @@ visibilitychange // 浏览器标签页是否隐藏
 [官网](https://getfirebug.com/firebuglite)
 
 https://getfirebug.com/firebug-lite-debug.js
+
+[dns 服务器](http://www.thekelleys.org.uk/dnsmasq/doc.html)
