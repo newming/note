@@ -16,3 +16,4 @@
 - Iterator: Iterator 和 for...of 循环
 - Generator: Generator 函数
 - Generator Async: Generator 函数的异步应用
+- async: async 函数
