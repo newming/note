@@ -82,3 +82,27 @@ https://help.aliyun.com/knowledge_detail/41305.html
 ```bash
 sudo vi /etc/hostname # 重启后生效，注意修改 hosts
 ```
+
+## 自动重启服务
+
+/etc/network/if-up.d
+
+## mongodb
+
+[自动重启mongodb](http://www.jb51.net/os/Ubuntu/181138.html)
+
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
+```bash
+sudo service mongod start
+
+sudo service mongod status
+
+sudo service mongod restart
+
+sudo service mongod stop
+
+cat /var/log/mongodb/mongod.log
+
+sudo vi /etc/mongod.conf
+```

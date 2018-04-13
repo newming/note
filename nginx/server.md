@@ -38,6 +38,9 @@ Syntax: gzip_http_version 1.0|1.1;
 Default: gzip_http_version 1.1;
 Context: http, server, location
 传输压缩协议版本，当前主流的是 1.1
+
+http://nginx.org/en/docs/http/ngx_http_autoindex_module.html
+目录浏览
 ```
 
 ##### 拓展Nginx压缩模块：
