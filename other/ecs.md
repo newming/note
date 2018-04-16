@@ -48,6 +48,10 @@ zh_CN GB2312
 
 # 命令行执行
 sudo locale-gen
+# 查看语言
+locale
+
+# 后来我又改回来英文
 ```
 
 ## 解决 sudo: unable to resolve host [机器名]
