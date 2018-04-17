@@ -134,6 +134,8 @@ visudo
 %newming ALL=(ALL) ALL
 ```
 
+http://www.ruanyifeng.com/blog/2014/03/server_setup.html
+
 ## 文件下载上传
 
 ```bash
@@ -145,4 +147,14 @@ curl -o test.html http://www.baidu.com
 scp -P port file root@ip:path
 # 本地下载服务器文件
 scp -P port root@ip:path file
+```
+
+## chmod
+
+```bash
+# 修改文件权限
+sudo chmod 600 ~/.ssh/authorized_keys && chmod 700 ~/.ssh/
+
+# 修改文件所有者
+sudo chown -R newming:newming /data
 ```

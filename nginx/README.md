@@ -1,5 +1,17 @@
 # nginx 学习笔记
 
+```bash
+# ubuntu
+apt-get install nginx
+
+# mac
+brew install nginx
+
+# centos 7 [看这里](https://blog.csdn.net/u012486840/article/details/52610320)
+sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+sudo yum install nginx
+```
+
 nginx 是一个开源且高性能、可靠的HTTP中间件、代理服务。
 
 Mac 位置：`/usr/local/etc/nginx`
@@ -7,6 +19,11 @@ Mac 位置：`/usr/local/etc/nginx`
 常用命令清单：
 
 ```bash
+service nginx start
+service nginx reload
+service nginx status
+service nginx stop
+
 nginx -tc /etc/nginx/nginx.conf # 检测配置文件语法
 nginx -s reload -c /etc/nginx/nginx.conf # 重载服务
 ```
@@ -264,3 +281,44 @@ nginx -V # --with-* 的为 nginx 开启的模块
 HTTP 请求建立在一次TCP连接基础上
 
 一次 TCP 请求至少产生一次 HTTP 请求
+
+### 调试
+
+```nginx
+server {
+  listen 80;
+  server_name test.com;
+  add_header Content-Type "text/plain;charset-utf-8";
+  return 200 "$http_host";
+}
+```
+
+```nginx
+upstream cnode {
+  server 127.0.0.1:5000;
+}
+
+server {
+  listen 80;
+  server_name example;
+  location / {
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Nginx-Proxy true;
+    proxy_pass http://cnode;
+    proxy_redirect off;
+  }
+
+  listen 443 ssl; # managed by Certbot
+  ssl_certificate /etc/letsencrypt/live/newming.cn/fullchain.pem; # managed by Certbot
+  ssl_certificate_key /etc/letsencrypt/live/newming.cn/privkey.pem; # managed by Certbot
+  include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+  ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+  if ($scheme != "https") {
+      return 301 https://$host$request_uri;
+  } # managed by Certbot
+}
+```

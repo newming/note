@@ -41,6 +41,9 @@ Context: http, server, location
 
 http://nginx.org/en/docs/http/ngx_http_autoindex_module.html
 目录浏览
+
+rewrite
+重定向
 ```
 
 ##### 拓展Nginx压缩模块：
