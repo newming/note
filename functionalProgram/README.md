@@ -1,1 +1,22 @@
 # JavaScript ES6 函数式编程入门经典
+
+- chapter3 高阶函数
+  - forEach
+  - forEachObject
+  - unless
+  - times
+  - every
+  - some
+  - sortBy
+- chapter4 闭包与高阶函数
+  - tap 函数
+  - unary
+  - once
+  - memoized
+- chapter5 数组的函数式编程
+  - map
+  - filter
+  - concatAll 将所有嵌套的数组连接到一个数组中
+  - reduce
+  - zip 实现将两个数组合并到一个数组中
+- chapter6 柯里化与偏应用

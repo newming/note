@@ -238,7 +238,7 @@ console.log(time) // 4
 document.addEventListener('scroll', throttle(function () {
   console.log(123)
 }))
-// 第一种
+// 第一种，每隔一段时间执行一次
 // ---1-2-3-4-5-6-7-8-9
 // ---1-----------7----
 function throttle (func, delay = 6000) {
@@ -251,7 +251,7 @@ function throttle (func, delay = 6000) {
   }
 }
 
-// 第二种
+// 第二种，停止操作后一段时间执行一次
 // ---1---2--3----------4---5--6------
 // -----------------3----------------6
 
@@ -285,4 +285,27 @@ const f = foo(1)(2)(3)
 f(5) // 1 2 3 5
 
 // 对于 curry(foo)，g 函数参数足够4个，就调用 foo(a,b,c,d)，如果小于4个就返回一个可以继续积累参数的函数
+```
+
+### 15. 迭代器
+
+```js
+function strAdd (n, cb) {
+  let str = ''
+  ;(function it(i) {
+    if (i >= n) {
+      str += i
+      cb(str)
+      return
+    }
+    setTimeout(() => {
+      str += i
+      it(i + 1)
+    }, 500)
+  })(0)
+}
+
+strAdd(10, function (res) {
+  console.log(res)
+})
 ```

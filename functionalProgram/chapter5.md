@@ -79,13 +79,13 @@ var books = [
         id: 111,
         title: 'js',
         author: 'aaa',
-        rating: 7
+        rating: [7]
       },
       {
         id: 222,
         title: 'c',
         author: 'aaa',
-        rating: 7
+        rating: [7]
       }
     ]
   },
@@ -96,18 +96,258 @@ var books = [
         id: 333,
         title: 'go',
         author: 'aaa',
-        rating: 9
+        rating: [9]
       },
       {
         id: 444,
         title: 'php',
         author: 'aaa',
-        rating: 4
+        rating: [4]
       }
     ]
   }
 ]
 ```
 
-仍然是上一个问题，取出 rating 大于 5 的书籍的 title
+仍然是上一个问题，取出 rating 大于 5 的书籍的 title，这个时候因为 bookDetails 为一个数组，map 遍历后返回的数组中包含了另外的数组，通过上面的方法已经不可以了。
 
+```js
+map(books, book => book.bookDetails)
+// 使用 map 函数处理后，无法直接交给 filter 处理
+[
+  [
+    {
+      id: 111,
+      title: 'js',
+      author: 'aaa',
+      rating: [7]
+    },
+    {
+      id: 222,
+      title: 'c',
+      author: 'aaa',
+      rating: [7]
+    }
+  ],
+  [
+    {
+      id: 333,
+      title: 'go',
+      author: 'aaa',
+      rating: [9]
+    },
+    {
+      id: 444,
+      title: 'php',
+      author: 'aaa',
+      rating: [4]
+    }
+  ]
+]
+```
+
+这时我们需要一个 concatAll 的函数，将所有嵌套的数组连接到一个数组中。
+
+### concatAll 函数
+
+```js
+const concatAll = (array, fn) => {
+  let results = []
+  for (const value of array) {
+    results.push.apply(results, value)
+  }
+  return results
+}
+
+// 使用
+concatAll(
+  map(books, book => book.bookDetails)
+)
+```
+
+这时我们得到的结果将会这样的：
+
+```js
+[
+  {
+    id: 111,
+    title: 'js',
+    author: 'aaa',
+    rating: 7
+  },
+  {
+    id: 222,
+    title: 'c',
+    author: 'aaa',
+    rating: 7
+  },
+  {
+    id: 333,
+    title: 'go',
+    author: 'aaa',
+    rating: 9
+  },
+  {
+    id: 444,
+    title: 'php',
+    author: 'aaa',
+    rating: 4
+  }
+]
+```
+
+现在可以继续使用 filter 函数了
+
+```js
+let goodRating = book => book.rating
+filter(
+  concatAll(
+    map(books, book => book.bookDetails)
+  )
+, goodRating)
+```
+
+## reduce 函数
+
+reduce 函数的第一个实现：
+
+```js
+const reduce = (array, fn) => {
+  let accumlator = 0
+  for (const value of array) {
+    accumlator = fn(accumlator, value)
+  }
+  return accumlator
+}
+```
+
+上面的只支持加法，因为没有接受默认参数。最终实现：
+
+```js
+const reduce = (array, fn, initialValue) => {
+  let accumlator
+  if (initialValue !== undefined) {
+    accumlator = initialValue
+  } else {
+    accumlator = array[0]
+  }
+
+  if (initialValue === undefined) {
+    for (let i = 1; i < array.length; i++) {
+      accumlator = fn(accumlator, array[i])
+    }
+  } else {
+    for (const value of array) {
+      accumlator = fn(accumlator, value)
+    }
+  }
+
+  return accumlator
+}
+```
+
+## zip 函数
+
+zip 函数的任务是合并两个给定的数组。例如要将下面两个数组合并起来：
+
+```js
+// 第一个数组，包含了书籍详情
+let books = [
+  {
+    name: 'beginners',
+    bookDetails: [
+      {
+        id: 111,
+        title: 'C# 6.0',
+        author: 'newming',
+        rating: [6.8]
+      },
+      {
+        id: 112,
+        title: 'javascript',
+        author: 'newming',
+        rating: [8],
+        reviews: []
+      }
+    ]
+  },
+  {
+    name: 'pro',
+    bookDetails: [
+      {
+        id: 113,
+        title: 'python',
+        author: 'newming',
+        rating: [8.5]
+      },
+      {
+        id: 114,
+        title: 'nodejs',
+        author: 'newming',
+        rating: [8.8],
+        reviews: []
+      }
+    ]
+  },
+]
+// 第二个数组包含了 reviews 评价详情
+let reviewsDetails = [
+  {
+    id: 111,
+    reviews: [{good: 4, excellent: 12}]
+  },
+  {
+    id: 112,
+    reviews: []
+  },
+  {
+    id: 113,
+    reviews: []
+  },
+  {
+    id: 114,
+    reviews: [{good: 14, excellent: 2}]
+  },
+]
+```
+
+实现将两个数组合并到一个数组中。
+
+### zip 函数的实现：
+
+```js
+const zip = (leftArr, rightArr, fn) => {
+  let index, results = []
+  for (index = 0; index < Math.min(leftArr.length, rightArr.length); index++) {
+    results.push(fn(leftArr[index], rightArr[index]))
+  }
+
+  return results
+}
+```
+
+使用 zip 实现两个数组相同位置数值相加：
+
+```js
+zip([1, 2, 3], [5, 8, 10], (x, y) => x + y)
+// [6, 10, 13]
+```
+
+使用 zip 解决上边图书信息合并：
+
+```js
+let bookDetails = concatAll(
+  map(books, book => book.bookDetails)
+)
+
+let mergedBookDetails = zip(bookDetails, reviewsDetails, (book, review) => {
+  if (book.id === review.id) {
+    let clone = Object.assign({}, book)
+    clone.ratings = review
+    return clone
+  }
+  return book // 书上没有这句，如果 book 和 review 的顺序不一致，数据可能就都丢了
+})
+```
+
+<!-- done -->

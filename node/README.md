@@ -74,3 +74,15 @@ fs.stat('./README1.md', (err, stats) => {
 ```
 
 node 本身将所有的阻塞操作交给了内部实现的线程池，node 本身主线程主要就是不断的调度
+
+### 调试
+
+```bash
+# 使用 chrome 调试
+# 第一步 开启调试
+node --inspect app.js
+
+node --inspect-brk app.js # 在开头停住
+
+# 第二步，打开 chrome://inspect/
+```

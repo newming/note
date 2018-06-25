@@ -23,7 +23,7 @@ fs.stat('./file-operate.md', (err, stats) => {
   if (stats) {
     let readTotal = 0
     reader.on('data', chunk => {
-      // chunk 是一个 buffer，chunk.length 
+      // chunk 是一个 buffer，chunk.length
       console.log('读了' + (readTotal + chunk.length) / stats.size * 100 + '%')
       writer.write(chunk, err => {
         console.log('写了' + (readTotal + chunk.length) / stats.size * 100 + '%')

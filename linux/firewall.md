@@ -23,6 +23,8 @@ service firewalld stop/disable
 
 防火墙命令操作：
 
+[文档](https://www.iwwenbo.com/centos-open-porter/)
+
 ```bash
 firewall-cmd --version
 firewall-cmd --help
@@ -48,7 +50,9 @@ firewall-cmd --zone=public --list-ports
 # 查询某个端口是否开放
 firewall-cmd --query-port=22/tcp
 # 增加端口开放
-firewall-cmd --add-port=22/tcp
+firewall-cmd --add-port=22/tcp --permanent
 # 移除端口开放
 firewall-cmd --remove-port=22/tcp
+
+firewall-cmd --reload
 ```

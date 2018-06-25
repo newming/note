@@ -1,5 +1,10 @@
 # 数据类型转换规则总结
 
+几个比较坑爹的数据类型转换问题:
+
+- [1+2-3===9](https://wanago.io/2018/04/02/1-2-3-9-looking-into-assembly-code-of-coercion/)
+- [为什么 ++[[]][+[]]+[+[]] = 10？](http://justjavac.com/javascript/2012/05/24/can-you-explain-why-10.html)
+
 - 如果只有一个值，判断这个值是真还是假，遵循只有 0 NaN '' null undefined 这五个值是假的，其余都是真。(!null == true)
 - 如果是两个值比较是否相等，如果可能不是同一个数据类型，如果是==比较的话，会进行默认的数据类型转换。
   1. 对象==对象 永远是false 例如({}=={})，[]==[],(function(){}==function(){})

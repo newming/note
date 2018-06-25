@@ -89,7 +89,7 @@ sudo vi /etc/hostname # 重启后生效，注意修改 hosts
 
 ## 自动重启服务
 
-/etc/network/if-up.d
+在 `/etc/network/if-up.d` 下创建文件，给予权限
 
 ## mongodb
 

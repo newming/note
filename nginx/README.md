@@ -12,6 +12,8 @@ sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-cento
 sudo yum install nginx
 ```
 
+[centos 开机启动 nginx](http://imshusheng.com/linux/225.html)
+
 nginx 是一个开源且高性能、可靠的HTTP中间件、代理服务。
 
 Mac 位置：`/usr/local/etc/nginx`

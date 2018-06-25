@@ -20,5 +20,5 @@
 ```bash
 npm config ls
 npm config get [prefix]
-npm config set prefix [path] 
+npm config set prefix [path]
 ```

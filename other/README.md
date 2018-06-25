@@ -1,5 +1,9 @@
 # 杂七杂八
 
+- RN
+- weex
+- flutter
+
 [github表情符](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
 
 ```js

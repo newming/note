@@ -17,3 +17,6 @@
 - Generator: Generator 函数
 - Generator Async: Generator 函数的异步应用
 - async: async 函数
+- Class: Class 的基本语法
+- ClassExtends: Class 的继承
+- Decorator: 修饰器

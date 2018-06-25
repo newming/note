@@ -1,3 +1,5 @@
+# 深度比较传入参数是否相等
+
 ```js
 function deepCompare () {
   var i, l, leftChain, rightChain;
