@@ -309,3 +309,11 @@ strAdd(10, function (res) {
   console.log(res)
 })
 ```
+
+### 16 document.elementFromPoint(x, y)
+
+返回当前文档上处于指定坐标位置最顶层的元素, 坐标是相对于包含该文档的浏览器窗口的左上角为原点来计算的, 通常 x 和 y 坐标都应为正数.
+
+```js
+let target = document.elementFromPoint(x, y)
+```

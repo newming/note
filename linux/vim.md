@@ -1,5 +1,7 @@
 # vim 编辑器
 
+[vimgolf](http://www.vimgolf.com/)
+
 只读模式下：
 
 - G: 跳到文件尾
