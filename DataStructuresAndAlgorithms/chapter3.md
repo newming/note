@@ -1,8 +1,8 @@
-# 算法相关代码
-
-## 栈
+# 栈
 
 栈是一种尊从后进先出(LIFO)原则的有序集合。新添加的或待删除的元素都保存在栈的同一端，称作栈顶，另一端叫栈底。在栈里，新元素都靠近栈顶，旧元素都接近栈底。
+
+## 对象形式的 stack
 
 ```js
 class Stack {
@@ -11,7 +11,7 @@ class Stack {
     this.items = {}
   }
   push(element) {
-    this.items[this.count] = element
+    this.items[this.count] = element // 属性名为 count
     this.count++
   }
   pop() {
@@ -55,6 +55,47 @@ class Stack {
 }
 ```
 
+## 数组形式的 stack
+
+```js
+export default class StackArray {
+  constructor() {
+    this.items = [];
+  }
+  push(element) {
+    this.items.push(element);
+  }
+
+  pop() {
+    return this.items.pop();
+  }
+
+  peek() {
+    return this.items[this.items.length - 1];
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
+  size() {
+    return this.items.length;
+  }
+
+  clear() {
+    this.items = [];
+  }
+
+  toArray() {
+    return this.items;
+  }
+
+  toString() {
+    return this.items.toString();
+  }
+}
+```
+
 ## 十进制转其他进制
 
 ```js
@@ -79,7 +120,7 @@ function decimalToBinary(decNumber) {
 // 十进制转换为任意进制 （要转换的数字， 基数）
 function baseConverter (decNumber, base) {
   const remStack = []
-  const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
   let number = decNumber
   let rem
   let baseString = ''
@@ -157,3 +198,81 @@ function match (n, c) {
   return (c === '[' && n === ']') || (c === '{' && n === '}') || (c === '(' && n === ')')
 }
 ```
+
+## 汉诺塔
+
+汉诺塔移动规则：
+
+```js
+/**
+ * 输出汉诺塔移动规则 https://www.cnblogs.com/dmego/p/5965835.html 三根柱子是固定的，盘子一上来从小到大放到 第一根柱子上，移动次数与盘子个数的关系 2^n - 1 (n 为盘子数)
+ * plates 盘子个数
+ * source 代表第一个柱子
+ * helper 代表第中间个柱子
+ * dest 代表第三个柱子
+ * moves 为最后保存的移动轨迹
+ */
+function hanoi(plates, source, helper, dest, moves = []) {
+  if (plates <= 0) {
+    return moves;
+  }
+  if (plates === 1) {
+    moves.push([source, dest]); // 1 个盘子 A -> C
+  } else {
+    hanoi(plates - 1, source, dest, helper, moves); // 把 n-1 个盘子由 A -> B
+    moves.push([source, dest]); // 把第 n 个盘子由 A移到 C
+    hanoi(plates - 1, helper, source, dest, moves); // 把 n-1 个盘子由 B 移到 C
+  }
+  return moves;
+}
+console.log(hanoi(3, 'source', 'helper', 'dest'));
+// [["source","dest"],["source","helper"],["dest","helper"],["source","dest"],["helper","source"],["helper","dest"],["source","dest"]]
+```
+
+完善汉诺塔，输出各个柱子上的盘子详情：
+
+```js
+/**
+ * 原理同上
+ */
+function towerOfHanoi(plates, source, helper, dest, sourceName, helperName, destName, moves = []) {
+  if (plates <= 0) {
+    return moves;
+  }
+  if (plates === 1) {
+    dest.push(source.pop());
+    const move = {};
+    move[sourceName] = source.toString();
+    move[helperName] = helper.toString();
+    move[destName] = dest.toString();
+    moves.push(move);
+  } else {
+    towerOfHanoi(plates - 1, source, dest, helper, sourceName, destName, helperName, moves);
+    dest.push(source.pop());
+    const move = {};
+    move[sourceName] = source.toString();
+    move[helperName] = helper.toString();
+    move[destName] = dest.toString();
+    moves.push(move);
+    towerOfHanoi(plates - 1, helper, source, dest, helperName, sourceName, destName, moves);
+  }
+  return moves;
+}
+
+function hanoiStack(plates) {
+  // 初始化，声明三根柱子，并且将 plates 个盘子放到 source 柱子上
+  const source = [];
+  const dest = [];
+  const helper = [];
+  for (let i = plates; i > 0; i--) {
+    source.push(i);
+  }
+
+  return towerOfHanoi(plates, source, helper, dest, 'source', 'helper', 'dest');
+}
+
+console.log(hanoiStack(2));
+// [{"source":"2","dest":"","helper":"1"},{"source":"","helper":"1","dest":"2"},{"helper":"","source":"","dest":"2,1"}]
+```
+
+<!-- done -->

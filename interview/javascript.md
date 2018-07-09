@@ -219,7 +219,8 @@ for (var i = 1; i <= 4; i++) {
     console.log(i)
   }, 1000, i)
 }
-console.log(time) // 4
+console.log(i) // 5
+console.log(time) // 可能为 4
 // 1, 2, 3
 
 /*

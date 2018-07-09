@@ -5,8 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>ceshi</title>
+  <style>
+    * {margin: 0; padding: 0;}
+    #container {
+      height: 100vh;
+      overflow: auto;
+    }
+  </style>
 </head>
 <body>
+  <div id='container'>
+    <div id='box'>
+    </div>
+  </div>
   <script>
     // bind 兼容写法
     // if (!Function.prototype.testbind) {
@@ -77,6 +88,183 @@
     //   return balanced && !stack.length
     // }
     // console.log(parenthesesChecker('()'))
+    const Compare = {
+  LESS_THAN: -1,
+  BIGGER_THAN: 1,
+  EQUALS: 0
+};
+function defaultCompare(a, b) {
+  if (a === b) {
+    return Compare.EQUALS;
+  }
+  return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN;
+}
+// 生成子节点
+class Node {
+  constructor(key) {
+    this.key = key;
+    this.left = undefined;
+    this.right = undefined;
+  }
+  toString() {
+    return `${this.key}`;
+  }
+}
+
+class BinarySearchTree {
+  constructor(compareFn = defaultCompare) {
+    this.compareFn = compareFn;
+    this.root = undefined;
+  }
+  insert(key) {
+    // special case: first key
+    if (this.root == null) {
+      this.root = new Node(key);
+    } else {
+      this.insertNode(this.root, key);
+    }
+  }
+  // 插入节点
+  insertNode(node, key) {
+    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
+      // 往左边插入
+      if (node.left == null) {
+        node.left = new Node(key);
+      } else {
+        this.insertNode(node.left, key);
+      }
+    } else if (node.right == null) {
+      // 往右边插入
+      node.right = new Node(key);
+    } else {
+      // 往右边插入
+      this.insertNode(node.right, key);
+    }
+  }
+  getRoot() {
+    return this.root;
+  }
+  // 查找一个键
+  search(key) {
+    return this.searchNode(this.root, key);
+  }
+  searchNode(node, key) {
+    if (node == null) {
+      return false;
+    }
+    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
+      return this.searchNode(node.left, key);
+    } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
+      return this.searchNode(node.right, key);
+    }
+    return true;
+  }
+  // 通过中序遍历方式遍历所有节点
+  inOrderTraverse(callback) {
+    this.inOrderTraverseNode(this.root, callback);
+  }
+  inOrderTraverseNode(node, callback) {
+    if (node != null) {
+      this.inOrderTraverseNode(node.left, callback);
+      callback(node.key);
+      this.inOrderTraverseNode(node.right, callback);
+    }
+  }
+  // 通过先序遍历方式遍历所有节点
+  preOrderTraverse(callback) {
+    this.preOrderTraverseNode(this.root, callback);
+  }
+  preOrderTraverseNode(node, callback) {
+    if (node != null) {
+      callback(node.key);
+      this.preOrderTraverseNode(node.left, callback);
+      this.preOrderTraverseNode(node.right, callback);
+    }
+  }
+  // 通过后序遍历方式遍历所有节点
+  postOrderTraverse(callback) {
+    this.postOrderTraverseNode(this.root, callback);
+  }
+  postOrderTraverseNode(node, callback) {
+    if (node != null) {
+      this.postOrderTraverseNode(node.left, callback);
+      this.postOrderTraverseNode(node.right, callback);
+      callback(node.key);
+    }
+  }
+  // 返回树中最小的值
+  min() {
+    return this.minNode(this.root);
+  }
+  minNode(node) {
+    let current = node;
+    while (current != null && current.left != null) {
+      current = current.left;
+    }
+    return current;
+  }
+  // 返回树中最大的值
+  max() {
+    return this.maxNode(this.root);
+  }
+  maxNode(node) {
+    let current = node;
+    while (current != null && current.right != null) {
+      current = current.right;
+    }
+    return current;
+  }
+  // 从树中移除某个值
+  remove(key) {
+    this.root = this.removeNode(this.root, key);
+  }
+  removeNode(node, key) {
+    if (node == null) {
+      return undefined;
+    }
+    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
+      node.left = this.removeNode(node.left, key);
+      return node;
+    } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
+      node.right = this.removeNode(node.right, key);
+      return node;
+    }
+    // key is equal to node.item
+    // handle 3 special conditions
+    // 1 - a leaf node
+    // 2 - a node with only 1 child
+    // 3 - a node with 2 children
+    // case 1
+    if (node.left == null && node.right == null) {
+      node = undefined;
+      return node;
+    }
+    // case 2
+    if (node.left == null) {
+      node = node.right;
+      return node;
+    } else if (node.right == null) {
+      node = node.left;
+      return node;
+    }
+    // case 3
+    const aux = this.minNode(node.right);
+    node.key = aux.key;
+    node.right = this.removeNode(node.right, aux.key);
+    return node;
+  }
+}
+
+var tree = new BinarySearchTree()
+tree.insert(4)
+tree.insert(44)
+tree.insert(14)
+tree.insert(-4)
+tree.insert(23)
+console.log(tree)
+tree.inOrderTraverse(function (val) {
+  console.log(val)
+})
   </script>
 </body>
 </html>
