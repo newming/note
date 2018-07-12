@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>ceshi</title>
   <style>
-    * {margin: 0; padding: 0;}
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
     #container {
       height: 100vh;
       overflow: auto;
     }
   </style>
 </head>
+
 <body>
   <div id='container'>
     <div id='box'>
@@ -88,183 +94,164 @@
     //   return balanced && !stack.length
     // }
     // console.log(parenthesesChecker('()'))
-    const Compare = {
-  LESS_THAN: -1,
-  BIGGER_THAN: 1,
-  EQUALS: 0
-};
-function defaultCompare(a, b) {
-  if (a === b) {
-    return Compare.EQUALS;
-  }
-  return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN;
-}
-// 生成子节点
-class Node {
-  constructor(key) {
-    this.key = key;
-    this.left = undefined;
-    this.right = undefined;
-  }
-  toString() {
-    return `${this.key}`;
-  }
-}
 
-class BinarySearchTree {
-  constructor(compareFn = defaultCompare) {
-    this.compareFn = compareFn;
-    this.root = undefined;
-  }
-  insert(key) {
-    // special case: first key
-    if (this.root == null) {
-      this.root = new Node(key);
-    } else {
-      this.insertNode(this.root, key);
-    }
-  }
-  // 插入节点
-  insertNode(node, key) {
-    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
-      // 往左边插入
-      if (node.left == null) {
-        node.left = new Node(key);
-      } else {
-        this.insertNode(node.left, key);
+    class ValuePair {
+      constructor(key, value) {
+        this.key = key;
+        this.value = value;
       }
-    } else if (node.right == null) {
-      // 往右边插入
-      node.right = new Node(key);
-    } else {
-      // 往右边插入
-      this.insertNode(node.right, key);
+      toString() {
+        return `[#${this.key}: ${this.value}]`;
+      }
     }
-  }
-  getRoot() {
-    return this.root;
-  }
-  // 查找一个键
-  search(key) {
-    return this.searchNode(this.root, key);
-  }
-  searchNode(node, key) {
-    if (node == null) {
-      return false;
+    // toString
+    function defaultToString(item) {
+      if (item === null) {
+        return 'NULL';
+      } else if (item === undefined) {
+        return 'UNDEFINED';
+      } else if (typeof item === 'string' || item instanceof String) {
+        return `${item}`;
+      }
+      return item.toString();
     }
-    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
-      return this.searchNode(node.left, key);
-    } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
-      return this.searchNode(node.right, key);
-    }
-    return true;
-  }
-  // 通过中序遍历方式遍历所有节点
-  inOrderTraverse(callback) {
-    this.inOrderTraverseNode(this.root, callback);
-  }
-  inOrderTraverseNode(node, callback) {
-    if (node != null) {
-      this.inOrderTraverseNode(node.left, callback);
-      callback(node.key);
-      this.inOrderTraverseNode(node.right, callback);
-    }
-  }
-  // 通过先序遍历方式遍历所有节点
-  preOrderTraverse(callback) {
-    this.preOrderTraverseNode(this.root, callback);
-  }
-  preOrderTraverseNode(node, callback) {
-    if (node != null) {
-      callback(node.key);
-      this.preOrderTraverseNode(node.left, callback);
-      this.preOrderTraverseNode(node.right, callback);
-    }
-  }
-  // 通过后序遍历方式遍历所有节点
-  postOrderTraverse(callback) {
-    this.postOrderTraverseNode(this.root, callback);
-  }
-  postOrderTraverseNode(node, callback) {
-    if (node != null) {
-      this.postOrderTraverseNode(node.left, callback);
-      this.postOrderTraverseNode(node.right, callback);
-      callback(node.key);
-    }
-  }
-  // 返回树中最小的值
-  min() {
-    return this.minNode(this.root);
-  }
-  minNode(node) {
-    let current = node;
-    while (current != null && current.left != null) {
-      current = current.left;
-    }
-    return current;
-  }
-  // 返回树中最大的值
-  max() {
-    return this.maxNode(this.root);
-  }
-  maxNode(node) {
-    let current = node;
-    while (current != null && current.right != null) {
-      current = current.right;
-    }
-    return current;
-  }
-  // 从树中移除某个值
-  remove(key) {
-    this.root = this.removeNode(this.root, key);
-  }
-  removeNode(node, key) {
-    if (node == null) {
-      return undefined;
-    }
-    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
-      node.left = this.removeNode(node.left, key);
-      return node;
-    } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
-      node.right = this.removeNode(node.right, key);
-      return node;
-    }
-    // key is equal to node.item
-    // handle 3 special conditions
-    // 1 - a leaf node
-    // 2 - a node with only 1 child
-    // 3 - a node with 2 children
-    // case 1
-    if (node.left == null && node.right == null) {
-      node = undefined;
-      return node;
-    }
-    // case 2
-    if (node.left == null) {
-      node = node.right;
-      return node;
-    } else if (node.right == null) {
-      node = node.left;
-      return node;
-    }
-    // case 3
-    const aux = this.minNode(node.right);
-    node.key = aux.key;
-    node.right = this.removeNode(node.right, aux.key);
-    return node;
-  }
-}
 
-var tree = new BinarySearchTree()
-tree.insert(4)
-tree.insert(44)
-tree.insert(14)
-tree.insert(-4)
-tree.insert(23)
-console.log(tree)
-tree.inOrderTraverse(function (val) {
-  console.log(val)
-})
+    class Dictionary {
+      constructor(toStrFn = defaultToString) {
+        this.toStrFn = toStrFn;
+        this.table = {};
+      }
+      set(key, value) {
+        if (key != null && value != null) {
+          const tableKey = this.toStrFn(key);
+          this.table[tableKey] = new ValuePair(key, value); // 注意这里添加新的属性 table: {name: {key: 'name', value: 123}}
+          return true;
+        }
+        return false;
+      }
+      get(key) {
+        const valuePair = this.table[this.toStrFn(key)];
+        return valuePair == null ? undefined : valuePair.value;
+      }
+      hasKey(key) {
+        return this.table[this.toStrFn(key)] != null;
+      }
+      remove(key) {
+        if (this.hasKey(key)) {
+          delete this.table[this.toStrFn(key)];
+          return true;
+        }
+        return false;
+      }
+      values() {
+        return this.keyValues().map(valuePair => valuePair.value);
+      }
+      keys() {
+        return this.keyValues().map(valuePair => valuePair.key);
+      }
+      keyValues() {
+        return Object.values(this.table);
+      }
+      forEach(callbackFn) {
+        const valuePairs = this.keyValues();
+        for (let i = 0; i < valuePairs.length; i++) {
+          const result = callbackFn(valuePairs[i].key, valuePairs[i].value);
+          if (result === false) {
+            break;
+          }
+        }
+      }
+      isEmpty() {
+        return this.size() === 0;
+      }
+      size() {
+        return Object.keys(this.table).length;
+      }
+      clear() {
+        this.table = {};
+      }
+      toString() {
+        if (this.isEmpty()) {
+          return '';
+        }
+        const valuePairs = this.keyValues();
+        let objString = `${valuePairs[0].toString()}`;
+        for (let i = 1; i < valuePairs.length; i++) {
+          objString = `${objString},${valuePairs[i].toString()}`;
+        }
+        return objString;
+      }
+    }
+
+    class Graph {
+      constructor(isDirected = false) {
+        this.isDirected = isDirected; // 是否是有方向的
+        this.vertices = []; // 存放所有顶点名字
+        this.adjList = new Dictionary(); // 存放邻接表
+      }
+      // 添加新的顶点，实例化后为空
+      addVertex(v) {
+        if (!this.vertices.includes(v)) {
+          this.vertices.push(v);
+          this.adjList.set(v, []); // initialize adjacency list with array as well;
+        }
+      }
+      // 建立链接 a <---> b
+      addEdge(a, b) {
+        if (!this.adjList.get(a)) {
+          this.addVertex(a);
+        }
+        if (!this.adjList.get(b)) {
+          this.addVertex(b);
+        }
+        this.adjList.get(a).push(b); // 将 a -> b
+        if (this.isDirected !== true) {
+          // 如果是没有方向的 b -> a
+          this.adjList.get(b).push(a);
+        }
+      }
+      getVertices() {
+        return this.vertices;
+      }
+      getAdjList() {
+        return this.adjList;
+      }
+      toString() {
+        let s = '';
+        for (let i = 0; i < this.vertices.length; i++) {
+          s += `${this.vertices[i]} -> `;
+          const neighbors = this.adjList.get(this.vertices[i]);
+          for (let j = 0; j < neighbors.length; j++) {
+            s += `${neighbors[j]} `;
+          }
+          s += '\n';
+        }
+        return s;
+      }
+    }
+
+    const graph = new Graph();
+
+    const myVertices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+
+    for (let i = 0; i < myVertices.length; i++) {
+      graph.addVertex(myVertices[i]);
+    }
+    graph.addEdge('A', 'B');
+    graph.addEdge('A', 'C');
+    graph.addEdge('A', 'D');
+    graph.addEdge('C', 'D');
+    graph.addEdge('C', 'G');
+    graph.addEdge('D', 'G');
+    graph.addEdge('D', 'H');
+    graph.addEdge('B', 'E');
+    graph.addEdge('B', 'F');
+    graph.addEdge('E', 'I');
+
+    console.log('********* printing graph ***********');
+
+    console.log(graph.toString());
   </script>
 </body>
+
 </html>

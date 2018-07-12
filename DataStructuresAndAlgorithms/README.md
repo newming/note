@@ -35,5 +35,7 @@
   - WeakSet: es6 WeakSet 类
 - chapter8: 树(非顺序数据结构)
   - BinarySearchTree: 二叉搜索树
+  - AVLTree: 自平衡树
+- chapter9: 图
 
 > 源代码第九章递归没看呢

@@ -318,3 +318,15 @@ strAdd(10, function (res) {
 ```js
 let target = document.elementFromPoint(x, y)
 ```
+
+### 17 阻止事件冒泡
+
+```js
+function doSomething(e){
+  e = window.event || e; // window.event 为 IE
+  e.cancelBubble = true; // IE
+  if(e.stopPropagation){
+    e.stopPropagation(); // 标准
+  }
+}
+```

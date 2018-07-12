@@ -4,7 +4,8 @@
 - 快速排序
 - 插入排序
 
-### 冒泡排序
+## 冒泡排序
+
 ```js
 var arr = [12,10,13,8,4];
 // target: [4,8,10,12,13] 从小到大排序
@@ -53,7 +54,7 @@ sortAry(arr)
 console.log(arr);
 ```
 
-### 快速排序
+## 快速排序
 
 从数组的中间拿一个值，然后通过这个值挨个和数组里面的值进行比较，如果大于的放一边，小于的放一边，然后把这些合并，再进行比较，如此反复即可。
 
@@ -89,11 +90,12 @@ console.log(sortA(arr));
 额，理解起来比较难，画了个图
 ![quicksort](../images/quicksort.png)
 
-### 插入排序(INSERTION-SORT)
+## 插入排序(INSERTION-SORT)
 
 插入排序：对于少量元素比较有效。
 
 ```js
+// 插入排序第一版
 function sort(elements){
   //假设第0个元素是一个有序的数列，第1个以后的是无序的序列，
   //所以从第1个元素开始将无序数列的元素插入到有序数列中
@@ -122,4 +124,51 @@ var elements = [10, 9, 8, 7, 6, 5];
 console.log('before: ' + elements);
 sort(elements);
 console.log(' after: ' + elements);
+
+// 插入排序第二版
+function insertionSort (arr) {
+  let len = arr.length
+  let j, temp
+  for (let i = 1; i < length; i++) {
+    j = i
+    temp = arr[i]
+    while (j > 0 && array[j - 1] > temp) {
+      arr[j] = arr[j - 1]
+      j--
+    }
+    if (j !== i) {
+      arr[j] = temp
+    }
+  }
+}
+```
+
+## 选择排序
+
+选择排序大致的思路是找到数据结构中的最小值并将其放到第一位，接着找到第二小的值放到第二位。性能不是很好
+
+```js
+function swap(arr, index1, index2) {
+  let aux = arr[index1]
+  arr[index1] = arr[index2]
+  arr[index2] = aux
+}
+function selectionSort (array) {
+  let length = array.length
+  let indexMin // 最小值的索引
+  for (let i = 0; i < length - 1; i++) {
+    indexMin = i
+    for (let j = i + 1; j < length; j++) {
+      if (array[indexMin] > array[j]) {
+        indexMin = j
+      }
+    }
+    if (i !== indexMin) {
+      swap(array, i, indexMin)
+    }
+  }
+}
+let arr = [4, 8, 2]
+selectionSort(arr)
+console.log(arr)
 ```
