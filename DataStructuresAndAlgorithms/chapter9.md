@@ -113,3 +113,98 @@ console.log(graph.toString());
 
 图遍历算法的思想是必须追踪每个第一次访问的节点，并且追踪有哪些节点还没有被完全探索。对于两种图遍历算法，都需要明确指出第一个被访问的顶点。
 
+完全探索一个顶点要求我们查看该顶点的每一条边。对于每一条边所连接的没有被访问过的顶点，将其标注为被发现的，并将其加入待访问顶点列表中。
+
+为了保证算法的效率，务必访问每个顶点至多两次。连通图中每条边和顶点都会被访问到。
+
+广度优先搜索算法和深度优先算法基本上是相同的，只有一点不同，那就是待访问顶点列表的数据结构。
+
+| 算法 | 数据结构 | 描述 |
+| ---- | ---- | ---- |
+| 广度优先搜索 | 队列 | 通过将顶点存入队列中，最先入队列的顶点先被探索 |
+| 深度优先搜索 | 栈 | 通过将顶点存入栈中，顶点是沿着路径被探索的，存在新的邻顶点就去访问 |
+
+### 广度优先搜索
+
+为了区别是否访问，这里定义三种颜色来区别：
+
+- 白色: 表示该顶点还没有被访问
+- 灰色: 表示该顶点被访问过，但未被探索过
+- 黑色: 表示该顶点被访问过且被完全探索过
+
+```js
+import Queue from '../../data-structures/queue';
+
+const Colors = {
+  WHITE: 0,
+  GREY: 1,
+  BLACK: 2
+};
+
+const initializeColor = vertices => {
+  const color = {};
+  for (let i = 0; i < vertices.length; i++) {
+    color[vertices[i]] = Colors.WHITE;
+  }
+  return color;
+};
+
+export const breadthFirstSearch = (graph, startVertex, callback) => {
+  const vertices = graph.getVertices();
+  const adjList = graph.getAdjList();
+  const color = initializeColor(vertices);
+  const queue = new Queue();
+
+  queue.enqueue(startVertex);
+
+  while (!queue.isEmpty()) {
+    const u = queue.dequeue();
+    const neighbors = adjList.get(u);
+    color[u] = Colors.GREY;
+    for (let i = 0; i < neighbors.length; i++) {
+      const w = neighbors[i];
+      if (color[w] === Colors.WHITE) {
+        color[w] = Colors.GREY;
+        queue.enqueue(w);
+      }
+    }
+    color[u] = Colors.BLACK;
+    if (callback) {
+      callback(u);
+    }
+  }
+};
+
+export const BFS = (graph, startVertex) => {
+  const vertices = graph.getVertices();
+  const adjList = graph.getAdjList();
+  const color = initializeColor(vertices);
+  const queue = new Queue();
+  const distances = {};
+  const predecessors = {};
+  queue.enqueue(startVertex);
+  for (let i = 0; i < vertices.length; i++) {
+    distances[vertices[i]] = 0;
+    predecessors[vertices[i]] = null;
+  }
+  while (!queue.isEmpty()) {
+    const u = queue.dequeue();
+    const neighbors = adjList.get(u);
+    color[u] = Colors.GREY;
+    for (let i = 0; i < neighbors.length; i++) {
+      const w = neighbors[i];
+      if (color[w] === Colors.WHITE) {
+        color[w] = Colors.GREY;
+        distances[w] = distances[u] + 1;
+        predecessors[w] = u;
+        queue.enqueue(w);
+      }
+    }
+    color[u] = Colors.BLACK;
+  }
+  return {
+    distances,
+    predecessors
+  };
+};
+```

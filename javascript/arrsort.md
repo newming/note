@@ -213,10 +213,8 @@ console.log(mergeSort(arr))
 
 快速排序也是采用分治的方法，将原始数组分为较小的数组。
 
-从数组的中间拿一个值，然后通过这个值挨个和数组里面的值进行比较，如果大于的放一边，小于的放一边，然后把这些合并，再进行比较，如此反复即可。
-
+第一种快速排序。不太好， splice 性能较差，因为 splice 每次操作都会创建新的数组，空间复杂度较高。从数组的中间拿一个值，然后通过这个值挨个和数组里面的值进行比较，如果大于的放一边，小于的放一边，然后把这些合并，再进行比较，如此反复即可。
 ```js
-// 第一种快速排序。不太好， splice 性能较差
 var arr = [3,1,4,2,5,21,6,15,63];
 function sortA(arr){
   // 如果只有一位，就没有必要比较
@@ -247,6 +245,12 @@ console.log(sortA(arr));
 ```
 额，理解起来比较难，画了个图
 ![quicksort](../images/quicksort.png)
+
+第二种快速排序，和归并排序类似，也使用分治的方法，将原始数组分为较小的数组(但它没有像归并排序那样将它们分割开)。
+
+- 首先，从数组中选择中间一项作为主元
+- 创建两个指针，左边一个指向数组第一项，右边一个指向数组最后一项。移动左指针直到我们找到一个比主元大的元素，接着移动右指针直到找到一个比主元素小的元素，然后交换它们，重复这个过程，直到左指针超过了右指针。这个过程将使得比主元小的值都排在主元之前，而比主元大的元素都排在主元之后。这一步叫作划分操作
+- 接着，算法对划分后的小数组(较主元小的值组成的子数组，以及较主元大的值组成的子数组)重复之前的两个步骤，直至数组已完全排序
 
 ```js
 const Compare = {
@@ -303,5 +307,266 @@ function quick(array, left, right, compareFn) {
 }
 export function quickSort(array, compareFn = defaultCompare) {
   return quick(array, 0, array.length - 1, compareFn);
+}
+```
+
+## 堆排序
+
+-----没看懂
+
+堆排序也是一种很高效的算法，因其把数组当作二叉树来排序而得名。这个算法会根据以下信息，把数组当作二叉树来管理。
+
+- 索引 0 是树的根节点
+- 除根节点外，任意节点 N 的父节点是 N/2
+- 节点 L 的左子节点是 2*L
+- 节点 R 的右子节点是 2*R + 1
+
+```js
+function defaultCompare(a, b) {
+  if (a === b) {
+    return Compare.EQUALS;
+  }
+  return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN;
+}
+
+function swap(array, a, b) {
+  /* const temp = array[a];
+  array[a] = array[b];
+  array[b] = temp; */
+  [array[a], array[b]] = [array[b], array[a]];
+}
+
+function heapify(array, index, heapSize, compareFn) {
+  let largest = index;
+  const left = (2 * index) + 1;
+  const right = (2 * index) + 2;
+  if (left < heapSize && compareFn(array[left], array[index]) > 0) {
+    largest = left;
+  }
+  if (right < heapSize && compareFn(array[right], array[largest]) > 0) {
+    largest = right;
+  }
+  if (largest !== index) {
+    swap(array, index, largest);
+    heapify(array, largest, heapSize, compareFn);
+  }
+}
+
+function buildMaxHeap(array, compareFn) {
+  for (let i = Math.floor(array.length / 2); i >= 0; i -= 1) {
+    heapify(array, i, array.length, compareFn);
+  }
+  return array;
+}
+
+// 堆排序算法
+function heapSort(array, compareFn = defaultCompare) {
+  let heapSize = array.length;
+  buildMaxHeap(array, compareFn); // 第一步 构建一个满足 array[parent(i)] >= array[i] 的堆结构
+  while (heapSize > 1) {
+    swap(array, 0, --heapSize); // 第二步 交换堆里第一个元素(数组中较大的值)和最后一个元素的位置。这样，最大的值就会出现在它已排序的位置
+    heapify(array, 0, heapSize, compareFn); // 第二步可能会丢掉堆的属性，因此，需要执行一个 heapify 的函数，再次将数组转换成堆，也就是说，它会找到当前的根节点(较小的值)，重新放回到树的底部
+  }
+  return array;
+}
+```
+
+## 分布式排序
+
+分布式排序算法：原始数组中的数据会分发到多个中间结构(桶)，在合起来放回原始数组。
+
+最著名的分布式算法有计数排序、桶排序和基数排序。这三种算法非常相似。
+
+### 计数排序
+
+```js
+// 找到数组中最大的值
+function findMaxValue(array) {
+  if (array && array.length > 0) {
+    let max = array[0];
+    for (let i = 1; i < array.length; i++) {
+      if (max < array[i]) {
+        max = array[i];
+      }
+    }
+    return max;
+  }
+  return undefined;
+}
+// 计数排序
+function countingSort(array) {
+  if (array.length < 2) {
+    return array;
+  }
+  const maxValue = findMaxValue(array); // 找到原有数组中最大的值
+  let sortedIndex = 0;
+  const counts = new Array(maxValue + 1); // 根据最大值生成一个数组
+  array.forEach(element => {
+    if (!counts[element]) {
+      counts[element] = 0;
+    }
+    counts[element]++;
+  });
+  // console.log('Frequencies: ' + counts.join()); // Frequencies: ,1,,1,,,1 注意这里，相当于将原有数组按大小排到一起，比如原有数组中有一个1，则 counts 在 1 的位置记 1，如果有两个就计2。例如 counts 位 [, 3, , 1] 说明原数组中包含： [1, 1, 1, 3]
+  counts.forEach((element, i) => {
+    // 遍历 counts，此时的 counts 已经记录了数组中各个值的数量，只要根据每个数值的数量依次插入到 array 中就完成排序
+    while (element > 0) {
+      array[sortedIndex++] = i;
+      element--;
+    }
+  });
+  return array;
+}
+
+console.log(countingSort([1, 6, 3]))
+```
+
+### 捅排序
+
+-----没看
+
+```js
+import { insertionSort } from './insertion-sort'; // 这个是上边 第二种 插入排序
+
+function createBuckets(array, bucketSize) {
+  let minValue = array[0];
+  let maxValue = array[0];
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] < minValue) {
+      minValue = array[i];
+    } else if (array[i] > maxValue) {
+      maxValue = array[i];
+    }
+  }
+  const bucketCount = Math.floor((maxValue - minValue) / bucketSize) + 1;
+  const buckets = [];
+  for (let i = 0; i < bucketCount; i++) {
+    buckets[i] = [];
+  }
+  for (let i = 0; i < array.length; i++) {
+    buckets[Math.floor((array[i] - minValue) / bucketSize)].push(array[i]);
+  }
+  return buckets;
+}
+function sortBuckets(buckets) {
+  const sortedArray = [];
+  for (let i = 0; i < buckets.length; i++) {
+    if (buckets[i] != null) {
+      insertionSort(buckets[i]);
+      sortedArray.push(...buckets[i]);
+    }
+  }
+  return sortedArray;
+}
+// 桶排序
+function bucketSort(array, bucketSize = 5) {
+  if (array.length < 2) {
+    return array;
+  }
+  const buckets = createBuckets(array, bucketSize);
+  return sortBuckets(buckets);
+}
+```
+
+### 基数排序
+
+-----没看
+
+```js
+function findMaxValue(array) {
+  if (array && array.length > 0) {
+    let max = array[0];
+    for (let i = 1; i < array.length; i++) {
+      if (max < array[i]) {
+        max = array[i];
+      }
+    }
+    return max;
+  }
+  return undefined;
+}
+function findMinValue(array) {
+  if (array && array.length > 0) {
+    let min = array[0];
+    for (let i = 1; i < array.length; i++) {
+      if (min > array[i]) {
+        min = array[i];
+      }
+    }
+    return min;
+  }
+  return undefined;
+}
+
+const getBucketIndex = (value, minValue, significantDigit, radixBase) =>
+  Math.floor(((value - minValue) / significantDigit) % radixBase);
+
+const countingSortForRadix = (array, radixBase, significantDigit, minValue) => {
+  let bucketsIndex;
+  const buckets = [];
+  const aux = [];
+  for (let i = 0; i < radixBase; i++) {
+    buckets[i] = 0;
+  }
+  for (let i = 0; i < array.length; i++) {
+    bucketsIndex = getBucketIndex(array[i], minValue, significantDigit, radixBase);
+    buckets[bucketsIndex]++;
+  }
+  for (let i = 1; i < radixBase; i++) {
+    buckets[i] += buckets[i - 1];
+  }
+  for (let i = array.length - 1; i >= 0; i--) {
+    bucketsIndex = getBucketIndex(array[i], minValue, significantDigit, radixBase);
+    aux[--buckets[bucketsIndex]] = array[i];
+  }
+  for (let i = 0; i < array.length; i++) {
+    array[i] = aux[i];
+  }
+  return array;
+};
+
+// 基数排序
+function radixSort(array, radixBase = 10) {
+  if (array.length < 2) {
+    return array;
+  }
+  const minValue = findMinValue(array);
+  const maxValue = findMaxValue(array);
+  // Perform counting sort for each significant digit, starting at 1
+  let significantDigit = 1;
+  while ((maxValue - minValue) / significantDigit >= 1) {
+    // console.log('radix sort for digit ' + significantDigit);
+    array = countingSortForRadix(array, radixBase, significantDigit, minValue);
+    // console.log(array.join());
+    significantDigit *= radixBase;
+  }
+  return array;
+}
+```
+
+## 希尔排序
+
+[参考文章](https://www.cnblogs.com/chengxiao/p/6104371.html)
+
+```js
+function shellSort(array) {
+  let increment = Math.floor(array.length / 2);
+  while (increment > 0) {
+    for (let i = increment; i < array.length; i++) {
+      let j = i;
+      const temp = array[i];
+      while (j >= increment && array[j - increment] > temp) {
+        array[j] = array[j - increment];
+        j -= increment;
+      }
+      array[j] = temp;
+    }
+    if (increment === 2) {
+      increment = 1;
+    } else {
+      increment = Math.floor((increment * 5) / 11);
+    }
+  }
+  return array;
 }
 ```

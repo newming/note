@@ -95,52 +95,7 @@
     // }
     // console.log(parenthesesChecker('()'))
 
-    function swap(array, a, b) {
-      /* const temp = array[a];
-      array[a] = array[b];
-      array[b] = temp; */
-      [array[a], array[b]] = [array[b], array[a]];
-    }
-
-    function partition(array, left, right) {
-      const pivot = array[Math.floor((right + left) / 2)]; // 取数组中间值
-      let i = left; // 左右指针
-      let j = right;
-
-      while (i <= j) {
-        while (array[i] < pivot) {
-          i++; // 如果左边的指针的值小于中间值，符合条件，移动左指针，最多移动到中间的这个值的位置
-        }
-        while (array[j] > pivot) {
-          j--; // 如果右边的指针的值大于中间值，符合条件，移动右指针，最多移动到中间的这个值的位置
-        }
-        if (i <= j) { // 如果 i <= j 说明在上边的连个 while 循环中某个地方停住了，交换位置，同时移动指针
-          swap(array, i, j);
-          i++;
-          j--;
-        }
-      }
-      return i;
-    }
-
-    function quick(array, left, right) {
-      let index;
-      if (array.length > 1) {
-        index = partition(array, left, right);
-        if (left < index - 1) {
-          quick(array, left, index - 1);
-        }
-        if (index < right) {
-          quick(array, index, right);
-        }
-      }
-      return array;
-    }
-    function quickSort(array) {
-      return quick(array, 0, array.length - 1);
-    }
-    let arr = [4, 2, 8]
-    console.log(quickSort(arr))
+    // const unary = fn => fn.length === 1 ? fn : (arg) => fn(arg)
   </script>
 </body>
 

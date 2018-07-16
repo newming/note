@@ -46,12 +46,12 @@ forEach([1,2,3], a =>
 
 ```js
 const unary = fn => fn.length === 1 ? fn : (arg) => fn(arg)
-// 检测传入的 fn 是否有一个长度为 1 的参数列表(fn.length)，如果又就什么都不做，如果没有，就返回一个新的函数，它只接受一个参数 arg，并用该参数调用 fn
+// 检测传入的 fn 是否有一个长度为 1 的参数列表(fn.length)，如果是就什么都不做，如果没有，就返回一个新的函数，它只接受一个参数 arg，并用该参数调用 fn
 
 // 利用 unary 实现上边的问题：
 ['1', '2', '3'].map(unary(parseInt))
 // [1, 2, 3]
-// 简单分析，在 unary 函数内，fn 即为 parseInt，它拿到了三个参数，所以 unary(parseInt) 执行后返回的结果为 (arg) => fn(arg)，然后被 map 调用
+// 简单分析，在 unary 函数内，fn 即为 parseInt，它接受两个参数所以 fn.length 为 2，所以 unary(parseInt) 执行后返回的结果为 (arg) => fn(arg)，然后被 map 调用
 ```
 
 **once 函数**
