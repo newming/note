@@ -96,6 +96,16 @@
     // console.log(parenthesesChecker('()'))
 
     // const unary = fn => fn.length === 1 ? fn : (arg) => fn(arg)
+
+    function add(num, res = 0) {
+      if (num === 0) {
+        return res
+      }
+      res += num
+      return add(num - 1, res)
+    }
+
+    console.log(add(3))
   </script>
 </body>
 
