@@ -34,7 +34,7 @@ ip addr
 # 安装 net-tools，之后才有 ifconfig
 yum install net-tools
 
-# 关机，设置 -> 网络 -> 网卡 1 -> 桥接网卡
+# 关机，设置 -> 网络 -> 网卡 1 -> 桥接网卡(选择 wifi)
 ifconfig
 # ip 已经变了
 # 回到 mac shell 登录虚拟机
