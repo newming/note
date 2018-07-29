@@ -38,6 +38,7 @@
   - AVLTree: 自平衡树
 - chapter9: 图
   - Graph: 邻接表
+  - 未完
 - chapter10: 排序和搜索算法
   - 各种排序，在 javascript/arrsort.md
   - sequentialSearch: 顺序搜索
@@ -47,5 +48,6 @@
 - chapter11: 算法模式
   - 斐波那契数列
   - 阶乘
-
-> 源代码第九章递归没看呢
+  - 未完
+- chapter12: 算法复杂度
+  

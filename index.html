@@ -12,179 +12,39 @@
       padding: 0;
     }
 
-    #container {
-      height: 100vh;
-      overflow: auto;
+    .box {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+      /* overflow: hidden; */
     }
   </style>
 </head>
 
 <body>
-  <div id='container'>
-    <div id='box'>
+  <div>
+    <div class='box'></div>
+    <div class='box' style='vertical-align: top;'>
+      <h1>22222</h1>
     </div>
   </div>
+  <img src='data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="236" height="419"></svg>' alt="">
+
+
   <script>
-    // bind 兼容写法
-    // if (!Function.prototype.testbind) {
-    //   Function.prototype.testbind = function (oThis) {
-    //     console.log(this)
-    //     if (typeof this !== 'function') {
-    //       // closest thing possible to the ECMAScript 5
-    //       // internal IsCallable function
-    //       throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
-    //     }
+    var pubsub = {}
 
-    //     var aArgs = Array.prototype.slice.call(arguments, 1),
-    //       fToBind = this,
-    //       fNOP = function () { },
-    //       fBound = function () {
-    //         console.log(this instanceof fNOP)
-    //         return fToBind.apply(this instanceof fNOP
-    //           ? this
-    //           : oThis,
-    //           // 获取调用时(fBound)的传参.bind 返回的函数入参往往是这么传递的
-    //           aArgs.concat(Array.prototype.slice.call(arguments)));
-    //       };
-    //     // 维护原型关系
-    //     if (this.prototype) {
-    //       // Function.prototype doesn't have a prototype property
-    //       fNOP.prototype = this.prototype;
-    //     }
-    //     fBound.prototype = new fNOP();
-    //     // console.log(this instanceof fNOP)
-
-    //     return fBound;
-    //   };
-    // }
-
-    // var foo = function () {
-    //   this.b = 100
-    //   return this.a
-    // }
-
-    // var func = foo.testbind({a: 1})
-
-    // // console.log(func())
-    // console.log(new func())
-
-    // function parenthesesChecker (symbols) {
-    //   const stack = []
-    //   const opens = '([{'
-    //   const closers = ')]}'
-    //   let balanced = true
-    //   let index = 0
-    //   let symbol
-    //   let top
-
-    //   while (index < symbols.length && balanced) {
-    //     symbol = symbols[index]
-    //     if (opens.indexOf(symbol) >= 0) {
-    //       stack.push(symbol)
-    //     } else if (stack.length === 0) {
-    //       balanced = false
-    //     } else {
-    //       top = stack.pop()
-    //       if (!(opens.indexOf(top) === closers.indexOf(symbol))) {
-    //         balanced = false
-    //       }
-    //     }
-    //     index++
-    //   }
-    //   return balanced && !stack.length
-    // }
-    // console.log(parenthesesChecker('()'))
-
-    // const unary = fn => fn.length === 1 ? fn : (arg) => fn(arg)
-
-    const isType = (obj, type) => {
-      if (typeof obj !== 'object') return false;
-      const typeString = Object.prototype.toString.call(obj);
-      let flag;
-      switch (type) {
-        case 'Array':
-          flag = typeString === '[object Array]';
-          break;
-        case 'Date':
-          flag = typeString === '[object Date]';
-          break;
-        case 'RegExp':
-          flag = typeString === '[object RegExp]';
-          break;
-        default:
-          flag = false;
+    (function (q) {
+      var topics = {}
+      var subUid = -1
+      // 发布或广播事件，包含特定的 topic 名称和参数
+      q.publish = function (topic, args) {
+        if (!topics[topic]) {
+          return false
+        }
       }
-      return flag;
-    };
-    // 获取正则对象的 flags 修饰符
-    const getRegExp = re => {
-      return re.flags;
-    };
-
-    /**
-     * deep clone
-     * @param  {[type]} parent object 需要进行克隆的对象
-     * @return {[type]}        深克隆后的对象
-     */
-    const clone = parent => {
-      // 维护两个储存循环引用的数组
-      const parents = [];
-      const children = [];
-
-      const _clone = parent => {
-        if (parent === null) return null;
-        if (typeof parent !== 'object') return parent;
-
-        let child, proto;
-
-        if (isType(parent, 'Array')) {
-          // 对数组做特殊处理
-          child = [];
-        } else if (isType(parent, 'RegExp')) {
-          // 对正则对象做特殊处理
-          child = new RegExp(parent.source, getRegExp(parent));
-          if (parent.lastIndex) child.lastIndex = parent.lastIndex;
-        } else if (isType(parent, 'Date')) {
-          // 对Date对象做特殊处理
-          child = new Date(parent.getTime());
-        } else {
-          // 处理对象原型
-          proto = Object.getPrototypeOf(parent);
-          // 利用Object.create切断原型链
-          child = Object.create(proto);
-        }
-
-        // 处理循环引用
-        const index = parents.indexOf(parent);
-
-        if (index != -1) {
-          // 如果父数组存在本对象,说明之前已经被引用过,直接返回此对象
-          return children[index];
-        }
-        parents.push(parent);
-        children.push(child);
-
-        for (let i in parent) {
-          if (parent.hasOwnProperty(i)) {
-            // 递归
-            child[i] = _clone(parent[i]);
-          }
-        }
-
-        return child;
-      };
-      return _clone(parent);
-    };
-
-    function Parent() {
-      this.name = 123
-    }
-    Parent.prototype.say = 123
-
-    let child = new Parent()
-
-    let newchild = clone(child)
-    console.log(newchild)
+    })(pubsub)
   </script>
 </body>
 
