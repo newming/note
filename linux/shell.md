@@ -184,22 +184,6 @@ echo $PATH
 # /usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
 ```
 
-## 文件解压缩
-
-```bash
-# 压缩文件
-tar -cf file.tar file
-tar -czvf file.tar.gz file
-
-# 查看压缩文件内文件
-tar -tf file.tar
-tar -tvf file.tar
-
-# 解压缩
-tar -xf file.tar
-tar -xzvf file.tar.gz file
-```
-
 ## 系统用户操作命令
 
 | 命令 | 解释 |

@@ -253,18 +253,6 @@ console.log(sortA(arr));
 - 接着，算法对划分后的小数组(较主元小的值组成的子数组，以及较主元大的值组成的子数组)重复之前的两个步骤，直至数组已完全排序
 
 ```js
-const Compare = {
-  LESS_THAN: -1,
-  BIGGER_THAN: 1,
-  EQUALS: 0
-};
-function defaultCompare(a, b) {
-  if (a === b) {
-    return Compare.EQUALS;
-  }
-  return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN;
-}
-
 function swap(array, a, b) {
   /* const temp = array[a];
   array[a] = array[b];
@@ -272,16 +260,16 @@ function swap(array, a, b) {
   [array[a], array[b]] = [array[b], array[a]];
 }
 
-function partition(array, left, right, compareFn) {
+function partition(array, left, right) {
   const pivot = array[Math.floor((right + left) / 2)]; // 取中间值
   let i = left;
   let j = right;
 
   while (i <= j) {
-    while (compareFn(array[i], pivot) === Compare.LESS_THAN) {
+    while (array[i] < pivot) {
       i++; // 如果左边的指针的值小于中间值，符合条件，移动左指针，最多移动到中间的这个值的位置
     }
-    while (compareFn(array[j], pivot) === Compare.BIGGER_THAN) {
+    while (array[j] > pivot) {
       j--; // 如果右边的指针的值大于中间值，符合条件，移动右指针，最多移动到中间的这个值的位置
     }
     if (i <= j) { // 如果 i <= j 说明在上边的两个 while 循环中某个地方停住了，交换位置，同时移动指针
@@ -292,21 +280,21 @@ function partition(array, left, right, compareFn) {
   }
   return i;
 }
-function quick(array, left, right, compareFn) {
+function quick(array, left, right) {
   let index;
   if (array.length > 1) {
-    index = partition(array, left, right, compareFn);
+    index = partition(array, left, right);
     if (left < index - 1) {
-      quick(array, left, index - 1, compareFn);
+      quick(array, left, index - 1);
     }
     if (index < right) {
-      quick(array, index, right, compareFn);
+      quick(array, index, right);
     }
   }
   return array;
 }
-export function quickSort(array, compareFn = defaultCompare) {
-  return quick(array, 0, array.length - 1, compareFn);
+export function quickSort(array) {
+  return quick(array, 0, array.length - 1);
 }
 ```
 

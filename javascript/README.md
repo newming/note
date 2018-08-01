@@ -27,6 +27,7 @@
 - object: 对象(Object)，介绍了单例模式等及对象的高级属性 defineProperty 等等
 - RegExp: 正则表达式
 - replace: replace 与 正则
+- requestAnimationFrame: requestAnimationFrame 的特点
 - rmduplicate: 数组去重
 - string: String 对象
 - tablesort: 表格排序

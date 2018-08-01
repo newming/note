@@ -330,3 +330,31 @@ function doSomething(e){
   }
 }
 ```
+
+### 18 按数组中数字出现次数输出
+
+```js
+let sortByCount = function (arr) {
+  let arrUni = [];
+  let arrCnt = [];
+  arr.forEach((val) => {
+    let idx = arrUni.indexOf(val);
+    if (idx < 0) {
+      arrUni.push(val);
+      arrCnt.push(1);
+    } else {
+      arrCnt[idx]++;
+    }
+  });
+  let arrTmp = arrUni.slice();
+  arrUni.sort((a, b) => {
+    let idxa = arrTmp.indexOf(a);
+    let idxb = arrTmp.indexOf(b);
+    return arrCnt[idxb] - arrCnt[idxa];
+  });
+  return arrUni;
+};
+
+let res = sortByCount([2,2,2,3,4,2,3,4,5,4,2,3,5,6,7,8,5,4,3,2,4,56,6])
+console.log(res)
+```
