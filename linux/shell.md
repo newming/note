@@ -1,233 +1,145 @@
-# Linux 常用命令
+# Shell
 
-## 命令的基本格式
+Shell 是一个命令行解释器，它为用户提供了一个向 Linux 内核发送请求以便运行程序的界面系统级程序，用户可以用 Shell 来启动、挂载、停止甚至是编写一些程序
 
-[root@localhost ~]#
+Shell 还是一个功能相当强大的编程语言，易编写，易调试，灵活性较强。Shell 是解释执行的脚步语言，在 Shell 中可以直接调用 Linux 系统命令
 
-- root: 当前登陆用户
-- localhost: 主机名
-- ~: 当前所在目录(家目录) root 在 /root，其他用户在 /home/username
-- #|$: 超级/普通 用户提示符
+## Shell 的分类
 
-命令格式：命令 [选项] [参数]
+语法类型：
 
-> 个别命令使用不遵循此格式。当有多个选项时，可以写在一起简化选项与完整选项 -a 等于 --all
+- Bourne Shell: 从 1979 起 Unix 就开始使用 Bourne Shell，Bourne Shell 的主文件名为 sh
+- C Shell: C Shell 主要在 BSD 版的 Unix 系统中使用，其语法和 C 语言类似而得名
 
-```bash
-ls
-ls -[alhdi] # a: 显示文件，包括隐藏文件。l: 显示详细信息。d: 查看目录属性. h:人性化显示文件大小。i: 显示 inode
+Shell 的两种主要语法类型有 Bourne 和 C，这两种语法彼此不兼容。Bourne 家族主要包括 sh, ksh, Bash, psh, zsh。 C 家族主要包括 csh, tcsh
 
-ls -l
-# -rw-r--r--. 1 root root 1426 Jul 18 22:53 anaconda-ks.conf
-
-# 第一位 -: 文件类型，d: 目录类型 l: 软连接
-# rw-: u 所有者
-# r--: g 所属组
-# r--: o 其他人
-# . 调调 ACL 权限
-# r 读 w 写 x 执行
-# 1 代表引用计数
-# root 第一个代表所有者
-# root 第二个代表所有组
-# 1426 大小，字节 b
-# 时间：最后一次修改时间
-```
-
-## 软件操作命令
-
-软件包管理：yum
+检测当前系统用的是什么 Shell:
 
 ```bash
-# 安装软件
-yum install xxx
-
-# 卸载软件
-yum remove xxx
-
-# 搜索软件
-yum search xxx
-
-# 清理缓存
-yum clear packages
-
-# 列出已安装
-yum list
-
-# 软件包信心
-yum info xxx
+echo $SHELL
 ```
 
-## 服务器硬件资源信息
+Bash: Bash 与 sh 兼容，现在使用的 Linux 就是使用 Bash 作为用户的基本 Shell。可以查看 /etc/shells 查看 Linux 支持的 Shell
+
+## echo 输出命令
 
 ```bash
-# 内存
-free -m
-
-# 硬盘
-df -h
-
-# 负载
-w/top
-
-# cpu个数和核数
-cat /proc/cpuinfo
-
-# 磁盘操作
-fdisk
+echo [选项] [输出内容]
 ```
 
-## 文件操作命令
+选项：
 
-### 文件目录结构
+- -e: 支持反斜线控制的字符转换(mac 可以省略)
 
-- 根目录 /
-- 启动目录，保存着用户的启动数据 /boot
-- 特殊文件保存目录 /dev
-- 普通用户家目录 /home
-- 超级用户家目录 /root
-- Linux 中函数库保存位置 /lib
-- 挂载其他盘符目录例如打印机，USB 等 /media /mnt /misc
-- 内存的挂载点，不能直接操作 /proc /sys
-- 临时目录 /tmp
-- 配置目录 /etc
-- 系统相关文档内容 /var
-- 用户程序软件资源目录 /usr
-- 保存系统命令 /bin /sbin /usr/bin /usr/sbin，其中 bin 目录是所有用户可以执行的命令，sbin 是超级用户才可以执行的命令
+| 控制字符 | 作用 |
+| ---- | --- |
+| \a | 输出警告音 |
+| \b | 退格键，就是想做删除键 |
+| \n | 换行符 |
+| \r | 回车键 |
+| \t | 制表符，也就是 Tab 键 |
+| \v | 垂直制表符 |
+| \0nnn | 按照八进制 ASCLL 码表输出字符。其中0为数字零，nnn为三位八进制数 |
+| \xhh | 按照十六进制 ASCLL 码表输出字符。其中 hh 是两位十六进制数 |
 
-## 文件权限
-
-| 权限 | 数字 |
-| :---: | :---: |
-| r(可读) | 4 |
-| w(可写) | 2 |
-| x(可执行) | 1 |
+颜色输出：
 
 ```bash
-cp -[rpda] # r 复制目录 p 连带文件属性复制 d 若源文件时链接文件，则复制链接属性 a 相当于 pdr
+echo -e "\e[1;31m嫁人就要嫁\e[0m"
+# \e[1; 开启颜色， \e[0m 关闭颜色
 ```
 
-## 链接命令 ln
+- 30m: 黑色
+- 31m: 红色
+- 32m: 绿色
+- 33m: 黄色
+- 34m: 蓝色
+- 35m: 洋红色
+- 36m: 青色
+- 37m: 白色
+
+## Shell 脚本执行
+
+编写第一个脚本，编写 hello.sh
 
 ```bash
-ln -s [源文件] [目标文件]
-# 生成链接文件， -s 创建软链接
+#!/bin/bash
+# the first program
+
+echo "hello world"
 ```
 
-硬链接特征：
+脚本执行方式：
 
-1. 拥有相同的 i 节点和存储 block 块，可以看作是同一个文件
-2. 可通过 i 节点识别
-3. 不能跨分区
-4. 不能针对目录使用
+- 赋予执行权限，直接运行
+  - chmod 755 hello.sh
+  - ./hello.sh
+- 通过Bash调用执行脚本
+  - bash hello.sh
 
-软链接特征：
+## Bash 的基本功能
 
-1. 类似 Windows 快捷方式
-2. 软链接拥有自己的 I 节点和 Block 块，但是数据块中只保存原文件的文件名和 I 节点号，并没有实际的文件数据
-3. lrwxrwxrwx: l 软链接，软链接的文件权限都为 rwxrwxrwx
-4. 修改任意文件，另一个都改变
-5. 删除原文件，软链接不能使用
+- 命令别名与快捷键
+- 历史命令
+- 输出重定向
+- 多命令顺序执行
+- Shell中特殊符号
 
-## 文件搜索、查找、读取
-
-| 命令 | 解释 |
-| :---: | :---: |
-| tail | 从文件尾部读取 |
-| head | 从文件头部读取 |
-| cat | 预览整个文件 |
-| more | 分页读取 |
-| less | 可控分页 |
-| grep | 搜索关键字 |
-| find | 查找文件，比 location 慢，但是非常强大 |
-| wc | 统计个数 |
-| locate | 文件搜索，yum install mlocate，配置文件在 /etc/updatedb.conf |
-| whereis | 系统命令所在路径 |
-| which | 系统命令所在路径及别名 |
-| whatis | 查看系统命令是干什么的 |
+### 别名查看与设置
 
 ```bash
-# 在 file 中查找 text 文本
-grep 'text' file
+# 查看本机已经设置的别名
+alias
 
-# 在 file 中查找文本并显示行号
-grep -n 'text' file
+# 设置别名，临时生效
+alias ls='ls --color=never'
 
-# 统计文件行数
-wc -l
+# 永久生效别名
+vi ~/.bashrc # 增加别名
+source ~/.bashrc
 
-# 查找当前文件加下所有以 .conf 结尾的文件
-find . -name '*.conf'
-
-# 按类型查找
-find . -type d # 文件夹
-find . -type f # 文件
-
-# 查找20天内更新过的文件
-find . -ctime -20
-
-locate [文件名]
-# 在后台数据库中按文件名搜索，搜索速度快，/var/lib/mlocate 为 locate 命令所搜索的后台数据库，数据库不是实时更新，所以刚新建的文件搜不到
-updatedb
-# 更新数据库
-
-whereis [命令名]
-# 搜索命令所在路径及帮助文档所在位置
-# 选项: -b 只查找可执行文件 -m 只查找帮助文件
+# 临时删除别名
+unalias [别名]
 ```
 
-## 环境变量
+命令生效顺序：
 
-PATH 环境变量: 定义的是系统搜索命令的路径，通过 `:` 分割
+1. 第一顺位执行用绝对路径或相对路径执行的命令
+2. 第二顺位执行别名
+3. 第三顺位执行 Bash 的内部命令
+4. 第四顺位执行按照 $PATH 环境变量定义的目录查找顺序找到的第一个命令
+
+#### 常用快捷键
+
+- ctrl+c: 强制终止当前命令
+- ctrl+l: 清屏
+- ctrl+a: 光标移动到命令行首
+- ctrl+e: 光标移动到命令行尾
+- ctrl+u: 从光标所在位置删除到行首
+- ctrl+z: 把命令放入后台
+- ctrl+r: 在历史命令中搜索
+
+## 历史命令
 
 ```bash
-echo $PATH
-# /usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
+history [选项] [历史命令保存文件]
+
+history
+
+# 默认的历史命令保存 1000 条，可以修改 /etc/profile
 ```
 
-## 系统用户操作命令
+选项：
 
-| 命令 | 解释 |
-| :---: | :---: |
-| useradd | 添加用户 |
-| adduser | 添加用户 |
-| userdel | 删除用户 |
-| passwd | 设置密码 |
+- -c: 清空历史命令
+- -w: 把缓存中的历史命令写入历史命令问价 ~/.bash_history
 
-[useradd 与 adduser 区别](https://blog.csdn.net/li_101357/article/details/46778827)
+历史命令的调用：
 
-## sudo 提权
+- 使用上下箭头调用以前的历史命令
+- 使用 !n 重复执行第 n 条历史命令
+- 使用 !! 重复执行上一条命令
+- 使用 !字符串 重复执行最后一条以该字符串开头的命令
 
-给 newming 用户提权
+## 输出重定向
 
-```bash
-visudo
-
-# 修改文件，增加一行退出保存就可以了
-## Allows people in group wheel to run all commands
-%newming ALL=(ALL) ALL
-```
-
-http://www.ruanyifeng.com/blog/2014/03/server_setup.html
-
-## 文件下载上传
-
-```bash
-# 服务器文件下载
-wget http://www.baidu.com
-curl -o test.html http://www.baidu.com
-
-# 本地文件上传到服务器
-scp -P port file root@ip:path
-# 本地下载服务器文件
-scp -P port root@ip:path file
-```
-
-## chmod
-
-```bash
-# 修改文件权限
-sudo chmod 600 ~/.ssh/authorized_keys && chmod 700 ~/.ssh/
-
-# 修改文件所有者
-sudo chown -R newming:newming /data
-```
