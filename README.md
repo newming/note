@@ -24,3 +24,5 @@
 https://crifan.github.io/scientific_network_summary/website/server_client_mode/ss_client/client_mac.html
 
 [three.js demo](https://mrdoob.com/#/158/threejs_sketches)
+
+[making zsh default shell without root access](https://unix.stackexchange.com/questions/136423/making-zsh-default-shell-without-root-access)
