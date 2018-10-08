@@ -26,3 +26,5 @@
 [three.js demo](https://mrdoob.com/#/158/threejs_sketches)
 
 [CommonJS、AMD/CMD、ES6 Modules 以及 webpack 原理浅析](CommonJS、AMD/CMD、ES6 Modules 以及 webpack 原理浅析)
+
+[making zsh default shell without root access](https://unix.stackexchange.com/questions/136423/making-zsh-default-shell-without-root-access)
