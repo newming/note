@@ -71,6 +71,18 @@ set bg=dark
 设置快捷键
 
 ```vimrc
+" 在标准模式下，<CR> 代表回车换行，<Space> 代表空格 I 代表在行首输入
 map <F3> i<ul><CR><Space><Space><li></li><CR><Esc>I</ul><Esc>kcit
+```
 
+## let
+
+申明变量
+
+```vimrc
+" 设置 leader=","
+let mapleader=", "
+
+" quickly save your file，在标准模式下，输入 ,w 就可以保存文件了
+map <leader>w :w!<cr>
 ```
