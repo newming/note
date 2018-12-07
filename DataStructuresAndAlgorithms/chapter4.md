@@ -378,3 +378,12 @@ console.log('level', palindromeChecker('level'));
 console.log('Was it a car or a cat I saw', palindromeChecker('Was it a car or a cat I saw'));
 console.log('Step on no pets', palindromeChecker('Step on no pets'));
 ```
+
+使用一个方法判断一个字符串是否是回文字符串
+
+```js
+function run(input) {
+  if (typeof input !== 'string') return false;
+  return input.split('').reverse().join('') === input;
+}
+```

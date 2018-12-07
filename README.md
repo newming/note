@@ -28,3 +28,10 @@
 [CommonJS、AMD/CMD、ES6 Modules 以及 webpack 原理浅析](CommonJS、AMD/CMD、ES6 Modules 以及 webpack 原理浅析)
 
 [making zsh default shell without root access](https://unix.stackexchange.com/questions/136423/making-zsh-default-shell-without-root-access)
+
+### 浏览器进程线程文章
+
+- [浏览器同域名请求的最大并发数限制](https://www.cnblogs.com/sunsky303/p/8862128.html)
+- [从浏览器多进程到JS单线程，JS运行机制最全面的一次梳理](https://www.cnblogs.com/cangqinglang/p/8963557.html)
+
+[vue devtool启动方式](https://github.com/vuejs/vue-devtools/issues/190)
