@@ -8,7 +8,6 @@
 ### 通过递归方式实现
 
 ```js
-// 求和
 function fibonacci (num) {
   if (n < 1) return 0;
   if (n <= 2) return 1;
@@ -30,6 +29,15 @@ function fibonacciIterative(n) {
     fibNMinus1 = fibN;
   }
   return fibN;
+}
+
+// 尾递归
+function fib(n){
+  function fib_(n, a, b){
+    if(n === 0)  return a
+    else return fib_(n-1, b, a + b)
+  }
+  return fib_(n, 0, 1)
 }
 ```
 

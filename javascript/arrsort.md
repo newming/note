@@ -54,6 +54,36 @@ sortAry(arr)
 console.log(arr);
 ```
 
+## 优化冒泡排序
+
+[文章链接](https://mp.weixin.qq.com/s/9dkKBV2qBiPHIBCvtnzb-Q)
+
+```js
+// 假设一种场景，比如 8 1 2 3 5 7，进行一次排序之后，结果就变成了 1 2 3 5 7 8，就没有必要继续循环下去了
+// 优化的点主要在于：假如某一趟排序之后已经有序，我们需要减少排序的趟数。否则就做了很多无用功。
+function sortAry(ary){
+  // i代表轮数，比较ary.length-1次
+  for (var i = 0; i < ary.length-1; i++) {
+    var exchange = false
+    // 比较arr.length-1-i次，j代表每一轮比较的次数,不用和自己比，不用和上一轮最后一项的最大值比较
+    for (var j = 0; j < ary.length-1-i; j++) {
+      var cur = ary[j],next = ary[j+1];
+      if (cur>next) {
+        // 如果当前项大于下一项，交换位置
+        var temp = null;
+        temp = ary[j];
+        ary[j] = ary[j+1];
+        ary[j+1] = temp;
+        exchange = true
+      }
+    }
+    if (!exchange) {
+      break
+    }
+  }
+}
+```
+
 ## 插入排序(INSERTION-SORT)
 
 插入排序：对于少量元素比较有效。
