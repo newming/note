@@ -53,23 +53,7 @@
     // }
 
     /**
-      * 2. 两个指针
-     */
-
-    var findMedianSortedArraysTwo = function (A, B) {
-      const [m, n] = [A.length, B.length]
-      if (m > n) {
-        // 始终假设 n ≥ m，不符合的话就交换一下
-        [A, B, m, n] = [B, A, n, m]
-      }
-      if (n === 0) {
-        return new Error('请传入数据')
-      }
-      
-    }
-
-    /**
-      3. 官方答案：
+      2. 官方答案：
       两个数组A, B长度分别为 m, n，分别从 i, j 的位置切
         将两个数组按左右划分开，左、右组合起来，符合下两个条件即可
             1. len(left_part)=len(right_part)
@@ -144,6 +128,7 @@
     };
 
     console.log(findMedianSortedArrays([-5, 2, 4, 7], [1, 3, 8, 15, 36]))
+    console.log(findMedianSortedArrays([5, 6], [1, 2, 3]))
   </script>
 </body>
 
