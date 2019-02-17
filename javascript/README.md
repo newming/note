@@ -24,6 +24,7 @@
 - jsoutput: 页面中常用的几种输出方式
 - lazyload: 图片延迟加载／图片懒加载
 - math: 数学对象
+- module: ES模块基础用法及常见使用问题
 - object: 对象(Object)，介绍了单例模式等及对象的高级属性 defineProperty 等等
 - RegExp: 正则表达式
 - replace: replace 与 正则

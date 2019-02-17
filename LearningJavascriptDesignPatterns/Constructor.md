@@ -1,7 +1,7 @@
 # Constructor 构造器
 
 ```js
-function car(model, year, miles) {
+function Car(model, year, miles) {
   this.model = model
   this.year = year
   this.miles = miles
