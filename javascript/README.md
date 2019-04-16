@@ -14,6 +14,7 @@
 - deepCopy: 深拷贝与浅拷贝
 - dom: js DOM 操作方式汇总
 - error: js 抛错方式及类型
+- handle-error: 前端异常监控、上报
 - event: js 事件及事件池实现(bind, on)
 - event-emmiter: 类 node 的 EventEmitter 实现
 - for-in: for in 循环
@@ -23,6 +24,7 @@
 - jquery-deferred: jquery deferred 使用
 - jsoutput: 页面中常用的几种输出方式
 - lazyload: 图片延迟加载／图片懒加载
+- mapLimit: js 实现并发控制
 - math: 数学对象
 - module: ES模块基础用法及常见使用问题
 - object: 对象(Object)，介绍了单例模式等及对象的高级属性 defineProperty 等等

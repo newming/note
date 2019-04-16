@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>最长公共子序列</title>
+</head>
+<body>
+  <pre>
+  - 最长公共子序列，即 Longest Common Subsequnce，LCS
+  - 一个序列S任意删除若干个字符得到的新序列T，则T叫做S的子序列
+  - 两个序列X和Y的公共子序列中，长度最长的那个，定义为X和Y的最长公共子序列
+    - 字符串13455和245576的最长公共子序列为455
+    - 字符串acdfg与adfc的最长公共子序列为adf
+  - 注意区别最长公共子串(Longest Common Substring)，最长公共子串要求连续
+  </pre>
+
+  <img src="../images/lcs.png" alt="img">
+  <script>
+    /**
+     * 方法一: 暴力求解，穷举法
+     * 假定字符串X，Y的长度分别为m, n
+     * X 的一个子序列即下标序列{1, 2, ..., m}的严格递增子序列，因此X共有 2^m 个不同的子序列，同理Y有2^n个不同子序列，从而穷举搜索法需要指数时间 O((2^m)*(2^n))
+     * 对X的每一个子序列，检查它是否也是Y的子序列，从而确定它是否X和Y的公共子序列，并且在检查过程中选出最长的公共子序列
+     * 显然，不可取(复杂，还不好做，因为要穷举)
+     */
+  </script>
+</body>
+</html>
