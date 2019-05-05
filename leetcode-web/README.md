@@ -1,5 +1,7 @@
 # leetcode 练习笔记
 
+- [git上别人的leetcode题解笔记](https://github.com/azl397985856/leetcode?utm_source=gold_browser_extension)
+
 https://leetcode-cn.com/problemset/all/
 
 ## String
