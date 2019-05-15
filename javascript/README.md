@@ -7,6 +7,7 @@
 - algorithm: 算法
 - arrsort: 数组排序
 - asynchronous: 异步
+- bind: bind 函数的实现
 - boxmodel: js 盒子模型，offset, scroll, client等等
 - call-apply: call, apply 对比
 - compareObject: 深度比较参数是否相等

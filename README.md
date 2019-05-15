@@ -35,3 +35,5 @@
 - [从浏览器多进程到JS单线程，JS运行机制最全面的一次梳理](https://www.cnblogs.com/cangqinglang/p/8963557.html)
 
 [vue devtool启动方式](https://github.com/vuejs/vue-devtools/issues/190)
+
+[开源项目流程](http://www.imooc.com/article/28240)
