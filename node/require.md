@@ -18,6 +18,8 @@ function $require(id) {
   }
   let exports = module.exports
 
+  // 这里也可以使用 new Function 来实现，传入的最后一个参数为函数体内部字符，不需要 eval
+  // 1. 字符串拼接 function
   code = `
     (function ($require, module, exports, __dirname, __filename) {
       ${code}
@@ -27,6 +29,9 @@ function $require(id) {
   eval(code)
   // 返回读取文件导出的内容
   return module.exports
+  // 2. 使用new Function 实现
+  // let fn = new Function('$require', 'module', 'exports', '__dirname', '__filename', code + '\n return module.exports')
+  // return fn($require, module, exports, dirname, filename, code)
 }
 // use
 var test = $require('./test1.js')

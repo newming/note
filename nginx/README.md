@@ -27,6 +27,7 @@ service nginx status
 service nginx stop
 
 nginx -tc /etc/nginx/nginx.conf # 检测配置文件语法
+nginx -c /etc/nginx/nginx.conf # 检测配置文件语法
 nginx -s reload -c /etc/nginx/nginx.conf # 重载服务
 ```
 
