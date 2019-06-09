@@ -34,4 +34,4 @@ https://leetcode-cn.com/problemset/all/
 - [寻找旋转排序数组中的最小值](Array/find-minimum-in-rotated-sorted-array.html)
 - [寻找旋转排序数组中的最小值-2](Array/find-minimum-in-rotated-sorted-array-2.html)
 - [零子数组](Array/zero-subarray.html)
-
+- [按奇偶排序数组](Array/sort-array-by-parity.html)
