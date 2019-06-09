@@ -13,7 +13,6 @@ https://leetcode-cn.com/problemset/all/
 - [字符串循环左移](String/left-rotate-string.html)
 - [字符串的全排列](String/string-permutation.html)
 
-
 ### LCS的定义
 
 - 最长公共子序列，即 Longest Common Subsequnce，LCS
@@ -35,3 +34,7 @@ https://leetcode-cn.com/problemset/all/
 - [寻找旋转排序数组中的最小值-2](Array/find-minimum-in-rotated-sorted-array-2.html)
 - [零子数组](Array/zero-subarray.html)
 - [按奇偶排序数组](Array/sort-array-by-parity.html)
+
+## Number
+
+- [整数反转](Number/reverse-integer.html)

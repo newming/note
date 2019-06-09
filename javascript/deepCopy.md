@@ -162,3 +162,19 @@ const clone = parent => {
   return _clone(parent);
 };
 ```
+
+## 另一种深拷贝
+
+```js
+// 对于日期等特殊的不好使
+var clone = function (obj) {
+  if (!obj || typeof obj !== 'object') return obj
+  var temp = new obj.constructor() // 实现了原型链的继承
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      temp[key] = clone(obj[key])
+    }
+  }
+  return temp
+}
+```

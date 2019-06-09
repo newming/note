@@ -10,6 +10,9 @@
 
 ## 0.1 + 0.2 != 0.3
 
+- [js数值](https://javascript.ruanyifeng.com/grammar/number.html)
+- [为啥](https://bytedance.feishu.cn/space/doc/doccnRxSHaDDnP6lkQ4Oba#)
+
 > 为什么 0.1 + 0.2 != 0.3
 
 在计算机里所有的数据存储和运算都会转为二进制来进行
@@ -70,3 +73,5 @@ console.log( Math.abs(0.1 + 0.2 - 0.3) <= Number.EPSILON);
 检查等式左右两边差的绝对值是否小于最小精度，才是正确的比较浮点数的方法。这段代码结果就是 true 了。
 
 > 内容来自：极客时间 https://time.geekbang.org/column/article/78884
+
+相关解决方案 [number-precision](https://github.com/nefe/number-precision)，[bignumber.js](http://mikemcl.github.io/bignumber.js/#valueOf)
