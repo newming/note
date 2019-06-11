@@ -12,6 +12,7 @@ https://leetcode-cn.com/problemset/all/
 - [罗马数字转整数](String/roman-to-integer.html)
 - [字符串循环左移](String/left-rotate-string.html)
 - [字符串的全排列](String/string-permutation.html)
+- [去除重复字母-困难](String/remove-duplicate-letters)
 
 ### LCS的定义
 
@@ -33,8 +34,8 @@ https://leetcode-cn.com/problemset/all/
 - [寻找旋转排序数组中的最小值](Array/find-minimum-in-rotated-sorted-array.html)
 - [寻找旋转排序数组中的最小值-2](Array/find-minimum-in-rotated-sorted-array-2.html)
 - [零子数组](Array/zero-subarray.html)
-- [按奇偶排序数组](Array/sort-array-by-parity.html)
+- [按奇偶排序数组-简单](Array/sort-array-by-parity.html)
 
 ## Number
 
-- [整数反转](Number/reverse-integer.html)
+- [整数反转-简单](Number/reverse-integer.html)
