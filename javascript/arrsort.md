@@ -84,6 +84,37 @@ function sortAry(ary){
 }
 ```
 
+## 双向冒泡
+
+普通的冒泡排序在一趟循环中只能找出一个最大值或最小值，双向冒泡则是多一轮循环既找出最大值也找出最小值
+
+```js
+function bubbleSort_twoWays(nums) {
+  let low = 0;
+  let high = nums.length - 1;
+  while(low < high) {
+    let mark = true;
+    // 找到最大值放到右边
+    for(let i=low; i<high; i++) {
+      if(nums[i] > nums[i+1]) {
+        [nums[i], nums[i+1]] = [nums[i+1], nums[i]];
+        mark = false;
+      }
+    }
+    high--;
+    // 找到最小值放到左边
+    for(let j=high; j>low; j--) {
+      if(nums[j] < nums[j-1]) {
+        [nums[j], nums[j-1]] = [nums[j-1], nums[j]];
+        mark = false;
+      }
+    }
+    low++;
+    if(mark)  return;
+  }
+}
+```
+
 ## 插入排序(INSERTION-SORT)
 
 插入排序：对于少量元素比较有效。
@@ -139,7 +170,9 @@ function insertionSort (arr) {
 
 ## 选择排序
 
-选择排序大致的思路是找到数据结构中的最小值并将其放到第一位，接着找到第二小的值放到第二位。性能不是很好
+选择排序大致的思路是找到数据结构中的最小值并将其放到第一位，接着找到第二小的值放到第二位。和冒泡排序相似，区别在于选择排序是将每一个元素和它后面的元素进行比较和交换
+
+时间复杂度 O(n^2)
 
 ```js
 function swap(arr, index1, index2) {
@@ -166,6 +199,20 @@ let arr = [4, 8, 2]
 selectionSort(arr)
 console.log(arr)
 ```
+
+```js
+// 简写的选择排序，但是存在多次交换的问题
+function selectSort(nums) {
+  for(let i=0, len=nums.length; i<len; i++) {
+    for(let j=i+1; j<len; j++) {
+      if(nums[i] > nums[j]) {
+        [nums[i], nums[j]] = [nums[j], nums[i]];
+      }
+    }
+  }
+}
+```
+
 
 ## 归并排序
 
@@ -235,7 +282,6 @@ function mergeSort (array) {
 let arr = [4, 8, 2]
 console.log(mergeSort(arr))
 ```
-
 
 ## 快速排序
 
@@ -440,6 +486,8 @@ console.log(countingSort([1, 6, 3]))
 ```
 
 ### 捅排序
+
+[最简单的桶排序](http://wiki.jikexueyuan.com/project/easy-learn-algorithm/bucket-sort.html)
 
 -----没看
 

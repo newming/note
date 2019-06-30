@@ -26,3 +26,11 @@
   <div class='box sec'><h1>22222</h1></div>
 </div>
 ```
+
+## 2. 解释一下BFC，IFC，FFC
+
+## 3. visibility:hidden 与 display:none 的区别
+
+[答案](https://www.jianshu.com/p/da8e9fba48b7)
+
+## 4. img 的 alt 与 title 的不同

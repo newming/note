@@ -358,3 +358,81 @@ let sortByCount = function (arr) {
 let res = sortByCount([2,2,2,3,4,2,3,4,5,4,2,3,5,6,7,8,5,4,3,2,4,56,6])
 console.log(res)
 ```
+
+### 19 面试题(原型，this等)
+
+```js
+var a = {x: 1}
+var b = a
+a.x = a = {n: 1}
+console.log(a) // {n: 1}
+console.log(b) // {x: {n: 1}}
+```
+
+```js
+Function.prototype.a = () => alert(1)
+Object.prototype.b = () => alert(2)
+function A () {}
+var a = new A
+a.a() // TypeError: a.a is not a function
+a.b() // alert(2)
+// 解释 a.__proto__ -> A.prototype -> A.prototype.__proto__ -> Object.prototype -> Object.prototype.__proto__(null)
+// 这里要注意这个过程的另一条线，函数 A 的原型链
+// A.__proto__ -> Function.proptotype -> Object.prototype
+// 所以 A.a() 和 A.b() 都可以正确执行
+```
+
+### 20 nodejs定时器时间循环
+
+```js
+console.log(1)
+
+setTimeout(() => {
+  console.log(2)
+})
+
+process.nextTick(() => {
+  console.log(3)
+})
+
+setImmediate(() => {
+  console.log(4)
+})
+
+new Promise(resolve => {
+  console.log(5)
+  resolve()
+  console.log(6)
+}).then(() => {
+  console.log(7)
+})
+
+Promise.resolve().then(() => {
+  console.log(8)
+  process.nextTick(() => {
+    console.log(9)
+  })
+})
+// 1
+// 5
+// 6
+// 3
+// 7
+// 8
+// 9
+// 2
+// 4
+// http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html
+// 同步任务 -> process.nextTick -> Promise.resolve().then() -> setTimeout -> setImmediate
+```
+
+### 21 parseInt
+
+```js
+[1, 2, 3, 4].map(parseInt)
+// [1, NaN, NaN, NaN]
+// 解释：parseInt 第二个参数是介于2-36的基数，表示第一个参数是多少进制的数，然后返回一个十进制的整数
+// map 会将 index 作为第二个参数传给 parseInt
+// 当取出 1 的时候，index 为0，parseInt(1, 0)，返回1，经过测试， parseInt(n, 0) 返回的是 n
+// 后边的几个，都是出现错误比如 parseInt(2, 1)，parseInt(3, 2)，第一个参数都超出了它们的进制数
+```

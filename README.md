@@ -1,5 +1,7 @@
 # Introduction
 
+[置顶-如何超过大多数人](https://coolshell.cn/articles/19464.html)
+
 > 我的代码笔记
 
 ### 本地安装的说明
@@ -52,3 +54,4 @@ brew install yarn --ignore-dependencies
 - [Js中的window.parent ,window.top,window.self 详解](https://blog.csdn.net/zdwzzu2006/article/details/6047632)
 - [图片防盗链](https://mp.weixin.qq.com/s/sVgX-YqucglgTX8oc9JjtA)
 - [优雅的提交commit](https://juejin.im/post/5afc5242f265da0b7f44bee4#heading-3)
+- [互联网协议入门（一）](http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html)

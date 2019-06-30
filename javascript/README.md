@@ -1,6 +1,13 @@
 # JavaScript
 
+[justjavac你可能不知道的前端知识点](https://github.com/justjavac/the-front-end-knowledge-you-may-not-know)
+
 > 行不行就看你的 js 水平，能不能向上发展也是依赖于你的 js 水平。
+
+## 优秀文章
+
+- [addEventListener passive提升页面滚动性能](https://github.com/justjavac/the-front-end-knowledge-you-may-not-know/blob/master/archives/006-web-scrolling-performance-optimization-passive-event-listeners.md)
+- [HTML attribute 和 DOM property](https://github.com/justjavac/the-front-end-knowledge-you-may-not-know/blob/master/archives/015-dom-attributes-and-properties.md)
 
 ## 目录列表
 
@@ -38,4 +45,5 @@
 - this: this 指向
 - typetransform: 数据类型转换规则总结
 - vue-vs-jquery: vue 与 jquery 的区别
+- xss: xss的原理及防御
 - you-dont-need-jquery: 不需要 jquery 的理由
