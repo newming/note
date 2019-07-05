@@ -29,6 +29,7 @@
 - function: 高级方法举例(柯里化, bind)
 - hashRouter: hash 路由实现
 - higherFunction: 高级函数(惰性载入函数，柯里化，级联函数)
+- isCloseLoop: 是否能形成闭环
 - jquery-deferred: jquery deferred 使用
 - jsoutput: 页面中常用的几种输出方式
 - lazyload: 图片延迟加载／图片懒加载

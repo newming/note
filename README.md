@@ -55,3 +55,4 @@ brew install yarn --ignore-dependencies
 - [图片防盗链](https://mp.weixin.qq.com/s/sVgX-YqucglgTX8oc9JjtA)
 - [优雅的提交commit](https://juejin.im/post/5afc5242f265da0b7f44bee4#heading-3)
 - [互联网协议入门（一）](http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html)
+- [chrome Performance](https://zhuanlan.zhihu.com/p/29879682)
