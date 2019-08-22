@@ -1,5 +1,7 @@
 # javascript 面试题汇总
 
+[大厂面试汇总](https://github.com/Advanced-Frontend/Daily-Interview-Question)
+
 ### 1.计算出字符串中出现次数最多的字符是什么，出现了多少次？
 
 ```js

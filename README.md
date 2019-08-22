@@ -44,6 +44,18 @@ brew install yarn --ignore-dependencies
 
 - [30secondsofcode-常见的js方法收集](https://30secondsofcode.org/)
 
+### redis
+
+```bash
+brew install redis
+brew services start redis # redis 服务常驻，开机自启动
+redis-server /usr/local/etc/redis.conf # 启动redis服务
+redis-cli # 链接 redis
+set [key] [val] # redis 设置命令
+get [key] # 获取命令
+keys * # 获取所有的key
+```
+
 
 - [vue devtool启动方式](https://github.com/vuejs/vue-devtools/issues/190)
 - [开源项目流程](http://www.imooc.com/article/28240)
