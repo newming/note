@@ -1,5 +1,7 @@
 # js中浏览器异常捕获机制
 
+- [如何优雅处理前端异常？](http://jartto.wang/2018/11/20/js-exception-handling/)
+
 在js中默认的情况下，上面的代码报错，下面的代码就不执行了
 ```js
 console.log(num); // Uncaught ReferenceError: num is not defined

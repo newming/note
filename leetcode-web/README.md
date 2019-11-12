@@ -13,7 +13,8 @@ https://leetcode-cn.com/problemset/all/
 - [罗马数字转整数](String/roman-to-integer.html)
 - [字符串循环左移](String/left-rotate-string.html)
 - [字符串的全排列](String/string-permutation.html)
-- [去除重复字母-困难](String/remove-duplicate-letters)
+- [去除重复字母-困难](String/remove-duplicate-letters.html)
+- [寻找最长公共前缀](String/longest-common-prefix.html)
 
 ### LCS的定义
 
@@ -40,3 +41,4 @@ https://leetcode-cn.com/problemset/all/
 ## Number
 
 - [整数反转-简单](Number/reverse-integer.html)
+- [判断一个数字是否是回文数](Number/palindrome-number.html)

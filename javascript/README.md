@@ -2,6 +2,9 @@
 
 - [justjavac你可能不知道的前端知识点](https://github.com/justjavac/the-front-end-knowledge-you-may-not-know)
 - [puppeteer破解滑动验证码](https://medium.com/@filipvitas/how-to-bypass-slider-captcha-with-js-and-puppeteer-cd5e28105e3c)
+- [validation library变量类型检查](https://www.npmjs.com/package/bycontract)
+- [schema-utils变量类型检查](https://github.com/webpack/schema-utils)
+
 
 > 行不行就看你的 js 水平，能不能向上发展也是依赖于你的 js 水平。
 
