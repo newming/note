@@ -15,6 +15,7 @@ https://leetcode-cn.com/problemset/all/
 - [字符串的全排列](String/string-permutation.html)
 - [去除重复字母-困难](String/remove-duplicate-letters.html)
 - [寻找最长公共前缀](String/longest-common-prefix.html)
+- [有效的括号(平衡圆括号)](String/valid-parentheses.html)
 
 ### LCS的定义
 
@@ -42,3 +43,7 @@ https://leetcode-cn.com/problemset/all/
 
 - [整数反转-简单](Number/reverse-integer.html)
 - [判断一个数字是否是回文数](Number/palindrome-number.html)
+
+## 链表
+
+- [合并两个有序链表](LinkedList/merge-two-sorted-lists.html)
