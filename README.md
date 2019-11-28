@@ -71,3 +71,5 @@ keys * # 获取所有的key
 - [unicode](https://home.unicode.org/)
 - [css各种技巧&&vue press博客案例](https://qishaoxuan.github.io/css_tricks/)
 - [多数据，虚拟列表实现](https://zhuanlan.zhihu.com/p/34585166)
+- [编辑器分析](https://cnodejs.org/topic/5c0505ad1c62d83349350328)
+- [富文本编辑器的技术演进之路](https://mp.weixin.qq.com/s/PyXpfiZ-PiP8S5pQcHRZng)

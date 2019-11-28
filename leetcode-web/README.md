@@ -2,6 +2,8 @@
 
 - [git上别人的leetcode题解笔记](https://github.com/azl397985856/leetcode?utm_source=gold_browser_extension)
 - [git上别人的leetcode题解笔记](https://github.com/DangoSky/algorithm)
+- [算法与数据结构文章列表-不错](https://www.itcodemonkey.com/category/TheAlgorithm/)
+- [王争-算法与数据结构专栏](https://github.com/wangzheng0822/algo)
 
 https://leetcode-cn.com/problemset/all/
 
@@ -10,12 +12,14 @@ https://leetcode-cn.com/problemset/all/
 - [无重复字符的最长子串-中等](String/longest-substring-without-repeating-characters.html)
 - [最长回文子串-中等](String/longest-palindromic-substring.html)
 - [最长公共子序列LCS](String/longest-common-subsequence.html)
+- [最长上升子序列](String/longest-increasing-subsequence.html)
 - [罗马数字转整数](String/roman-to-integer.html)
 - [字符串循环左移](String/left-rotate-string.html)
 - [字符串的全排列](String/string-permutation.html)
 - [去除重复字母-困难](String/remove-duplicate-letters.html)
 - [寻找最长公共前缀](String/longest-common-prefix.html)
-- [有效的括号(平衡圆括号)](String/valid-parentheses.html)
+- [有效的括号(平衡圆括号)-简单](String/valid-parentheses.html)
+- [实现字符串方法indexOf-简单](String/implement-indexof.html)
 
 ### LCS的定义
 
@@ -24,7 +28,7 @@ https://leetcode-cn.com/problemset/all/
 - 两个序列X和Y的公共子序列中，长度最长的那个，定义为X和Y的最长公共子序列
   - 字符串13455和245576的最长公共子序列为455
   - 字符串acdfg与adfc的最长公共子序列为adf
-- 注意区别最长公共字串(Longest Common Substring)，最长公共字串要求连续
+- 注意区别最长公共子串(Longest Common Substring)，最长公共子串要求连续
 
 ## Array
 
@@ -38,6 +42,8 @@ https://leetcode-cn.com/problemset/all/
 - [寻找旋转排序数组中的最小值-2](Array/find-minimum-in-rotated-sorted-array-2.html)
 - [零子数组](Array/zero-subarray.html)
 - [按奇偶排序数组-简单](Array/sort-array-by-parity.html)
+- [删除排序数组中的重复项-简单](Array/remove-duplicates-from-sorted-array.html)
+- [移除元素-简单](Array/remove-element.html)
 
 ## Number
 
@@ -46,4 +52,4 @@ https://leetcode-cn.com/problemset/all/
 
 ## 链表
 
-- [合并两个有序链表](LinkedList/merge-two-sorted-lists.html)
+- [合并两个有序链表-简单](LinkedList/merge-two-sorted-lists.html)
