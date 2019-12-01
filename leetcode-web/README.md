@@ -19,7 +19,8 @@ https://leetcode-cn.com/problemset/all/
 - [去除重复字母-困难](String/remove-duplicate-letters.html)
 - [寻找最长公共前缀](String/longest-common-prefix.html)
 - [有效的括号(平衡圆括号)-简单](String/valid-parentheses.html)
-- [实现字符串方法indexOf-简单](String/implement-indexof.html)
+- [实现字符串方法indexOf(这里还涉及到prefixTable动态规划获取)-简单](String/implement-indexof.html)
+- [报数-简单](https://leetcode-cn.com/problems/count-and-say/)
 
 ### LCS的定义
 
@@ -44,6 +45,7 @@ https://leetcode-cn.com/problemset/all/
 - [按奇偶排序数组-简单](Array/sort-array-by-parity.html)
 - [删除排序数组中的重复项-简单](Array/remove-duplicates-from-sorted-array.html)
 - [移除元素-简单](Array/remove-element.html)
+- [搜索插入位置-简单](Array/search-insert-position.html)
 
 ## Number
 
