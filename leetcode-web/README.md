@@ -46,6 +46,7 @@ https://leetcode-cn.com/problemset/all/
 - [删除排序数组中的重复项-简单](Array/remove-duplicates-from-sorted-array.html)
 - [移除元素-简单](Array/remove-element.html)
 - [搜索插入位置-简单](Array/search-insert-position.html)
+- [旋转数组-简单](Array/rotate-array.html)
 
 ## Number
 
