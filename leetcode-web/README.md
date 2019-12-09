@@ -47,6 +47,9 @@ https://leetcode-cn.com/problemset/all/
 - [移除元素-简单](Array/remove-element.html)
 - [搜索插入位置-简单](Array/search-insert-position.html)
 - [旋转数组-简单](Array/rotate-array.html)
+- [存在重复元素-简单](https://leetcode-cn.com/problems/contains-duplicate/)
+- [存在重复元素2-简单](https://leetcode-cn.com/problems/contains-duplicate-ii/)
+
 
 ## Number
 
