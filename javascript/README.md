@@ -4,9 +4,8 @@
 - [puppeteer破解滑动验证码](https://medium.com/@filipvitas/how-to-bypass-slider-captcha-with-js-and-puppeteer-cd5e28105e3c)
 - [validation library变量类型检查](https://www.npmjs.com/package/bycontract)
 - [schema-utils变量类型检查](https://github.com/webpack/schema-utils)
+- [大迁世界博客](https://github.com/qq449245884/xiaozhi)
 
-
-> 行不行就看你的 js 水平，能不能向上发展也是依赖于你的 js 水平。
 
 ## 优秀文章
 
@@ -52,3 +51,10 @@
 - vue-vs-jquery: vue 与 jquery 的区别
 - xss: xss的原理及防御
 - you-dont-need-jquery: 不需要 jquery 的理由
+
+## 压缩代码错误定位
+
+- [JavaScript Source Map 详解](http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html)
+- [线上压缩代码-定位错误](https://juejin.im/post/5a4f6886518825734216b352)
+- [脚本错误量极致优化-让脚本错误一目了然](https://github.com/joeyguo/blog/issues/14)
+- [线上出bug了？别怕，这么定位！](https://blog.fundebug.com/2019/06/01/use-sourcemap-to-debug-online-error/)

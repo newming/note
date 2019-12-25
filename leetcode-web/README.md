@@ -4,6 +4,7 @@
 - [git上别人的leetcode题解笔记](https://github.com/DangoSky/algorithm)
 - [算法与数据结构文章列表-不错](https://www.itcodemonkey.com/category/TheAlgorithm/)
 - [王争-算法与数据结构专栏](https://github.com/wangzheng0822/algo)
+- [labuladong](https://labuladong.gitbook.io/algo/)
 
 https://leetcode-cn.com/problemset/all/
 
@@ -49,6 +50,9 @@ https://leetcode-cn.com/problemset/all/
 - [旋转数组-简单](Array/rotate-array.html)
 - [存在重复元素-简单](https://leetcode-cn.com/problems/contains-duplicate/)
 - [存在重复元素2-简单](https://leetcode-cn.com/problems/contains-duplicate-ii/)
+- [只出现一次的数字](https://leetcode-cn.com/problems/single-number/)
+- [只出现一次的数字II](https://leetcode-cn.com/problems/single-number-ii/)
+- [只出现一次的数字III](https://leetcode-cn.com/problems/single-number-iii/)
 
 
 ## Number
