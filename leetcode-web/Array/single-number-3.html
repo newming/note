@@ -50,7 +50,7 @@
 
     // 方法3: 排序
     var singleNumber = function (nums) {
-      nums.sort()
+      nums.sort((a, b) => a - b)
       let noDuplicateList = []
       for (let i = 0; i < nums.length; i++) {
         if (nums[i + 1] !== undefined && nums[i] === nums[i + 1]) {

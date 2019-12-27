@@ -27,7 +27,7 @@
       for (let i = 0; i < arr.length; i++) {
         sum[i + 1] = sum[i] + arr[i]
       }
-      sum.sort()
+      sum.sort((a, b) => a - b)
       var difference = Math.abs(sum[1] - sum[0])
       var result = difference
       for (let i = 1; i < arr.length; i++) {
@@ -38,6 +38,7 @@
     }
 
     console.log(MinSubArray([1, 4, 8, -4, -2]))
+    console.log(MinSubArray([1, 4, -4, -2]))
   </script>
 </body>
 

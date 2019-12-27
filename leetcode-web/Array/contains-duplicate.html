@@ -34,7 +34,7 @@
 
     // 方法二: 排序后进行遍历
     function containsDuplicate (nums) {
-      nums.sort() // 原数组被修改
+      nums.sort((a, b) => a - b) // 原数组被修改
       for (let i = 1; i < nums.length; i++) {
         if (nums[i] === nums[i - 1]) {
           return true

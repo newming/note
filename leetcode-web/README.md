@@ -21,7 +21,7 @@ https://leetcode-cn.com/problemset/all/
 - [寻找最长公共前缀](String/longest-common-prefix.html)
 - [有效的括号(平衡圆括号)-简单](String/valid-parentheses.html)
 - [实现字符串方法indexOf(这里还涉及到prefixTable动态规划获取)-简单](String/implement-indexof.html)
-- [报数-简单](https://leetcode-cn.com/problems/count-and-say/)
+- [报数-简单](String/count-and-say.html)
 
 ### LCS的定义
 
@@ -48,11 +48,14 @@ https://leetcode-cn.com/problemset/all/
 - [移除元素-简单](Array/remove-element.html)
 - [搜索插入位置-简单](Array/search-insert-position.html)
 - [旋转数组-简单](Array/rotate-array.html)
-- [存在重复元素-简单](https://leetcode-cn.com/problems/contains-duplicate/)
-- [存在重复元素2-简单](https://leetcode-cn.com/problems/contains-duplicate-ii/)
-- [只出现一次的数字](https://leetcode-cn.com/problems/single-number/)
-- [只出现一次的数字II](https://leetcode-cn.com/problems/single-number-ii/)
-- [只出现一次的数字III](https://leetcode-cn.com/problems/single-number-iii/)
+- [存在重复元素-简单](Array/contains-duplicate.html)
+- [存在重复元素2-简单](Array/contains-duplicate-2.html)
+- [存在重复元素3-简单](Array/contains-duplicate-3.html)
+- [只出现一次的数字](Array/single-number.html)
+- [只出现一次的数字II](Array/single-number-2.html)
+- [只出现一次的数字III](Array/single-number-3.html)
+- [两个数组的交集-简单](Array/intersection-of-two-arrays.html)
+- [两个数组的交集2-简单](Array/intersection-of-two-arrays-2.html)
 
 
 ## Number
