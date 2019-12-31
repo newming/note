@@ -5,6 +5,7 @@
 - [算法与数据结构文章列表-不错](https://www.itcodemonkey.com/category/TheAlgorithm/)
 - [王争-算法与数据结构专栏](https://github.com/wangzheng0822/algo)
 - [labuladong](https://labuladong.gitbook.io/algo/)
+- [LeetCode刷题-知乎专栏](https://zhuanlan.zhihu.com/c_1047791597869199360)
 
 https://leetcode-cn.com/problemset/all/
 
@@ -56,6 +57,8 @@ https://leetcode-cn.com/problemset/all/
 - [只出现一次的数字III](Array/single-number-3.html)
 - [两个数组的交集-简单](Array/intersection-of-two-arrays.html)
 - [两个数组的交集2-简单](Array/intersection-of-two-arrays-2.html)
+- [加一-简单](Array/plus-one.html/)
+- [移动零-简单](https://leetcode-cn.com/problems/move-zeroes/)
 
 
 ## Number
@@ -66,3 +69,7 @@ https://leetcode-cn.com/problemset/all/
 ## 链表
 
 - [合并两个有序链表-简单](LinkedList/merge-two-sorted-lists.html)
+
+## 回溯算法
+
+- [组合总数-中等](Backtracking/combination-sum.html)
