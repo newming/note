@@ -58,7 +58,9 @@ https://leetcode-cn.com/problemset/all/
 - [两个数组的交集-简单](Array/intersection-of-two-arrays.html)
 - [两个数组的交集2-简单](Array/intersection-of-two-arrays-2.html)
 - [加一-简单](Array/plus-one.html/)
-- [移动零-简单](https://leetcode-cn.com/problems/move-zeroes/)
+- [移动零-简单](Array/move-zeroes.html)
+- [有效的数独-中等](Array/valid-sudoku.html)
+- [旋转图像](Array/rotate-image.html)
 
 
 ## Number

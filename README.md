@@ -71,5 +71,14 @@ keys * # 获取所有的key
 - [unicode](https://home.unicode.org/)
 - [css各种技巧&&vue press博客案例](https://qishaoxuan.github.io/css_tricks/)
 - [多数据，虚拟列表实现](https://zhuanlan.zhihu.com/p/34585166)
+- [package.json 中 browser，module，main 字段优先级](https://github.com/SunshowerC/blog/issues/8)
+
+
+### 编辑器相关
+
 - [编辑器分析](https://cnodejs.org/topic/5c0505ad1c62d83349350328)
 - [富文本编辑器的技术演进之路](https://mp.weixin.qq.com/s/PyXpfiZ-PiP8S5pQcHRZng)
+- [多人协同编辑的实现](https://github.com/Aaaaash/blog/issues/10)
+- [SharedPen 富文本实时协同编辑器](http://objcer.com/2018/03/05/SharedPen/)
+- [ot.js](https://github.com/Operational-Transformation/ot.js)
+- [CodeMirror](https://github.com/codemirror/CodeMirror)
