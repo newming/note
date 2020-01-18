@@ -23,6 +23,10 @@ https://leetcode-cn.com/problemset/all/
 - [有效的括号(平衡圆括号)-简单](String/valid-parentheses.html)
 - [实现字符串方法indexOf(这里还涉及到prefixTable动态规划获取)-简单](String/implement-indexof.html)
 - [报数-简单](String/count-and-say.html)
+- [反转字符串-简单](String/reverse-string.html)
+- [字符串中的第一个唯一字符-简单](String/first-unique-character-in-a-string.html)
+- [有效的字母异位词-简单](String/valid-anagram.html)
+
 
 ### LCS的定义
 

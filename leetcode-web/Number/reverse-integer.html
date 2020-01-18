@@ -39,10 +39,10 @@
      * @return {number}
      * @description 方法一：转字符串，反转，然后转数字
      */
-    // var reverse = function (x) {
-    //   const res = (Math.abs(x) + '').split('').reverse().join('') * (x > 0 ? 1 : -1);
-    //   return res < -Math.pow(2, 31) || res > Math.pow(2, 31) - 1 ? 0 : res;
-    // };
+    var reverse = function (x) {
+      const res = (Math.abs(x) + '').split('').reverse().join('') * (x > 0 ? 1 : -1);
+      return res < -Math.pow(2, 31) || res > Math.pow(2, 31) - 1 ? 0 : res;
+    };
 
     /**
      * 方法二：利用余数进行求解
@@ -64,13 +64,14 @@
       while (x !== 0) {
         let pop = x % 10; // 这里取余的时候负数的还是负数
         x = IntegerMethod(x / 10);
-        if (rev > MAX_VALUE_COMPARE || (rev === MAX_VALUE_COMPARE && pop > 7)) return 0;
+        console.log(x)
+        if (rev > MAX_VALUE_COMPARE || (rev === MAX_VALUE_COMPARE && pop > 7)) return 0; // 7 和 -8 实际是根据 Math.pow(2, 31) 的最后一位得出得 MAX_VALUE_COMPARE % 10
         if (rev < MIN_VALUE_COMPARE || (rev == MIN_VALUE_COMPARE && pop < -8)) return 0;
         rev = rev * 10 + pop;
       }
       return rev;
     }
-    console.log(reverse(123))
+    console.log(reverse(-102))
   </script>
 </body>
 
