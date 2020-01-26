@@ -26,6 +26,8 @@ https://leetcode-cn.com/problemset/all/
 - [反转字符串-简单](String/reverse-string.html)
 - [字符串中的第一个唯一字符-简单](String/first-unique-character-in-a-string.html)
 - [有效的字母异位词-简单](String/valid-anagram.html)
+- [验证回文串](String/valid-palindrome.html)
+- [验证回文字符串II](String/valid-palindrome-2.html)
 
 
 ### LCS的定义
