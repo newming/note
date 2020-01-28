@@ -21,13 +21,14 @@ https://leetcode-cn.com/problemset/all/
 - [去除重复字母-困难](String/remove-duplicate-letters.html)
 - [寻找最长公共前缀](String/longest-common-prefix.html)
 - [有效的括号(平衡圆括号)-简单](String/valid-parentheses.html)
-- [实现字符串方法indexOf(这里还涉及到prefixTable动态规划获取)-简单](String/implement-indexof.html)
+- [实现字符串方法strStr(indexOf)(这里还涉及到prefixTable动态规划获取)-简单](String/implement-indexof.html)
 - [报数-简单](String/count-and-say.html)
 - [反转字符串-简单](String/reverse-string.html)
 - [字符串中的第一个唯一字符-简单](String/first-unique-character-in-a-string.html)
 - [有效的字母异位词-简单](String/valid-anagram.html)
 - [验证回文串](String/valid-palindrome.html)
 - [验证回文字符串II](String/valid-palindrome-2.html)
+- [字符串转换整数(atoi)](String/string-to-integer-atoi.html)
 
 
 ### LCS的定义
@@ -74,9 +75,15 @@ https://leetcode-cn.com/problemset/all/
 - [整数反转-简单](Number/reverse-integer.html)
 - [判断一个数字是否是回文数](Number/palindrome-number.html)
 
+
 ## 链表
 
 - [合并两个有序链表-简单](LinkedList/merge-two-sorted-lists.html)
+- [删除链表中的节点](LinkedList/delete-node-in-a-linked-list.html)
+- [删除链表的倒数第N个节点](LinkedList/remove-nth-node-from-end-of-list.html)
+- [反转链表](LinkedList/reverse-linked-list.html)
+- [反转链表II](LinkedList/reverse-linked-list-2.html)
+
 
 ## 回溯算法
 
