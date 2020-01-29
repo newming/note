@@ -83,6 +83,8 @@ https://leetcode-cn.com/problemset/all/
 - [删除链表的倒数第N个节点](LinkedList/remove-nth-node-from-end-of-list.html)
 - [反转链表](LinkedList/reverse-linked-list.html)
 - [反转链表II](LinkedList/reverse-linked-list-2.html)
+- [回文链表](LinkedList/palindrome-linked-list.html)
+- [环形链表](LinkedList/linked-list-cycle.html)
 
 
 ## 回溯算法
