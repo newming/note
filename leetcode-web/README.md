@@ -85,6 +85,7 @@ https://leetcode-cn.com/problemset/all/
 - [反转链表II](LinkedList/reverse-linked-list-2.html)
 - [回文链表](LinkedList/palindrome-linked-list.html)
 - [环形链表](LinkedList/linked-list-cycle.html)
+- [链表的中间节点](LinkedList/middle-of-the-linked-list.html)
 
 
 ## 回溯算法
