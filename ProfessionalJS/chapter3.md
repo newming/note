@@ -26,7 +26,7 @@
 var message
 typeof message // undefined
 typeof age // undefined
-// 对未申明，未初始化的变量执行 typeof 同样返回 undefined
+// 对未声明，未初始化的变量执行 typeof 同样返回 undefined
 
 null == undefined // true
 ```

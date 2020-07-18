@@ -28,6 +28,7 @@
 - handle-error: 前端异常监控、上报
 - event: js 事件及事件池实现(bind, on)
 - event-emmiter: 类 node 的 EventEmitter 实现
+- event-loop: js事件循环，宏任务，微任务
 - for-in: for in 循环
 - function: 高级方法举例(柯里化, bind)
 - hashRouter: hash 路由实现

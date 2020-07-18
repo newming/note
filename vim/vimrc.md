@@ -77,7 +77,7 @@ map <F3> i<ul><CR><Space><Space><li></li><CR><Esc>I</ul><Esc>kcit
 
 ## let
 
-申明变量
+声明变量
 
 ```vimrc
 " 设置 leader=","

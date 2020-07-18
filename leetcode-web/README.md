@@ -1,11 +1,12 @@
 # leetcode 练习笔记
 
-- [git上别人的leetcode题解笔记](https://github.com/azl397985856/leetcode?utm_source=gold_browser_extension)
+- [git上别人的leetcode题解笔记](https://github.com/azl397985856/leetcode)
 - [git上别人的leetcode题解笔记](https://github.com/DangoSky/algorithm)
 - [算法与数据结构文章列表-不错](https://www.itcodemonkey.com/category/TheAlgorithm/)
 - [王争-算法与数据结构专栏](https://github.com/wangzheng0822/algo)
 - [labuladong](https://labuladong.gitbook.io/algo/)
 - [LeetCode刷题-知乎专栏](https://zhuanlan.zhihu.com/c_1047791597869199360)
+- [算法笔记-碎对象](https://wangyaxing.cn/blog/)
 
 https://leetcode-cn.com/problemset/all/
 
@@ -29,6 +30,7 @@ https://leetcode-cn.com/problemset/all/
 - [验证回文串](String/valid-palindrome.html)
 - [验证回文字符串II](String/valid-palindrome-2.html)
 - [字符串转换整数(atoi)](String/string-to-integer-atoi.html)
+- [版本号比较](String/compare-version-numbers.html)
 
 
 ### LCS的定义

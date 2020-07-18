@@ -16,6 +16,7 @@
   7. 字符串==布尔 都转为数字
   8. null==undefined // true
   9. null,undefined和任何其他类型不相等
+  10. NaN == NaN // false
 - === 绝对比较，数据类型不同肯定不同
 
 # 基本数据类型和引用数据类型

@@ -38,7 +38,15 @@ result = deepCopy(china,result)
 console.dir(result)
 ```
 
-**第二种方法：通过JSON解析解决**
+**第二种方法：通过JSON解析解决**该方法存在一些不足：
+
+1. 无法实现对特殊对象的克隆
+  - 函数、Symbol、undefined 直接丢失
+  - RegExp变为空对象
+  - BigInt 不允许，直接报错
+  - 日期 new Date() 会转化为字符串，之后转不回来了
+2. 会抛弃对象的constructor,所有的构造函数会指向Object
+3. 对象有循环引用,会报错
 
 ```js
 var test = {
@@ -169,6 +177,24 @@ const clone = parent => {
 // 对于日期等特殊的不好使
 var clone = function (obj) {
   if (!obj || typeof obj !== 'object') return obj
+  var temp = new obj.constructor() // 实现了原型链的继承
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      temp[key] = clone(obj[key])
+    }
+  }
+  return temp
+}
+
+// 兼容日期等特殊对象
+// 存在问题，循环引用出现无限递归
+var clone = function (obj) {
+  if (obj === null) return null;
+  if (typeof obj !== 'object') return obj; // 基本数据类型
+  if (obj instanceof RegExp) return new RegExp(obj);
+  if (obj instanceof Date) return new Date(obj);
+
+  // 对于对象和数组
   var temp = new obj.constructor() // 实现了原型链的继承
   for (var key in obj) {
     if (obj.hasOwnProperty(key)) {
