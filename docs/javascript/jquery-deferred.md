@@ -29,7 +29,7 @@ ajax.done(function () {
 console.log('ajax') // 返回一个 deferred 对象
 ```
 
-### 使用 jQuery Deferred
+## 使用 jQuery Deferred
 
 ```js
 // 一段非常简单的异步操作代码，使用 setTimeout 函数

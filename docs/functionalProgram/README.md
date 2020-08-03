@@ -7,7 +7,7 @@
 
 ## 目录
 
-### [chapter3 高阶函数](chapter3)
+### [chapter3 高阶函数](chapter3.md)
 
 - forEach
 - forEachObject
@@ -17,14 +17,14 @@
 - some
 - sortBy
 
-### [chapter4 闭包与高阶函数](chapter4)
+### [chapter4 闭包与高阶函数](chapter4.md)
 
 - tap 函数
 - unary
 - once
 - memoized
 
-### [chapter5 数组的函数式编程](chapter5)
+### [chapter5 数组的函数式编程](chapter5.md)
 
 - map
 - filter
@@ -32,27 +32,27 @@
 - reduce
 - zip 实现将两个数组合并到一个数组中
 
-### [chapter6 柯里化与偏应用](chapter6)
+### [chapter6 柯里化与偏应用](chapter6.md)
 
 - curry 柯里化
 - partial 便应用
 
-### [chapter7 组合与管道](chapter7)
+### [chapter7 组合与管道](chapter7.md)
 
 - compose 顺序组合多个函数，从右往左执行
 - pipe 同 compose 从左往后执行
 - identity 调试 compose
 
-### [chapter8 函子](chapter8)
+### [chapter8 函子](chapter8.md)
 
 - MayBe
 - Either
 
-### [chapter9 深入理解 Monad](chapter9)
+### [chapter9 深入理解 Monad](chapter9.md)
 
 - join
 - chain
 
-### [chapter10 使用 Generator](chapter10)
+### [chapter10 使用 Generator](chapter10.md)
 
 <!-- done -->

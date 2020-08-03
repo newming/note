@@ -129,7 +129,7 @@ let request = function (url, i) {
 sendRequest(urls, max, request, callback);
 ```
 
-# 一道面试题
+## 一道面试题
 
 ```js
 class Scheduler {

@@ -1,6 +1,6 @@
 # 对象(Object)
 
-### 单例模式
+## 单例模式
 在项目中，为了避免使用全局的变量或方法导致的冲突，我们通常把需要的方法和变量当作一个对象数据类型的属性名和属性值保存起来。我们把创建的对象的名称为命名空间。
 
 对象字面量只是用于创建单例的方法之一，并非所有的对象字面量都是单体。如果它是用来模仿关联数组或容纳数据的话，就显然不是单例。如果它用来组织一批相关方法和属性，那就可能是单例。这主要区别在于设计的意图。
@@ -36,7 +36,7 @@ var obj = (function () {
 obj.check()
 ```
 
-### 工厂模式
+## 工厂模式
 
 ```js
 function factory(material){
@@ -51,7 +51,7 @@ var p1 = factory('aaa')
 var p2 = factory('aaadd')
 var p3 = factory('aaaee')
 ```
-### 构造函数
+## 构造函数
 
 ```js
 function FE(name, age){
@@ -71,7 +71,7 @@ console.log(p1.writeJs==p2.writeJs); // true
 // 注意私有方法属性不相同，公共的相同
 ```
 
-### Object.create()
+## Object.create()
 
 ```js
 var obj = Object.create({a: 1})
@@ -79,11 +79,11 @@ obj.a // 1
 obj.hasOwnProperty('a') // false
 ```
 
-### Object.getOwnPropertyDescriptor(Object, 'proto')
+## Object.getOwnPropertyDescriptor(Object, 'proto')
 
 获取对象某个属性的描述
 
-### getter/setter
+## getter/setter
 
 ```js
 var man = {
@@ -116,7 +116,7 @@ obj.x = 500
 obj.x // 500
 ```
 
-### 属性级的权限设置
+## 属性级的权限设置
 
 获取一个对象属性的描述： Object.getOwnPropertyDescriptor(obj, proto)
 
@@ -134,7 +134,7 @@ Object.getOwnPropertyDescriptor({a: 1}, 'b') // undefined
 */
 ```
 
-### Object.defineProperty
+## Object.defineProperty
 
 [mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
 
@@ -142,7 +142,7 @@ Object.getOwnPropertyDescriptor({a: 1}, 'b') // undefined
 
 [mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties)
 
-### 对象标签
+## 对象标签
 
 - proto: 指向对象的原型
 - class: 是否是一个类
@@ -185,11 +185,11 @@ Object.getOwnPropertyDescriptor(obj, 'x') // Object {value: 1, writable: false, 
 Object.isFrozen(obj) // true
 ```
 
-### 对象序列化
+## 对象序列化
 
 - JSON.stringify()
 
-##### 序列化-自定义
+### 序列化-自定义
 
 ```js
 var obj = {

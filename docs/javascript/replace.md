@@ -19,7 +19,7 @@ str = str.replace(/new/g, 'newming')
 console.log(str) // newming1993newming1103 全部替换
 ```
 
-### replace 原理
+## replace 原理
 
 replace 方法第一项参数为正则的时候的实现原理：首先同正则的exec方法将匹配的内容捕获到，然后将捕获到的内容替换为我们需要的内容
 
@@ -43,7 +43,7 @@ str = str.replace(reg, function () {
 console.log(str);
 ```
 
-### 小案例
+## 小案例
 
 ```js
 // 1.文本替换

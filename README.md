@@ -2,7 +2,7 @@
 
 [置顶-如何超过大多数人](https://coolshell.cn/articles/19464.html)
 
-> 我的代码笔记，基于vuepress
+> 我的代码笔记，基于vuepress。注意相对路径 /css/ 前后的 / 不可以缺少，如果是 .md 的路径，最好不要省略 .md 的后缀
 
 ### gitbook本地安装的说明
 

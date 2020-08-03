@@ -4,4 +4,4 @@
 
 ## 目录
 
-- [常用单词](frequent-words)
+- [常用单词](frequent-words.md)

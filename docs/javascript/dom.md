@@ -2,7 +2,7 @@
 
 DOM: Document object model 文档对象模型，描述整个html页面中节点关系的谱图
 
-### document.getElementById('id')
+## document.getElementById('id')
 
 通过id获取元素，如果id重复了，获取到的是第一个，区分大小写（在 IE 6,7中不区分）
 
@@ -16,7 +16,7 @@ DOM: Document object model 文档对象模型，描述整个html页面中节点�
 console.log(test);
 ```
 
-### context.getElementsByTagName('li')
+## context.getElementsByTagName('li')
 
 通过元素的标签名获取一组元素，有几个获取几个。可以根据上下文(context)获取我们获取元素的范围。
 
@@ -25,22 +25,22 @@ document.getElementsByTagName('li');
 oDIv.getElementsByTagName('li');
 ```
 
-### document.getElementsByName('text')
+## document.getElementsByName('text')
 通过元素的name属性获取一组元素
 
 注意在 IE浏览器下只对表单元素起作用。这个方法常用于获取具有相同name的表单元素
 
-### context.getElementsByClassName('class')
+## context.getElementsByClassName('class')
 
 在 IE 6~8 会报错
 
-### document.documentElement,document.body
+## document.documentElement,document.body
 分别获取 html,body 元素，通常用来获取文档属性
 ```js
 var winW = document.documentElement.clientWidth || document.body.clientWidth // 兼容所有的浏览器获取当前浏览器宽度
 ```
 
-### document.querySelector,document.querySelectorAll
+## document.querySelector,document.querySelectorAll
 
 在移动端常用的方法，IE6～8不支持。同时不存在映射关系
 
@@ -53,7 +53,7 @@ document.querySelectorAll('#id li') // 后代选择器
 document.querySelectorAll("input[type='text']") // 属性选择器
 ```
 
-# DOM 中的节点和关系属性
+## DOM 中的节点和关系属性
 [w3chool的文档](http://www.w3school.com.cn/jsref/dom_obj_all.asp)
 ### 获取关系的属性
 

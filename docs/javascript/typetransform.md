@@ -19,7 +19,7 @@
   10. NaN == NaN // false
 - === 绝对比较，数据类型不同肯定不同
 
-# 基本数据类型和引用数据类型
+## 基本数据类型和引用数据类型
 基本数据类型：null undefined number boolean string(比较特殊)
 
 引用数据类型： function object array
@@ -42,7 +42,7 @@ console.log(obg2); // testtest
 ```
 区别：JS基本数据类型的变量存放的是基本类型数据的实际值；而引用数据类型的变量保存对它的引用，即指针。
 
-# 数据类型检测方式
+## 数据类型检测方式
 - typeof 运算符
 - instanceof 运算符，检测某一个实例是否属于某个类
 - constructor
@@ -111,7 +111,7 @@ console.log(f.constructor) // Array
 
 最准确最常用的方式。首先获取 Object 原型上的方法，并且让其执行，并且改变方法内的 this 指向
 
-##### toString() 方法的理解
+#### toString() 方法的理解
 
 不仅仅是转换字符串。Object.prototype 的特殊，它的作用是返回当前方法执行主体(this)的所属类的信息
 

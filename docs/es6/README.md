@@ -1,22 +1,22 @@
 # es6 部分语法
 
-- let-const: let, const的用法及块级作用域
-- Destructuring_assignment: 解构赋值操作
-- String: 字符串拓展
-- RegExp: 正则拓展
-- Number: 数值拓展
-- Array: 数组拓展
-- Function: 函数拓展
-- Object: 对象拓展
-- Symbol: 新增原始数据类型
-- Set,Map: Set, Map, WeakSet, WeakMap
-- Proxy: 代理
-- Reflect: Object 属性代理对象
-- Promise: Promise 对象
-- Iterator: Iterator 和 for...of 循环
-- Generator: Generator 函数
-- Generator Async: Generator 函数的异步应用
-- async: async 函数
-- Class: Class 的基本语法
-- ClassExtends: Class 的继承
-- Decorator: 修饰器
+- [let-const: let, const的用法及块级作用域](let-const.md)
+- [Destructuring_assignment: 解构赋值操作](Destructuring_assignment.md)
+- [String: 字符串拓展](String.md)
+- [RegExp: 正则拓展](RegExp.md)
+- [Number: 数值拓展](Number.md)
+- [Array: 数组拓展](Array.md)
+- [Function: 函数拓展](Function.md)
+- [Object: 对象拓展](Object.md)
+- [Symbol: 新增原始数据类型](Symbol.md)
+- [Set,Map: Set, Map, WeakSet, WeakMap](Set-Map.md)
+- [Proxy: 代理](Proxy.md)
+- [Reflect: Object 属性代理对象](Reflect.md)
+- [Promise: Promise 对象](Promise.md)
+- [Iterator: Iterator 和 for...of 循环](Iterator.md)
+- [Generator: Generator 函数](Generator.md)
+- [Generator Async: Generator 函数的异步应用](GeneratorAsync.md)
+- [async: async 函数](async.md)
+- [Class: Class 的基本语法](Class.md)
+- [ClassExtends: Class 的继承](ClassExtends.md)
+- [Decorator: 修饰器](Decorator.md)

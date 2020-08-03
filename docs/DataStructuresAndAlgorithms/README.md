@@ -10,14 +10,14 @@
 
 ## 目录
 
-### [chapter3: 栈(顺序数据结构)](chapter3)
+### [chapter3: 栈(顺序数据结构)](chapter3.md)
 
 - stack: 栈
 - 十进制转任意进制
 - 平衡圆括号
 - 汉诺塔
 
-### [chapter4: 队列(顺序数据结构)](chapter4)
+### [chapter4: 队列(顺序数据结构)](chapter4.md)
 
 - Queue: 队列
 - PriorityQueue: 优先队列
@@ -25,18 +25,18 @@
 - hotPotato: 击鼓传花
 - palindromeChecker: 回文检查器
 
-### [chapter5: 链表(顺序数据结构)](chapter5)
+### [chapter5: 链表(顺序数据结构)](chapter5.md)
 - LinkedList: 普通单向链表
 - DoublyLinkedList: 双向链表
 - CircularLinkedList: 循环链表
 - SortedLinkedList: 顺序链表
 - StackLinkedList: 栈链表
 
-### [chapter6: 集合](chapter6)
+### [chapter6: 集合](chapter6.md)
 
 - Set: 集合
 
-### [chapter7: 字典和散列表(非顺序数据结构)](chapter7)
+### [chapter7: 字典和散列表(非顺序数据结构)](chapter7.md)
 
 - Dictionary: 字典
 - HashTable: 散列表
@@ -46,17 +46,17 @@
 - WeakMap: es6 WeakMap 类
 - WeakSet: es6 WeakSet 类
 
-### [chapter8: 树(非顺序数据结构)](chapter8)
+### [chapter8: 树(非顺序数据结构)](chapter8.md)
 
 - BinarySearchTree: 二叉搜索树
 - AVLTree: 自平衡树
 
-### [chapter9: 图](chapter9)
+### [chapter9: 图](chapter9.md)
 
 - Graph: 邻接表
 - 未完
 
-### [chapter10: 排序和搜索算法](chapter10)
+### [chapter10: 排序和搜索算法](chapter10.md)
 
 - 各种排序，在 javascript/arrsort.md
 - sequentialSearch: 顺序搜索
@@ -64,10 +64,10 @@
 - interpolationSearch: 插补搜索
 - binarySearchRecursive: 递归二分搜索
 
-### [chapter11: 算法模式](chapter11)
+### [chapter11: 算法模式](chapter11.md)
 
 - 斐波那契数列
 - 阶乘
 - 未完
 
-### [chapter12: 算法复杂度](chapter12)
+### [chapter12: 算法复杂度](chapter12.md)

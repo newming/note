@@ -1,6 +1,6 @@
 # 函数
 
-### 参数求和
+## 参数求和
 ```js
 function sum() {
   var total=null;
@@ -29,7 +29,7 @@ js执行循序
 注意：预解释是发生在当前作用域下的
 
 
-### 自执行函数
+## 自执行函数
 
 定义和执行同时完成
 
@@ -55,7 +55,7 @@ js执行循序
 }('newming');
 ```
 
-### 函数柯里化
+## 函数柯里化
 
 ```js
 // bind 改变 this 指向，返回一个新的函数，不执行
@@ -70,7 +70,7 @@ var func2 = func.bind(undefined, 200)
 func2(10) // 310
 ```
 
-### bind 与 new
+## bind 与 new
 
 ```js
 function foo () {
@@ -85,7 +85,7 @@ new func() // {b: 100}
 // 注意 new 的时候会忽略 return 和 bind
 ```
 
-### bind polyfill
+## bind polyfill
 
 具体实现原理会写篇文章论述一下，结合上边 bind 与 new 的代码
 
@@ -122,7 +122,7 @@ if (!Function.prototype.bind) {
 }
 ```
 
-### 函数预解析
+## 函数预解析
 
 ```js
 function test (a, b) {
@@ -174,7 +174,7 @@ function test3 () {
 test3() // 10 var x 被忽略了，不过已经过了初始化阶段，在代码执行时覆盖了
 ```
 
-### 原型链小例
+## 原型链小例
 
 OOP 原型链通过 Object.create() 继承
 
@@ -219,7 +219,7 @@ newming.walk() // Newming is walking...
 newming.learn('Math') // Newming is learning Math at Class 39.
 ```
 
-### 模拟重载
+## 模拟重载
 
 根据参数列表的不同，执行不同的操作
 
@@ -277,7 +277,7 @@ Student.prototype.init = function () {
 }
 ```
 
-### 链式调用
+## 链式调用
 
 ```js
 function ClassManager () {}
@@ -293,7 +293,7 @@ manager.addClass('classA').addClass('classB').addClass('calssC')
 // class: calssC added.
 ```
 
-### 探测器例子
+## 探测器例子
 
 ```js
 !function (global) {

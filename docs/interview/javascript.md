@@ -456,10 +456,10 @@ let result = 100 + true + 21.2 + null + undefined + 'test' + [] + null + 9 + fal
 // 解析，当加号左右两边出现只要有一边出现字符串或者对象，就会按照字符串拼接来处理，对于对象需要先转字符串(toString，如果对象有原始值，会先调用 valueOf)，然后转数字。否则按数学运算计算，对于非数字的比如 false 这种，会进行隐式数字转化，调用的是 Number()
 
 
-[] == false // true 转为字符串比较
-![] == false // true 相当于 false == false。!操作符优先级高
-[] == 0 // true 转数字比较
-![] == 0 // true 相当于 false == 0 => 0 == 0
+[] == false // true: 转为字符串比较
+![] == false // true: 相当于 false == false。!操作符优先级高
+[] == 0 // true: 转数字比较
+![] == 0 // true: 相当于 false == 0 => 0 == 0
 
 // 解释，当以 {} 开头时，{}会被认为是一个语句块
 {} + 0 // 0
