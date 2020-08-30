@@ -7,6 +7,7 @@
 - [算法与数据结构文章列表-不错](https://www.itcodemonkey.com/category/TheAlgorithm/)
 - [王争-算法与数据结构专栏](https://github.com/wangzheng0822/algo)
 - [labuladong](https://labuladong.gitbook.io/algo/)
+- [labuladong](https://github.com/labuladong/fucking-algorithm)
 - [LeetCode刷题-知乎专栏](https://zhuanlan.zhihu.com/c_1047791597869199360)
 - [算法笔记-碎对象](https://wangyaxing.cn/blog/)
 
@@ -33,6 +34,7 @@ https://leetcode-cn.com/problemset/all/
 - [验证回文字符串II](string/valid-palindrome-2.md)
 - [字符串转换整数(atoi)](string/string-to-integer-atoi.md)
 - [版本号比较](string/compare-version-numbers.md)
+- [括号生成-中等](string/generate-parentheses.md)
 
 
 ### LCS的定义
