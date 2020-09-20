@@ -74,6 +74,7 @@ https://leetcode-cn.com/problemset/all/
 - [移动零-简单](array/move-zeroes.md)
 - [有效的数独-中等](array/valid-sudoku.md)
 - [旋转图像](array/rotate-image.md)
+- [合并两个有序数组-简单](array/merge-sorted-array.md)
 
 
 ## Number
@@ -93,6 +94,13 @@ https://leetcode-cn.com/problemset/all/
 - [环形链表](linked-list/linked-list-cycle.md)
 - [链表的中间节点](linked-list/middle-of-the-linked-list.md)
 
+## 树
+
+- [二叉树的最大深度-简单](tree/maximum-depth-of-binary-tree.md)
+- [验证二叉搜索树-中等](tree/validate-binary-search-tree.md)
+- [对称二叉树-简单](tree/symmetric-tree.md)
+- [二叉树的层序遍历-中等](tree/binary-tree-level-order-traversal.md)
+- [将有序数组转换为二叉搜索树-简单](tree/convert-sorted-array-to-binary-search-tree.md)
 
 ## 回溯算法
 

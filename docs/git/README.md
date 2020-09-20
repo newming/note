@@ -193,6 +193,12 @@ git diff HEAD HEAD^
 
 ## 修改commit的message
 
+[删除第一次commit](https://stackoverflow.com/questions/6632191/how-to-revert-initial-git-commit)
+
+```bash
+git update-ref -d HEAD
+```
+
 **修改一次commit的message**
 
 ```bash
