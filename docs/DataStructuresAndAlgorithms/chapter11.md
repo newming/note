@@ -21,7 +21,9 @@ function fibonacci (num) {
 
 ```js
 // 输出第 n 个 斐波那契数 的值
+// 动态规划 滚动数组思想
 function fibonacciIterative(n) {
+  // 要求 n >= 2
   let fibNMinus2 = 0; // 起点 0
   let fibNMinus1 = 1; // 起点 1
   let fibN;

@@ -46,7 +46,7 @@ https://leetcode-cn.com/problems/move-zeroes/solution/zui-you-by-dxw-2/
 var moveZeroes = function (nums) {
   let length = nums.length
   let currentIndex = 0
-  for (let i=0; i < length; i++) {
+  for (let i = 0; i < length; i++) {
     if (nums[i] !== 0) {
       nums[currentIndex] = nums[i]
       if (currentIndex !== i) {

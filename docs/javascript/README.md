@@ -36,6 +36,7 @@
 - [isCloseLoop: 是否能形成闭环](isCloseLoop.md)
 - [jquery-deferred: jquery deferred 使用](jquery-deferred.md)
 - [jsoutput: 页面中常用的几种输出方式](jsoutput.md)
+- [key-order: 对象key输出顺序&&Object.keys原理](key-order.md)
 - [lazyload: 图片延迟加载／图片懒加载](lazyload.md)
 - [mapLimit: js 实现并发控制](mapLimit.md)
 - [math: 数学对象](math.md)

@@ -75,7 +75,8 @@ https://leetcode-cn.com/problemset/all/
 - [有效的数独-中等](array/valid-sudoku.md)
 - [旋转图像](array/rotate-image.md)
 - [合并两个有序数组-简单](array/merge-sorted-array.md)
-
+- [颜色分类-中等](array/sort-colors.md)
+- [杨辉三角-简单](array/pascals-triangle.md)
 
 ## Number
 
@@ -100,12 +101,24 @@ https://leetcode-cn.com/problemset/all/
 - [验证二叉搜索树-中等](tree/validate-binary-search-tree.md)
 - [对称二叉树-简单](tree/symmetric-tree.md)
 - [二叉树的层序遍历-中等](tree/binary-tree-level-order-traversal.md)
+- [二叉树的后序遍历](tree/binary-tree-postorder-traversal.md)
 - [将有序数组转换为二叉搜索树-简单](tree/convert-sorted-array-to-binary-search-tree.md)
 
 ## 回溯算法
 
 - [组合总数-中等](backtracking/combination-sum.md)
 
+## 动态规划
+
+- [爬楼梯-简单](dp/climbing-stairs.md)
+- [买卖股票的最佳时机](array/best-time-to-buy-and-sell-stock.md)
+- [最大子序和](array/maximum-subarray.md)
+- [打家劫舍](dp/house-robber.md)
+
 ## 图算法
 
 - [狄克斯特拉算法-寻找加权图中前往X最短路径](graph/dijkstra.md)
+
+## 搜索search
+
+- [第一个错误的版本-简单](search/first-bad-version.md)
