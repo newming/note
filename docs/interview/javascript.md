@@ -456,7 +456,7 @@ let result = 100 + true + 21.2 + null + undefined + 'test' + [] + null + 9 + fal
 // 解析，当加号左右两边出现只要有一边出现字符串或者对象，就会按照字符串拼接来处理，对于对象需要先转字符串(toString，如果对象有原始值，会先调用 valueOf)，然后转数字。否则按数学运算计算，对于非数字的比如 false 这种，会进行隐式数字转化，调用的是 Number()
 
 
-[] == false // true: 转为字符串比较
+[] == false // true: 转为字符串比较？感觉像是转数字
 ![] == false // true: 相当于 false == false。!操作符优先级高
 [] == 0 // true: 转数字比较
 ![] == 0 // true: 相当于 false == 0 => 0 == 0
@@ -827,7 +827,13 @@ function bigNumAdd(num1, num2) {
 }
 ```
 
-## 33对象模拟类数组
+## 33大数相减
+
+```js
+// https://blog.csdn.net/yuzhongchun/article/details/39646073
+```
+
+## 34对象模拟类数组
 
 ```js
 var obj = {
@@ -842,7 +848,7 @@ obj.push(2)
 console.log(obj)
 ```
 
-## 32权限校验
+## 35权限校验
 
 - 登陆态校验
 - 接口权限校验

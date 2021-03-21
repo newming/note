@@ -20,7 +20,7 @@
 - === 绝对比较，数据类型不同肯定不同
 
 ## 基本数据类型和引用数据类型
-基本数据类型：null undefined number boolean string(比较特殊)
+基本数据类型：null undefined number boolean string(比较特殊) Symbol bigint
 
 引用数据类型： function object array
 
@@ -29,7 +29,7 @@
 // 1基本数据类型没有跟着变
 var num1 = 10;
 var num2 = num1;
-num ++ ;
+num ++;
 console.log(num1);// 10
 console.log(num2);
 
@@ -53,12 +53,13 @@ console.log(obg2); // testtest
 
 > 返回值有 'number' 'string' 'boolean' 'object' 'undefined' 'function'
 
-不能具体检查 object 下细分的类型，返回的都是 object，比如 null [] {} /^.$/
+直接在计算机底层基于数据类型(二进制)进行检测，不能具体检查 object 下细分的类型，返回的都是 object，比如 null [] {} /^.$/
 
 ```js
 console.log(typeof typeof typeof []); //string
 console.log(typeof 1) // number
 console.log(typeof new Number(1)) // object
+console.log(typeof null) // object 浏览器的一个bug，对象存储在计算机中，都是已000开始的二进制存储，null也是
 ```
 
 ### instanceof 检测某一个实例是否属于某个类，局限性很多比如：
@@ -83,6 +84,31 @@ console.log(fn instanceof Object) // true
 
 // dom 原型链
 div -> HTMLDivElement.prototype -> HTMLElement.prototype -> Element.prototype -> Node.prototype -> EventTarget.prototype -> Object.prototype
+```
+
+#### 实现instanceof
+
+[参考文章](https://juejin.im/post/5ceb8247e51d455071250a8a)
+
+```js
+function new_instance_of(value, classFunc) {
+  let rightProto = classFunc.prototype; // 取右表达式的 prototype 值
+  // 可以使用 Object.getPrototypeOf(value) 获取 __proto__
+  value = value.__proto__; // 取左表达式的__proto__值
+  while (true) {
+    if (value === null) {
+      return false
+    }
+    if (value === rightProto) {
+      return true
+    }
+    value = value.__proto__
+  }
+}
+
+new_instance_of([12,23], Array) // true
+new_instance_of(Object, Object) // true
+new_instance_of(Object, Function) // true
 ```
 
 ### constructor 构造函数，作用同 instanceof 非常类似
@@ -111,6 +137,8 @@ console.log(f.constructor) // Array
 
 最准确最常用的方式。首先获取 Object 原型上的方法，并且让其执行，并且改变方法内的 this 指向
 
+'[object Number/String/Boolean/Null/Undefined/Symbol/Object/Array/RegExp/Date/Function/Error]'
+
 #### toString() 方法的理解
 
 不仅仅是转换字符串。Object.prototype 的特殊，它的作用是返回当前方法执行主体(this)的所属类的信息
@@ -124,4 +152,12 @@ console.log((1).__proto__.__proto__.toString()) // "[object Object]" 拿到的�
 // Math.toString() // "[object Math]" 第一个 object 代表当前执行体的数据类型是 object(固定的)，第二个代表它所属的类是 Math
 // ({}).toString() // "[object Object]"
 // ({}).__proto__.toString.call(10) // "[object Number]" 同 Object.prototype.toString.call(10)
+```
+
+## 实现 toType
+
+```js
+function toType(val) {
+  return Object.prototype.toString.call(val).match(/\[object (.*?)\]/)[1]
+}
 ```
