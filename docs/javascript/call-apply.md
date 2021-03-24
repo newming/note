@@ -148,3 +148,52 @@ function avgFn(...arr) {
 var res = avgFn(3,5,6,7,10,7);
 console.log(res);
 ```
+
+## 模拟call, apply
+
+```js
+Function.prototype.call = function call(context, ...args) {
+  // this 是调用 change 的函数
+  context = context == undefined ? window : context
+  let type = typeof context
+  if (!/^(object|function)$/.test(type)) {
+    // 如果传入的参数不是一个 object
+    if (/^(symbol|bigint)$/.test(type)) {
+      // 如果是 symblo 或者 bigint
+      context = Object(context)
+    } else {
+      // 原始数据类型无法新增属性
+      context = new context.constructor(context)
+    }
+  }
+
+  let key = Symbol('key')
+  let result
+  context[key] = this
+  result = context[key](...args)
+  delete context[key]
+  return result
+}
+
+Function.prototype.apply = function call(context, args) {
+  // this 是调用 change 的函数
+  context = context == undefined ? window : context
+  let type = typeof context
+  if (!/^(object|function)$/.test(type)) {
+    // 如果传入的参数不是一个 object
+    if (/^(symbol|bigint)$/.test(type)) {
+      // 如果是 symblo 或者 bigint
+      context = Object(context)
+    } else {
+      context = new context.constructor(context)
+    }
+  }
+
+  let key = Symbol('key')
+  let result
+  context[key] = this
+  result = context[key](...args)
+  delete context[key]
+  return result
+}
+```

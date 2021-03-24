@@ -14,9 +14,11 @@
 
 ## 目录列表
 
+- [ajax-vs-fetch: ajax和axios和fetch的区别](ajax-vs-fetch.md)
 - [algorithm: 算法](algorithm.md)
 - [arrsort: 数组排序](arrsort.md)
 - [asynchronous: 异步](asynchronous.md)
+- [浏览器从输入URL到看到页面，中间经历了什么](browser-show-page.md)
 - [bind: bind 函数的实现](bind.md)
 - [boxmodel: js 盒子模型，offset, scroll, client等等](boxmodel.md)
 - [call-apply: call, apply 对比](call-apply.md)

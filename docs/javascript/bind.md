@@ -203,4 +203,31 @@ console.log(peter.sayName) // 我是people原型上的属性
 console.log(peter.haha) // 我是 boundFunc 的属性
 ```
 
-that's all
+### 简写版
+
+```js
+~function() {
+  function bind(context, ...args) {
+    // this => func
+    let _this = this
+    // 实现你的代码
+    // this 是调用 change 的函数
+    context = context == undefined ? window : context
+    let type = typeof context
+    if (!/^(object|function)$/.test(type)) {
+      // 如果传入的参数不是一个 object
+      if (/^(symbol|bigint)$/.test(type)) {
+        // 如果是 symblo 或者 bigint
+        context = Object(context)
+      } else {
+        context = new context.constructor(context)
+      }
+    }
+
+    return function anonymous(...innerArgs) {
+      _this.call(context, ...args.concat(innerArgs))
+    }
+  }
+  Function.prototype.bind = bind
+}();
+```
