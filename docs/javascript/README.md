@@ -23,7 +23,7 @@
 - [boxmodel: js 盒子模型，offset, scroll, client等等](boxmodel.md)
 - [call-apply: call, apply 对比](call-apply.md)
 - [compareObject: 深度比较参数是否相等](compareObject.md)
-- [data-observer: 数据劫持](data-observer.md)
+- [data-observe: 数据劫持](data-observe.md)
 - [deepCopy: 深拷贝与浅拷贝](deepCopy.md)
 - [dom: js DOM 操作方式汇总](dom.md)
 - [error: js 抛错方式及类型](error.md)

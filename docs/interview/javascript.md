@@ -239,7 +239,7 @@ console.log(time) // 可能为 4
 document.addEventListener('scroll', throttle(function () {
   console.log(123)
 }))
-// 第一种，每隔一段时间执行一次
+// 第一种，每隔一段时间执行一次 节流
 // ---1-2-3-4-5-6-7-8-9
 // ---1-----------7----
 function throttle (func, delay = 6000) {
@@ -252,11 +252,10 @@ function throttle (func, delay = 6000) {
   }
 }
 
-// 第二种，停止操作后一段时间执行一次
+// 第二种，停止操作后一段时间执行一次 防抖
 // ---1---2--3----------4---5--6------
 // -----------------3----------------6
-
-function throttle (func, delay = 600, I = null) {
+function debounce (func, delay = 600, I = null) {
   return (...args) => {
     clearTimeout(I)
     // I = setTimeout(func.bind(null, ...args), delay)
