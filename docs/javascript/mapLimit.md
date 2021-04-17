@@ -250,3 +250,76 @@ addTask(700, 4)
 // 1 ":" 1559722511995
 // 4 ":" 1559722512200
 ```
+
+## 补充
+
+```js
+// async-pool并发请求控制
+
+// 保证顺序和全部结果
+function createRequest (tasks, pool = 5) {
+  let results = []
+  let together = new Array(pool).fill(null)
+  let index = 0
+  together = together.map(() => {
+    return new Promise((resolve, reject) => {
+      const run = function run () {
+        if (index >= tasks.length) {
+          resolve()
+          return
+        }
+        let old_index = index
+        let task = tasks[index++]
+        task().then(result => {
+          results[old_index] = result
+          run()
+        }).catch(reason => {
+          reject(reason)
+        })
+      }
+    })
+  })
+  return Promise.all(together).then(() => {
+    return results
+  })
+}
+
+createRequest(tasks, 2).then(results => {
+  console.log('都成功认为成功，拿到完整请求结果且符合传入任务顺序', results)
+}).catch(reason => {
+  console.log('只要有一个失败就认为失败', reason)
+})
+
+// 不保证全部成功
+function createRequest (tasks, pool, callback) {
+  class TaskQuene {
+    running = 0
+    queue = []
+    results = []
+    pushTask (task) {
+      let self = this
+      self.queue.push(task)
+      self.next()
+    }
+    next () {
+      let self = this
+      while (self.running < pool && self.queue.length) {
+        self.running++
+        let task = self.queue.shift()
+        task().then(result => {
+          self.results.push(result)
+        }).finally(() => {
+          self.running--
+          self.next()
+        })
+      }
+      if (self.running === 0) {
+        callback(results)
+      }
+    }
+  }
+
+  let TQ = new TaskQueue
+  tasks.forEach(task => TQ.pushTask(task))
+}
+```

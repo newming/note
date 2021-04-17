@@ -77,6 +77,9 @@ http://www.ruanyifeng.com/blog/2014/03/server_setup.html
 sudo vi /etc/ssh/sshd_config
 sudo service ssh restart
 # 注意如果修改端口后请到阿里云配置安全组
+
+# centos7注意，重启ssh服务命令
+sudo systemctl restart sshd
 ```
 
 ## 修改服务器名称
@@ -97,6 +100,8 @@ sudo vi /etc/hostname # 重启后生效，注意修改 hosts
 
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
+[centos mongodb操作](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/)
+
 ```bash
 sudo service mongod start
 
@@ -109,4 +114,20 @@ sudo service mongod stop
 cat /var/log/mongodb/mongod.log
 
 sudo vi /etc/mongod.conf
+
+# centos下开机自启动
+# 自启动文件，安装时自动生成 /lib/systemd/system/mongod.service
+# 允许开机自启动
+sudo systemctl enable mongod
 ```
+
+## nvm镜像更换
+
+```bash
+export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node
+export NVM_IOJS_ORG_MIRROR=http://npm.taobao.org/mirrors/iojs
+```
+
+## pm2开机自启动
+
+https://pm2.keymetrics.io/docs/usage/startup/#startup-script-generator

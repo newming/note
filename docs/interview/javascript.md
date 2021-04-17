@@ -477,6 +477,16 @@ let result = 100 + true + 21.2 + null + undefined + 'test' + [] + null + 9 + fal
   - 字符串 == 对象，要把对象转为字符串
   - 剩下如果 == 两边数据类型不一致，都是需要转换为数字在进行比较
 
+```js
+// 对象的隐士转换原理
+var a = ?
+if (a == 1 && a == 2 & a == 3) {
+  console.log(1)
+}
+
+// Symbol.toPrimitive -> valueOf -> toString
+```
+
 ## 23堆栈内存
 
 - ECStack 执行环境栈
