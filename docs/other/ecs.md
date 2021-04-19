@@ -27,6 +27,11 @@ sudo apt-get upgrade
 
 ```bash
 sudo apt-get -y install git curl
+
+# git clone 失败 fatal: The remote end hung up unexpectedly，多半是国内 dns 被污染，可以尝试修改 hosts
+# 另外也发现一个其他办法，把 https 协议改为 git://
+git clone https://github.com/nvm-sh/nvm.git .nvm # 失败
+git clone git://github.com/nvm-sh/nvm.git .nvm # 成功
 ```
 
 ## 解决中文乱码

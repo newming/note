@@ -97,6 +97,8 @@ function func() {
   arrowFunc()
 }
 
-func(); // window window
-new func() // {} {}
+func();
+new func()
+// window window
+// {} {}
 ```
