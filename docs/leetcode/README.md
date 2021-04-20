@@ -77,6 +77,9 @@ https://leetcode-cn.com/problemset/all/
 - [合并两个有序数组-简单](array/merge-sorted-array.md)
 - [颜色分类-中等](array/sort-colors.md)
 - [杨辉三角-简单](array/pascals-triangle.md)
+- [搜索旋转排序数组-中等](array/search-in-rotated-sorted-array.md)
+- [搜索旋转排序数组II-中等](array/search-in-rotated-sorted-array-ii.md)
+- [搜索旋转数组-中等](array/search-rotate-array-lcci.md)
 
 ## Number
 
