@@ -277,6 +277,7 @@ function createRequest (tasks, pool = 5) {
           reject(reason)
         })
       }
+      run()
     })
   })
   return Promise.all(together).then(() => {

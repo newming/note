@@ -45,6 +45,7 @@
 - [module: ES模块基础用法及常见使用问题](module.md)
 - [object: 对象(Object)，介绍了单例模式等及对象的高级属性 defineProperty 等等](object.md)
 - [RegExp: 正则表达式](RegExp.md)
+- [Symbol特性&实现](Symbol.md)
 - [replace: replace 与 正则](replace.md)
 - [requestAnimationFrame: requestAnimationFrame 的特点](requestAnimationFrame.md)
 - [rmduplicate: 数组去重](rmduplicate.md)
