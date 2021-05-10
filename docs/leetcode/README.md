@@ -80,6 +80,8 @@ https://leetcode-cn.com/problemset/all/
 - [搜索旋转排序数组-中等](array/search-in-rotated-sorted-array.md)
 - [搜索旋转排序数组II-中等](array/search-in-rotated-sorted-array-ii.md)
 - [搜索旋转数组-中等](array/search-rotate-array-lcci.md)
+- [寻找数组的中心下标-简单](array/find-pivot-index.md)
+- [盛最多水的容器-中等](array/container-with-most-water.md)
 
 ## Number
 
