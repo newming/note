@@ -35,6 +35,7 @@ https://leetcode-cn.com/problemset/all/
 - [字符串转换整数(atoi)](string/string-to-integer-atoi.md)
 - [版本号比较](string/compare-version-numbers.md)
 - [括号生成-中等](string/generate-parentheses.md)
+- [千位分割数-简单](string/thousand-separator.md)
 
 
 ### LCS的定义
