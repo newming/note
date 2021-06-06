@@ -1,6 +1,6 @@
 # vue
 
-[vue3各种资源汇总](https://vue3js.cn/)
+- [vue3各种资源汇总](https://vue3js.cn/)
 
 ## mvvm
 
