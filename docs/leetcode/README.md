@@ -83,6 +83,7 @@ https://leetcode-cn.com/problemset/all/
 - [搜索旋转数组-中等](array/search-rotate-array-lcci.md)
 - [寻找数组的中心下标-简单](array/find-pivot-index.md)
 - [盛最多水的容器-中等](array/container-with-most-water.md)
+- [最小K个数-中等](array/smallest-k-lcci.md)
 
 ## Number
 

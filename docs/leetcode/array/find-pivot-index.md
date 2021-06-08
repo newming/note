@@ -59,18 +59,18 @@ var pivotIndex = function(nums) {
 
 ## 拓展
 
-利用 perSum 求数组任意区间和
+利用 preSum 求数组任意区间和
 
 ```js
-function perSum(nums) {
+function preSum(nums) {
   let len = nums.length
-  let perSum = new Array(len + 1)
-  perSum[0] = 0
+  let preSum = new Array(len + 1)
+  preSum[0] = 0
 
   for(let i = 0; i < len; i++) {
-    perSum[i + 1] = perSum[i] + nums[i]
+    preSum[i + 1] = preSum[i] + nums[i]
   }
 
-  return perSum
+  return preSum
 }
 ```
