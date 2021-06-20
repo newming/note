@@ -18,6 +18,7 @@
 - [常见面试题](https://juejin.im/post/5e5a759c6fb9a07ca301def9)
 - [vue相关面试题](https://vue3js.cn/interview/)
 - [web-interview](https://github.com/febobo/web-interview)
+- [css奇技淫巧](https://github.com/chokcoco/iCSS.git)
 
 ## js
 

@@ -84,6 +84,8 @@ https://leetcode-cn.com/problemset/all/
 - [寻找数组的中心下标-简单](array/find-pivot-index.md)
 - [盛最多水的容器-中等](array/container-with-most-water.md)
 - [最小K个数-中等](array/smallest-k-lcci.md)
+- [最长连续递增序列-简单](array/longest-continuous-increasing-subsequence.md)
+- [最长递增子序列-中等](array/longest-increasing-subsequence.md)
 
 ## Number
 
