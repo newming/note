@@ -97,3 +97,26 @@ function createRequest (tasks, pool, callback) {
   tasks.forEach(task => TQ.pushTask(task))
 }
 ```
+
+## fetch实现超时
+
+fetch本身不支持超时设置
+
+```js
+function myFetch(fetchPromise, timeout) {
+  var abortFn = null
+  var abortPromise = new Promise((resolve, reject) => {
+    abortFn = function() {
+      reject('timeout')
+    }
+  })
+
+  var abortablePromise = Promise.race(fetchPromise, abortPromise)
+
+  setTimeout(() => {
+    abortFn()
+  }, timeout)
+
+  return abortablePromise
+}
+```

@@ -485,6 +485,14 @@ if (a == 1 && a == 2 & a == 3) {
 }
 
 // Symbol.toPrimitive -> valueOf -> toString
+
+// 另一种使用拦截器 拦截 get 操作
+var i = 0
+Object.defineProperty(window, 'a', {
+  get() {
+    return ++i
+  }
+})
 ```
 
 ## 23堆栈内存
@@ -857,7 +865,181 @@ obj.push(2)
 console.log(obj)
 ```
 
-## 35权限校验
+## sum函数实现
+
+```js
+function sum(...args) {
+  let res = [...args]
+
+  function calc(...args1) {
+    res = [...res, ...args1]
+    return calc
+  }
+  calc.valueOf = function () {
+    return res.reduce((prev, next) => prev + next, 0)
+  }
+
+  return calc
+}
+
+sum(1, 2)(3, 4).valueOf() // => 10
+sum(1, 2, 3).valueOf() // => 6
+```
+
+## 数据转换
+
+```js
+[
+  { key: 'key4', parent: 'key3', },
+  { key: 'key5', parent: 'key2', },
+  { key: 'key1', parent: 'key0' },
+  { key: 'key2', parent: 'key0', },
+  { key: 'key3', parent: 'key1' },
+]
+// 转变为
+[
+  {
+    key: 'key1', parent: 'key0', children: [{
+      key: 'key3', parent: 'key1', children: [{
+        key: 'key4', parent: 'key3',
+      }]
+    }]
+  },
+  {
+    key: 'key2', parent: 'key0', children: [
+      {key: 'key5', parent: 'key2',}
+    ]
+  }
+]
+
+function convert(list) {
+  let knowedKeys = [...new Set(list.map(i => i.key))]
+  let setMap = {}
+  let result = []
+  function find(result, key) {
+    for (let i = 0; i < result.length; i++) {
+      let item = result[i]
+      if (item.key === key) {
+        return item
+      }
+      if (item.children && item.children.length) {
+        let has = find(item.children, key)
+        if (has) {
+          return has
+        }
+      }
+    }
+    return null
+  }
+  function set(list) {
+    for (let i = 0; i < list.length; i++) {
+      const item = list[i];
+      if (!knowedKeys.includes(item.parentKey)) {
+        result.push(item)
+        setMap[item.key] = 1
+        list.splice(i, 1)
+        i--
+        continue
+      }
+      if (knowedKeys.includes(item.parentKey) && setMap[item.parentKey]) {
+        let parent = find(result, item.parentKey)
+        if (parent) {
+          parent.children = parent.children || []
+          parent.children.push(item)
+          setMap[item.key] = 1
+          list.splice(i, 1)
+          i--
+        }
+      }
+    }
+    if (list.length > 0) {
+      set(list)
+    }
+  }
+  set(list)
+  return result
+}
+```
+
+## 数组扁平化
+
+```js
+let arr = [
+  [1, 2, 2],
+  [3, 4, 5, 5],
+  [6, 7, 8, 9, [11, 12, [12, 13, [14]]]],
+  10
+];
+/*方案1：使用 Array.prototype.flat 处理*/
+arr = arr.flat(Infinity);
+
+/*方案2：把数组直接变为字符串即可*/
+arr = arr.toString().split(',').map(item => {    return Number(item);});
+
+/*方案3：JSON.stringify*/
+arr = JSON.stringify(arr).replace(/(\[|\])/g, '').split(',').map(item => Number(item));
+
+/*方案4：基于数组的some方法进行判断检测*/
+while (arr.some(item => Array.isArray(item))) {  arr = [].concat(...arr);}
+
+/*方案5：基于递归深度遍历*/
+Array.prototype.myFlat = function myFlat() {
+  let result = [];
+  // =>循环数组中的每一项，把不是数组的存储到新数组中
+  let fn = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+      let item = arr[i];
+      if (Array.isArray(item)) {
+        fn(item);
+        continue;
+      }
+      result.push(item);
+    }
+  };
+  fn(this);
+  return result;
+}
+// 方案6: MDN给出reduce方法
+// to enable deep level flatten use recursion with reduce and concat
+function flatDeep(arr, d = 1) {
+  return d > 0 ? arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatDeep(val, d - 1) : val), [])
+  : arr.slice();
+};
+flatDeep(arr, Infinity);
+```
+
+## 数组的随机排序
+
+```js
+// 方法一
+var arr = [1,2,3,4,5,6,7,8,9,10];
+function randSort1(arr){
+  for(var i = 0,len = arr.length;i < len; i++ ){
+    var rand = parseInt(Math.random()*len);
+    var temp = arr[rand];
+    arr[rand] = arr[i];
+    arr[i] = temp;
+  }
+  return arr;
+}
+console.log(randSort1(arr));
+// 方法二
+function randSort2(arr){
+  var mixedArray = [];
+  while(arr.length > 0){
+    var randomIndex = parseInt(Math.random()*arr.length);
+    mixedArray.push(arr[randomIndex]);
+    arr.splice(randomIndex, 1);
+  }
+  return mixedArray;
+}
+// 方法三
+arr.sort(function(){
+  return Math.random() - 0.5;
+})
+```
+
+## 权限校验
 
 - 登陆态校验
 - 接口权限校验
