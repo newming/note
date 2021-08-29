@@ -91,6 +91,7 @@ https://leetcode-cn.com/problemset/all/
 
 - [整数反转-简单](number/reverse-integer.md)
 - [判断一个数字是否是回文数](number/palindrome-number.md)
+- [计数质数](number/count-primes.md)
 
 
 ## 链表
