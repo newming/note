@@ -104,6 +104,10 @@ https://leetcode-cn.com/problemset/all/
 - [回文链表](linked-list/palindrome-linked-list.md)
 - [环形链表](linked-list/linked-list-cycle.md)
 - [链表的中间节点](linked-list/middle-of-the-linked-list.md)
+- [删除排序链表中的重复元素](linked-list/remove-duplicates-from-sorted-list.md)
+- [旋转链表](linked-list/rotate-list.md)
+- [两两交换链表中的节点](linked-list/swap-nodes-in-pairs.md)
+
 
 ## 树
 
@@ -114,9 +118,11 @@ https://leetcode-cn.com/problemset/all/
 - [二叉树的后序遍历](tree/binary-tree-postorder-traversal.md)
 - [将有序数组转换为二叉搜索树-简单](tree/convert-sorted-array-to-binary-search-tree.md)
 
+
 ## 回溯算法
 
 - [组合总数-中等](backtracking/combination-sum.md)
+
 
 ## 动态规划
 
@@ -125,9 +131,11 @@ https://leetcode-cn.com/problemset/all/
 - [最大子序和](array/maximum-subarray.md)
 - [打家劫舍](dp/house-robber.md)
 
+
 ## 图算法
 
 - [狄克斯特拉算法-寻找加权图中前往X最短路径](graph/dijkstra.md)
+
 
 ## 搜索search
 
