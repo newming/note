@@ -16,9 +16,10 @@
 - [优质博文](https://github.com/YvetteLau/Blog)
 - [优质面试题](https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers)
 - [常见面试题](https://juejin.im/post/5e5a759c6fb9a07ca301def9)
-- [vue相关面试题](https://vue3js.cn/interview/)
+- [vue 相关面试题](https://vue3js.cn/interview/)
 - [web-interview](https://github.com/febobo/web-interview)
-- [css奇技淫巧](https://github.com/chokcoco/iCSS.git)
+- [css 奇技淫巧](https://github.com/chokcoco/iCSS.git)
+- [必刷算法&面试汇总](https://cfz6pr2brp.feishu.cn/base/appiHELqQxL9uyOqlNjMQQhOEUI?table=tblMaffjeFYrLrQe&view=vewJHSwJVd)
 
 ## js
 
@@ -29,7 +30,7 @@
 - ES6
 - 事件及设计模式
 - HTTP
-- AJAX和跨域处理
+- AJAX 和跨域处理
 - 数据可视化
 
 ## 项目亮点
@@ -42,12 +43,12 @@
   - 数据埋点&性能监控
   - 直播类、音视频类、实时通信类、可视化处理类...突出自己的知识体系面
 - 重点讲解的是：
-  - 性能优化方案：webpack层面、HTTP层面、页面渲染层面、骨架屏、延迟/异步加载、大数据渲染优化、大文件传输处理
-  - 强调结果，例如：之前打包、加载时间是N秒，优化后是M秒
+  - 性能优化方案：webpack 层面、HTTP 层面、页面渲染层面、骨架屏、延迟/异步加载、大数据渲染优化、大文件传输处理
+  - 强调结果，例如：之前打包、加载时间是 N 秒，优化后是 M 秒
 - 插件组件封装 敏捷化平台构建之一
   - 公共方法库
   - 插件、组件封装，二次封装&开源插件打造
-  - Vue自定义指令
+  - Vue 自定义指令
   - 除了强调结果，还可以突出自己的原理、源码阅读能力
 - 也可以讲解一些新技术方向的攻坚
   - hybird
