@@ -16,6 +16,7 @@
 - [代码随想录](https://www.programmercarl.com/)
 - [LeetCode 题解 Js 版](https://webbj97.github.io/leetCode-Js/)
 - [LeetCodeCookbook](https://books.halfrost.com/leetcode/)
+- [视频讲解](https://xiaochen1024.com/)
 
 https://leetcode-cn.com/problemset/all/
 
@@ -42,6 +43,7 @@ https://leetcode-cn.com/problemset/all/
 - [版本号比较](string/compare-version-numbers.md)
 - [括号生成-中等](string/generate-parentheses.md)
 - [千位分割数-简单](string/thousand-separator.md)
+- [亲密字符串](string/buddy-strings.md)
 
 ### LCS 的定义
 
@@ -52,7 +54,7 @@ https://leetcode-cn.com/problemset/all/
   - 字符串 acdfg 与 adfc 的最长公共子序列为 adf
 - 注意区别最长公共子串(Longest Common Substring)，最长公共子串要求连续
 
-## Array
+## Array/队列
 
 - [两数之和-简单](array/two-sum.md)
 - [两数相加-中等](array/add-two-numbers.md)
@@ -91,6 +93,9 @@ https://leetcode-cn.com/problemset/all/
 - [最小 K 个数-中等](array/smallest-k-lcci.md)
 - [最长连续递增序列-简单](array/longest-continuous-increasing-subsequence.md)
 - [最长递增子序列-中等](array/longest-increasing-subsequence.md)
+- [设计循环队列-中等](array/design-circular-queue.md)
+- [设计循环双端队列-中等](array/design-circular-deque.md)
+- [最近的请求次数](array/number-of-recent-calls.md)
 
 ## Number
 
@@ -111,6 +116,7 @@ https://leetcode-cn.com/problemset/all/
 - [删除排序链表中的重复元素](linked-list/remove-duplicates-from-sorted-list.md)
 - [旋转链表](linked-list/rotate-list.md)
 - [两两交换链表中的节点](linked-list/swap-nodes-in-pairs.md)
+- [分隔链表](linked-list/partition-list.md)
 
 ## 树
 
