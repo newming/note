@@ -54,6 +54,14 @@ https://leetcode-cn.com/problemset/all/
   - 字符串 acdfg 与 adfc 的最长公共子序列为 adf
 - 注意区别最长公共子串(Longest Common Substring)，最长公共子串要求连续
 
+## 栈
+
+- [化栈为队](stack/implement-queue-using-stacks-lcci.md)
+- [棒球比赛](stack/baseball-game.md)
+- [比较含退格的字符串](stack/backspace-string-compare.md)
+- [基本计算器 I](stack/basic-calculator.md)
+- [基本计算器 II](stack/basic-calculator-ii.md)
+
 ## Array/队列
 
 - [两数之和-简单](array/two-sum.md)
@@ -123,9 +131,14 @@ https://leetcode-cn.com/problemset/all/
 - [二叉树的最大深度-简单](tree/maximum-depth-of-binary-tree.md)
 - [验证二叉搜索树-中等](tree/validate-binary-search-tree.md)
 - [对称二叉树-简单](tree/symmetric-tree.md)
-- [二叉树的层序遍历-中等](tree/binary-tree-level-order-traversal.md)
+- [二叉树的前序遍历-简单](tree/binary-tree-level-order-traversal.md)
+- [二叉树的层序遍历-中等](tree/binary-tree-preorder-traversal.md)
 - [二叉树的后序遍历](tree/binary-tree-postorder-traversal.md)
 - [将有序数组转换为二叉搜索树-简单](tree/convert-sorted-array-to-binary-search-tree.md)
+- [N 叉树的前序遍历](tree/n-ary-tree-preorder-traversal.md)
+- [二叉树的锯齿形层序遍历](tree/binary-tree-zigzag-level-order-traversal.md)
+- [从前序与中序遍历序列构造二叉树](tree/construct-binary-tree-from-preorder-and-inorder-traversal.md)
+- [翻转二叉树](tree/invert-binary-tree.md)
 
 ## 回溯算法
 
