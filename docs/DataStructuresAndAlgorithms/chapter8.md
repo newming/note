@@ -16,9 +16,22 @@
 - 深度: 取决于它的祖先节点的数量
 - 高度: 取决于所有节点深度的最大值
 
+一些分类(简单描述)
+
+- 完全二叉树: complete binary tree，只有最后一层的右节点不满，可以用连续的空间存储(数组)。编号为 i(从 1 开始)的子节点，其左孩子编号为 2\*i，右孩子 2\*i + 1
+- 满二叉树: 没有不为 1 的子节点
+- 完美二叉树: 看起来是个三角形
+
 ## 二叉树和二叉搜索树
 
 二叉树中的节点最多只能有两个子节点: 一个是左侧子节点，另一个是右侧子节点。这些定义有助于写出更高效的 向/从 树中插入、查找和删除节点的算法。应用非常广泛。
+
+二叉树的性质
+
+- 在二叉树的第 i 层上最多有 2^(i-1)个节点(i>=1)
+- 二叉树中如果深度为 k，那么最多有 2^k - 1 个节点(k>=1)
+- 节点数 = 边数 + 1
+- 度为 0 的节点比度为 2 的节点多一个。推导过程：度为 0，1，2 的节点数的和为 n0 + n1 + n2 = 边数(0 + n1 + 2 \* n2) + 1。得出 n0 = n2 + 1
 
 二叉搜索树(BST)是二叉树中的一种，但是它只允许在左侧节点存储比父节点小的值，在右侧节点存储比父节点大或者等于的值。
 
@@ -28,7 +41,7 @@
 const Compare = {
   LESS_THAN: -1,
   BIGGER_THAN: 1,
-  EQUALS: 0
+  EQUALS: 0,
 };
 function defaultCompare(a, b) {
   if (a === b) {
@@ -96,7 +109,7 @@ class BinarySearchTree {
     }
     return true;
   }
-  // 通过中序遍历方式遍历所有节点: 从最小到最大的顺序访问
+  // 通过中序遍历方式遍历所有节点(左、根、右): 从最小到最大的顺序访问
   inOrderTraverse(callback) {
     this.inOrderTraverseNode(this.root, callback);
   }
@@ -107,7 +120,7 @@ class BinarySearchTree {
       this.inOrderTraverseNode(node.right, callback);
     }
   }
-  // 通过先序遍历方式遍历所有节点：以优先于后代节点的顺序访问每个节点
+  // 通过先序遍历方式遍历所有节点(根、左、右):以优先于后代节点的顺序访问每个节点
   preOrderTraverse(callback) {
     this.preOrderTraverseNode(this.root, callback);
   }
@@ -118,7 +131,7 @@ class BinarySearchTree {
       this.preOrderTraverseNode(node.right, callback);
     }
   }
-  // 通过后序遍历方式遍历所有节点: 先访问节点的后代节点，在访问节点本身
+  // 通过后序遍历方式遍历所有节点(左、右、根): 先访问节点的后代节点，在访问节点本身
   postOrderTraverse(callback) {
     this.postOrderTraverseNode(this.root, callback);
   }
@@ -199,7 +212,7 @@ class BinarySearchTree {
 
 ## 自平衡树
 
-二叉搜索树存在一个问题：取决于添加的节点数，树的一条边可能会非常深。这会在需要在某条边上添加、移除、搜索某个节点时引起一些性能问题。为了解决这个问题，有一种树叫做 Adelson-Velskii-Landi树(AVL树)。
+二叉搜索树存在一个问题：取决于添加的节点数，树的一条边可能会非常深。这会在需要在某条边上添加、移除、搜索某个节点时引起一些性能问题。为了解决这个问题，有一种树叫做 Adelson-Velskii-Landi 树(AVL 树)。
 
 AVL 树是一种自平衡二叉搜索树，意思是任何一个节点的左右两侧子树的高度之差最多为 1。也就是说这种树会在添加或移除节点时尽量试着成为一颗完全树。
 
@@ -209,7 +222,7 @@ const BalanceFactor = {
   SLIGHTLY_UNBALANCED_RIGHT: 2,
   BALANCED: 3,
   SLIGHTLY_UNBALANCED_LEFT: 4,
-  UNBALANCED_LEFT: 5
+  UNBALANCED_LEFT: 5,
 };
 // 在上边的 二叉搜索树 的基础上开发
 class AVLTree extends BinarySearchTree {
@@ -222,7 +235,10 @@ class AVLTree extends BinarySearchTree {
     if (node == null) {
       return -1;
     }
-    return Math.max(this.getNodeHeight(node.left), this.getNodeHeight(node.right)) + 1;
+    return (
+      Math.max(this.getNodeHeight(node.left), this.getNodeHeight(node.right)) +
+      1
+    );
   }
   /**
    * Left left case: rotate right
@@ -275,7 +291,8 @@ class AVLTree extends BinarySearchTree {
     return this.rotationRR(node);
   }
   getBalanceFactor(node) {
-    const heightDifference = this.getNodeHeight(node.left) - this.getNodeHeight(node.right);
+    const heightDifference =
+      this.getNodeHeight(node.left) - this.getNodeHeight(node.right);
     switch (heightDifference) {
       case -2:
         return BalanceFactor.UNBALANCED_RIGHT;
@@ -335,12 +352,16 @@ class AVLTree extends BinarySearchTree {
       // Left left case
       if (
         this.getBalanceFactor(node.left) === BalanceFactor.BALANCED ||
-        this.getBalanceFactor(node.left) === BalanceFactor.SLIGHTLY_UNBALANCED_LEFT
+        this.getBalanceFactor(node.left) ===
+          BalanceFactor.SLIGHTLY_UNBALANCED_LEFT
       ) {
         return this.rotationLL(node);
       }
       // Left right case
-      if (this.getBalanceFactor(node.left) === BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT) {
+      if (
+        this.getBalanceFactor(node.left) ===
+        BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT
+      ) {
         return this.rotationLR(node.left);
       }
     }
@@ -348,12 +369,16 @@ class AVLTree extends BinarySearchTree {
       // Right right case
       if (
         this.getBalanceFactor(node.right) === BalanceFactor.BALANCED ||
-        this.getBalanceFactor(node.right) === BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT
+        this.getBalanceFactor(node.right) ===
+          BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT
       ) {
         return this.rotationRR(node);
       }
       // Right left case
-      if (this.getBalanceFactor(node.right) === BalanceFactor.SLIGHTLY_UNBALANCED_LEFT) {
+      if (
+        this.getBalanceFactor(node.right) ===
+        BalanceFactor.SLIGHTLY_UNBALANCED_LEFT
+      ) {
         return this.rotationRL(node.right);
       }
     }

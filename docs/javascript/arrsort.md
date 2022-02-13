@@ -1,5 +1,7 @@
 # 数组排序算法
 
+[十大经典排序算法](https://cnblogs.com/onepixel/p/7674659.html)
+
 - 冒泡排序
 - 快速排序
 - 插入排序
@@ -7,7 +9,7 @@
 ## 冒泡排序
 
 ```js
-var arr = [12,10,13,8,4];
+var arr = [12, 10, 13, 8, 4];
 // target: [4,8,10,12,13] 从小到大排序
 // 思想：当前项和后一项进行比较，如果当前项大于后一项，两者交换位置
 /*
@@ -34,23 +36,24 @@ var arr = [12,10,13,8,4];
   b = c
 */
 
-function sortAry(ary){
+function sortAry(ary) {
   // i代表轮数，比较ary.length-1次
-  for (var i = 0; i < ary.length-1; i++) {
+  for (var i = 0; i < ary.length - 1; i++) {
     // 比较arr.length-1-i次，j代表每一轮比较的次数,不用和自己比，不用和上一轮最后一项的最大值比较
-    for (var j = 0; j < ary.length-1-i; j++) {
-      var cur = ary[j],next = ary[j+1];
-      if (cur>next) {
+    for (var j = 0; j < ary.length - 1 - i; j++) {
+      var cur = ary[j],
+        next = ary[j + 1];
+      if (cur > next) {
         // 如果当前项大于下一项，交换位置
         var temp = null;
         temp = ary[j];
-        ary[j] = ary[j+1];
-        ary[j+1] = temp;
+        ary[j] = ary[j + 1];
+        ary[j + 1] = temp;
       }
     }
   }
 }
-sortAry(arr)
+sortAry(arr);
 console.log(arr);
 ```
 
@@ -61,24 +64,25 @@ console.log(arr);
 ```js
 // 假设一种场景，比如 8 1 2 3 5 7，进行一次排序之后，结果就变成了 1 2 3 5 7 8，就没有必要继续循环下去了
 // 优化的点主要在于：假如某一趟排序之后已经有序，我们需要减少排序的趟数。否则就做了很多无用功。
-function sortAry(ary){
+function sortAry(ary) {
   // i代表轮数，比较ary.length-1次
-  for (var i = 0; i < ary.length-1; i++) {
-    var exchange = false
+  for (var i = 0; i < ary.length - 1; i++) {
+    var exchange = false;
     // 比较arr.length-1-i次，j代表每一轮比较的次数,不用和自己比，不用和上一轮最后一项的最大值比较
-    for (var j = 0; j < ary.length-1-i; j++) {
-      var cur = ary[j],next = ary[j+1];
-      if (cur>next) {
+    for (var j = 0; j < ary.length - 1 - i; j++) {
+      var cur = ary[j],
+        next = ary[j + 1];
+      if (cur > next) {
         // 如果当前项大于下一项，交换位置
         var temp = null;
         temp = ary[j];
-        ary[j] = ary[j+1];
-        ary[j+1] = temp;
-        exchange = true
+        ary[j] = ary[j + 1];
+        ary[j + 1] = temp;
+        exchange = true;
       }
     }
     if (!exchange) {
-      break
+      break;
     }
   }
 }
@@ -92,25 +96,25 @@ function sortAry(ary){
 function bubbleSort_twoWays(nums) {
   let low = 0;
   let high = nums.length - 1;
-  while(low < high) {
+  while (low < high) {
     let mark = true;
     // 找到最大值放到右边
-    for(let i=low; i<high; i++) {
-      if(nums[i] > nums[i+1]) {
-        [nums[i], nums[i+1]] = [nums[i+1], nums[i]];
+    for (let i = low; i < high; i++) {
+      if (nums[i] > nums[i + 1]) {
+        [nums[i], nums[i + 1]] = [nums[i + 1], nums[i]];
         mark = false;
       }
     }
     high--;
     // 找到最小值放到左边
-    for(let j=high; j>low; j--) {
-      if(nums[j] < nums[j-1]) {
-        [nums[j], nums[j-1]] = [nums[j-1], nums[j]];
+    for (let j = high; j > low; j--) {
+      if (nums[j] < nums[j - 1]) {
+        [nums[j], nums[j - 1]] = [nums[j - 1], nums[j]];
         mark = false;
       }
     }
     low++;
-    if(mark)  return;
+    if (mark) return;
   }
 }
 ```
@@ -121,12 +125,12 @@ function bubbleSort_twoWays(nums) {
 
 ```js
 // 插入排序第一版
-function sort(elements){
+function sort(elements) {
   //假设第0个元素是一个有序的数列，第1个以后的是无序的序列，
   //所以从第1个元素开始将无序数列的元素插入到有序数列中
-  for(var i = 1; i < elements.length; i++){
+  for (var i = 1; i < elements.length; i++) {
     //升序
-    if(elements[i] < elements[i-1]){
+    if (elements[i] < elements[i - 1]) {
       //取出无序数列中的第i个作为被插入元素
       var guard = elements[i];
       //记住有序数列的最后一个位置，并且将有序数列位置扩大一个
@@ -134,35 +138,35 @@ function sort(elements){
       // elements[i] = elements[j]; // 我发现这句是多余的
 
       //比大小，找到被插入元素所在的位置
-      while(j >= 0 && guard < elements[j]){
-        elements[j+1] = elements[j];
+      while (j >= 0 && guard < elements[j]) {
+        elements[j + 1] = elements[j];
         j--;
       }
 
       //插入
-      elements[j+1] = guard;
+      elements[j + 1] = guard;
     }
   }
 }
 
 var elements = [10, 9, 8, 7, 6, 5];
-console.log('before: ' + elements);
+console.log("before: " + elements);
 sort(elements);
-console.log(' after: ' + elements);
+console.log(" after: " + elements);
 
 // 插入排序第二版
-function insertionSort (arr) {
-  let len = arr.length
-  let j, temp
+function insertionSort(arr) {
+  let len = arr.length;
+  let j, temp;
   for (let i = 1; i < length; i++) {
-    j = i
-    temp = arr[i]
+    j = i;
+    temp = arr[i];
     while (j > 0 && array[j - 1] > temp) {
-      arr[j] = arr[j - 1]
-      j--
+      arr[j] = arr[j - 1];
+      j--;
     }
     if (j !== i) {
-      arr[j] = temp
+      arr[j] = temp;
     }
   }
 }
@@ -176,36 +180,36 @@ function insertionSort (arr) {
 
 ```js
 function swap(arr, index1, index2) {
-  let aux = arr[index1]
-  arr[index1] = arr[index2]
-  arr[index2] = aux
+  let aux = arr[index1];
+  arr[index1] = arr[index2];
+  arr[index2] = aux;
 }
-function selectionSort (array) {
-  let length = array.length
-  let indexMin // 最小值的索引
+function selectionSort(array) {
+  let length = array.length;
+  let indexMin; // 最小值的索引
   for (let i = 0; i < length - 1; i++) {
-    indexMin = i
+    indexMin = i;
     for (let j = i + 1; j < length; j++) {
       if (array[indexMin] > array[j]) {
-        indexMin = j
+        indexMin = j;
       }
     }
     if (i !== indexMin) {
-      swap(array, i, indexMin)
+      swap(array, i, indexMin);
     }
   }
 }
-let arr = [4, 8, 2]
-selectionSort(arr)
-console.log(arr)
+let arr = [4, 8, 2];
+selectionSort(arr);
+console.log(arr);
 ```
 
 ```js
 // 简写的选择排序，但是存在多次交换的问题
 function selectSort(nums) {
-  for(let i=0, len=nums.length; i<len; i++) {
-    for(let j=i+1; j<len; j++) {
-      if(nums[i] > nums[j]) {
+  for (let i = 0, len = nums.length; i < len; i++) {
+    for (let j = i + 1; j < len; j++) {
+      if (nums[i] > nums[j]) {
         [nums[i], nums[j]] = [nums[j], nums[i]];
       }
     }
@@ -213,14 +217,13 @@ function selectSort(nums) {
 }
 ```
 
-
 ## 归并排序
 
 [图解排序算法(四)之归并排序](https://www.cnblogs.com/chengxiao/p/6194356.html)
 
-最好：O(n * logn)
-最坏：O(n * logn)
-平均：O(n * logn)
+最好：O(n _ logn)
+最坏：O(n _ logn)
+平均：O(n \* logn)
 
 归并排序是一种分治算法。其思想是将原始的数组切分为较小的数组，直到每个小数组只有一个位置，接着将小数组归并成较大的数组，直到最后只有一个排序完毕的大数组。
 
@@ -228,9 +231,9 @@ function selectSort(nums) {
 const Compare = {
   LESS_THAN: -1,
   BIGGER_THAN: 1,
-  EQUALS: 0
+  EQUALS: 0,
 };
-function defaultCompare (a, b) {
+function defaultCompare(a, b) {
   if (a === b) {
     return Compare.EQUALS;
   }
@@ -238,17 +241,21 @@ function defaultCompare (a, b) {
 }
 
 // 归并函数
-function merge (left, right, compareFn) {
+function merge(left, right, compareFn) {
   let i = 0;
   let j = 0;
   const result = [];
   while (i < left.length && j < right.length) {
-    result.push(compareFn(left[i], right[j]) === Compare.LESS_THAN ? left[i++] : right[j++]);
+    result.push(
+      compareFn(left[i], right[j]) === Compare.LESS_THAN
+        ? left[i++]
+        : right[j++]
+    );
   }
   return result.concat(i < left.length ? left.slice(i) : right.slice(j));
 }
 // 切分大数组
-function mergeSort (array, compareFn = defaultCompare) {
+function mergeSort(array, compareFn = defaultCompare) {
   if (array.length > 1) {
     const { length } = array;
     const middle = Math.floor(length / 2);
@@ -261,7 +268,7 @@ function mergeSort (array, compareFn = defaultCompare) {
 
 // 上边的简写
 // 归并函数，这个函数主要负责将传入的两个数组进行排序
-function merge (left, right) {
+function merge(left, right) {
   let i = 0; // i,j 为 left right 的左右两个指针
   let j = 0;
   const result = [];
@@ -272,7 +279,7 @@ function merge (left, right) {
   return result.concat(i < left.length ? left.slice(i) : right.slice(j));
 }
 // 切分大数组
-function mergeSort (array) {
+function mergeSort(array) {
   if (array.length > 1) {
     const { length } = array;
     const middle = Math.floor(length / 2);
@@ -283,8 +290,8 @@ function mergeSort (array) {
   return array;
 }
 
-let arr = [4, 8, 2]
-console.log(mergeSort(arr))
+let arr = [4, 8, 2];
+console.log(mergeSort(arr));
 ```
 
 ## 快速排序
@@ -298,35 +305,37 @@ console.log(mergeSort(arr))
 取中间数为基准，分别创建左右两个子数组，比基准小的放到左子数组，比基准大的放到右子数组，在分别对两个子数组进行相同操作
 
 第一种快速排序。不太好， splice 性能较差，因为 splice 每次操作都会创建新的数组，空间复杂度较高。从数组的中间拿一个值，然后通过这个值挨个和数组里面的值进行比较，如果大于的放一边，小于的放一边，然后把这些合并，再进行比较，如此反复即可。
+
 ```js
-var arr = [3,1,4,2,5,21,6,15,63];
-function sortA(arr){
+var arr = [3, 1, 4, 2, 5, 21, 6, 15, 63];
+function sortA(arr) {
   // 如果只有一位，就没有必要比较
-  if(arr.length<=1){
-      return arr;
+  if (arr.length <= 1) {
+    return arr;
   }
   // 获取中间值的索引
-  var len = Math.floor(arr.length/2);
+  var len = Math.floor(arr.length / 2);
   // 截取中间值
-  var cur = arr.splice(len,1);
+  var cur = arr.splice(len, 1);
   // 小于中间值放这里面
   var left = [];
   // 大于的放着里面
   var right = [];
-  for(var i=0;i<arr.length;i++){
-      // 判断是否大于
-      if(cur>arr[i]){
-          left.push(arr[i]);
-      }else{
-          right.push(arr[i]);
-      }
+  for (var i = 0; i < arr.length; i++) {
+    // 判断是否大于
+    if (cur > arr[i]) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
   }
   // 通过递归，上一轮比较好的数组合并，并且再次进行比较。
-  console.log(sortA(left).concat(cur,sortA(right)))
-  return sortA(left).concat(cur,sortA(right))
+  console.log(sortA(left).concat(cur, sortA(right)));
+  return sortA(left).concat(cur, sortA(right));
 }
 console.log(sortA(arr));
 ```
+
 额，理解起来比较难，画了个图
 ![quicksort](../assets/images/quicksort.png)
 
@@ -358,7 +367,8 @@ function partition(array, left, right) {
     while (array[j] > pivot) {
       j--; // 如果右边的指针的值大于中间值，符合条件，移动右指针，最多移动到中间的这个值的位置
     }
-    if (i <= j) { // 如果 i <= j 说明在上边的两个 while 循环中某个地方停住了，交换位置，同时移动指针
+    if (i <= j) {
+      // 如果 i <= j 说明在上边的两个 while 循环中某个地方停住了，交换位置，同时移动指针
       swap(array, i, j);
       i++;
       j--;
@@ -395,7 +405,7 @@ export function quickSort(array) {
 ```js
 function quickSort1(nums) {
   function recursive(arr, left, right) {
-    if(left >= right)  return;
+    if (left >= right) return;
     let index = partition(arr, left, right);
     recursive(arr, left, index - 1);
     recursive(arr, index + 1, right);
@@ -405,10 +415,10 @@ function quickSort1(nums) {
     let temp = arr[left];
     let p = left + 1;
     let q = right;
-    while(p <= q) {
-      while(p <= q && arr[p] < temp)  p++;
-      while(p <= q && arr[q] > temp)  q--;
-      if(p <= q) {
+    while (p <= q) {
+      while (p <= q && arr[p] < temp) p++;
+      while (p <= q && arr[q] > temp) q--;
+      if (p <= q) {
         [arr[p], arr[q]] = [arr[q], arr[p]];
         // 交换值后两边各向中间推进一位
         p++;
@@ -419,7 +429,7 @@ function quickSort1(nums) {
     [arr[left], arr[q]] = [arr[q], arr[left]];
     return q;
   }
-  recursive(nums, 0, nums.length-1);
+  recursive(nums, 0, nums.length - 1);
 }
 ```
 
@@ -429,7 +439,7 @@ function quickSort1(nums) {
 function quickSort(nums) {
   // 递归排序基数左右两边的序列
   function recursive(arr, left, right) {
-    if(left >= right)  return;
+    if (left >= right) return;
     let index = partition(arr, left, right);
     recursive(arr, left, index - 1);
     recursive(arr, index + 1, right);
@@ -439,17 +449,17 @@ function quickSort(nums) {
   function partition(arr, left, right) {
     // 取第一个数为基数
     let temp = arr[left];
-    while(left < right) {
-      while(left < right && arr[right] >= temp)  right--;
+    while (left < right) {
+      while (left < right && arr[right] >= temp) right--;
       arr[left] = arr[right];
-      while(left < right && arr[left] < temp)  left++;
+      while (left < right && arr[left] < temp) left++;
       arr[right] = arr[left];
     }
     // 修改基数的位置
     arr[left] = temp;
     return left;
   }
-  recursive(nums, 0, nums.length-1);
+  recursive(nums, 0, nums.length - 1);
 }
 ```
 
@@ -462,14 +472,14 @@ function heapSort(nums) {
   // 调整最大堆，使index的值大于左右节点
   function adjustHeap(nums, index, size) {
     // 交换后可能会破坏堆结构，需要循环使得每一个父节点都大于左右结点
-    while(true) {
+    while (true) {
       let max = index;
-      let left = index * 2 + 1;   // 左节点
-      let right = index * 2 + 2;  // 右节点
-      if(left < size && nums[max] < nums[left])  max = left;
-      if(right < size && nums[max] < nums[right])  max = right;
+      let left = index * 2 + 1; // 左节点
+      let right = index * 2 + 2; // 右节点
+      if (left < size && nums[max] < nums[left]) max = left;
+      if (right < size && nums[max] < nums[right]) max = right;
       // 如果左右结点大于当前的结点则交换，并再循环一遍判断交换后的左右结点位置是否破坏了堆结构（比左右结点小了）
-      if(index !== max) {
+      if (index !== max) {
         [nums[index], nums[max]] = [nums[max], nums[index]];
         index = max;
       } else {
@@ -483,14 +493,14 @@ function heapSort(nums) {
     let start = parseInt(nums.length / 2) - 1;
     let size = nums.length;
     // 从最后一个非叶子结点开始调整，直至堆顶。
-    for(let i=start; i>=0; i--) {
+    for (let i = start; i >= 0; i--) {
       adjustHeap(nums, i, size);
     }
   }
 
   buildHeap(nums);
   // 循环n-1次，每次循环后交换堆顶元素和堆底元素并重新调整堆结构
-  for(let i=nums.length-1; i>0; i--) {
+  for (let i = nums.length - 1; i > 0; i--) {
     [nums[i], nums[0]] = [nums[0], nums[i]];
     adjustHeap(nums, 0, i);
   }
@@ -501,8 +511,8 @@ function heapSort(nums) {
 
 - 索引 0 是树的根节点
 - 除根节点外，任意节点 N 的父节点是 N/2
-- 节点 L 的左子节点是 2*L
-- 节点 R 的右子节点是 2*R + 1
+- 节点 L 的左子节点是 2\*L
+- 节点 R 的右子节点是 2\*R + 1
 
 ```js
 function defaultCompare(a, b) {
@@ -521,8 +531,8 @@ function swap(array, a, b) {
 
 function heapify(array, index, heapSize, compareFn) {
   let largest = index;
-  const left = (2 * index) + 1;
-  const right = (2 * index) + 2;
+  const left = 2 * index + 1;
+  const right = 2 * index + 2;
   if (left < heapSize && compareFn(array[left], array[index]) > 0) {
     largest = left;
   }
@@ -564,7 +574,7 @@ function heapSort(array, compareFn = defaultCompare) {
 
 以数组元素值为键，出现次数为值存进一个临时数组，最后再遍历这个临时数组还原回原数组。因为 JavaScript 的数组下标是以字符串形式存储的，所以计数排序可以用来排列负数，但不可以排列小数。
 
-最好：O(n + k)，k是最大值和最小值的差。
+最好：O(n + k)，k 是最大值和最小值的差。
 最坏：O(n + k)
 平均：O(n + k)
 
@@ -590,7 +600,7 @@ function countingSort(array) {
   const maxValue = findMaxValue(array); // 找到原有数组中最大的值
   let sortedIndex = 0;
   const counts = new Array(maxValue + 1); // 根据最大值生成一个数组
-  array.forEach(element => {
+  array.forEach((element) => {
     if (!counts[element]) {
       counts[element] = 0;
     }
@@ -607,7 +617,7 @@ function countingSort(array) {
   return array;
 }
 
-console.log(countingSort([1, 6, 3]))
+console.log(countingSort([1, 6, 3]));
 ```
 
 ```js
@@ -617,14 +627,14 @@ function countingSort(nums) {
   let max = Math.max(...nums);
   let min = Math.min(...nums);
   // 装桶
-  for(let i=0, len=nums.length; i<len; i++) {
+  for (let i = 0, len = nums.length; i < len; i++) {
     let temp = nums[i];
     arr[temp] = arr[temp] + 1 || 1;
   }
   let index = 0;
   // 还原原数组
-  for(let i=min; i<=max; i++) {
-    while(arr[i] > 0) {
+  for (let i = min; i <= max; i++) {
+    while (arr[i] > 0) {
       nums[index++] = i;
       arr[i]--;
     }
@@ -645,15 +655,15 @@ function countingSort(nums) {
   let min = Math.min(...nums);
   // 加上最小值的相反数来缩小数组范围
   let add = -min;
-  for(let i=0, len=nums.length; i<len; i++) {
+  for (let i = 0, len = nums.length; i < len; i++) {
     let temp = nums[i];
     temp += add;
     arr[temp] = arr[temp] + 1 || 1;
   }
   let index = 0;
-  for(let i=min; i<=max; i++) {
-    let temp = arr[i+add];
-    while(temp > 0) {
+  for (let i = min; i <= max; i++) {
+    let temp = arr[i + add];
+    while (temp > 0) {
       nums[index++] = i;
       temp--;
     }
@@ -677,7 +687,7 @@ function bucketSort(nums) {
   // 创建二维数组，第一维表示第几个桶，第二维表示该桶里存放的数
   // let arr = Array.from(Array(num)).map(() => Array().fill(0));
   let arr = Array(num).fill([]);
-  nums.forEach(val => {
+  nums.forEach((val) => {
     // 计算元素应该分布在哪个桶
     let index = parseInt((val - min) / range);
     // 防止index越界，例如当[5,1,1,2,0,0]时index会出现5
@@ -685,17 +695,17 @@ function bucketSort(nums) {
     let temp = arr[index];
     // 插入排序，将元素有序插入到桶中
     let j = temp.length - 1;
-    while(j >= 0 && val < temp[j]) {
-      temp[j+1] = temp[j];
+    while (j >= 0 && val < temp[j]) {
+      temp[j + 1] = temp[j];
       j--;
     }
-    temp[j+1] = val;
-  })
+    temp[j + 1] = val;
+  });
   // 修改回原数组
   let res = [].concat.apply([], arr);
   nums.forEach((val, i) => {
     nums[i] = res[i];
-  })
+  });
 }
 ```
 
@@ -705,16 +715,16 @@ function bucketSort(nums) {
 
 使用十个桶 0-9，把每个数从低位到高位根据位数放到相应的桶里，以此循环最大值的位数次。但只能排列正整数，因为遇到负号和小数点无法进行比较。
 
-最好：O(n * k)，k表示最大值的位数。
-最坏：O(n * k)
-平均：O(n * k)
+最好：O(n _ k)，k 表示最大值的位数。
+最坏：O(n _ k)
+平均：O(n \* k)
 
 ```js
 function radixSort(nums) {
   // 计算位数
   function getDigits(n) {
     let sum = 0;
-    while(n) {
+    while (n) {
       sum++;
       n = parseInt(n / 10);
     }
@@ -724,21 +734,21 @@ function radixSort(nums) {
   let arr = Array.from(Array(10)).map(() => Array());
   let max = Math.max(...nums);
   let maxDigits = getDigits(max);
-  for(let i=0, len=nums.length; i<len; i++) {
+  for (let i = 0, len = nums.length; i < len; i++) {
     // 用0把每一个数都填充成相同的位数
-    nums[i] = (nums[i] + '').padStart(maxDigits, 0);
+    nums[i] = (nums[i] + "").padStart(maxDigits, 0);
     // 先根据个位数把每一个数放到相应的桶里
-    let temp = nums[i][nums[i].length-1];
+    let temp = nums[i][nums[i].length - 1];
     arr[temp].push(nums[i]);
   }
   // 循环判断每个位数
-  for(let i=maxDigits-2; i>=0; i--) {
+  for (let i = maxDigits - 2; i >= 0; i--) {
     // 循环每一个桶
-    for(let j=0; j<=9; j++) {
-      let temp = arr[j]
+    for (let j = 0; j <= 9; j++) {
+      let temp = arr[j];
       let len = temp.length;
       // 根据当前的位数i把桶里的数放到相应的桶里
-      while(len--) {
+      while (len--) {
         let str = temp[0];
         temp.shift();
         arr[str[i]].push(str);
@@ -749,7 +759,7 @@ function radixSort(nums) {
   let res = [].concat.apply([], arr);
   nums.forEach((val, index) => {
     nums[index] = +res[index];
-  })
+  });
 }
 ```
 
@@ -759,9 +769,9 @@ function radixSort(nums) {
 
 通过某个增量 gap，将整个序列分给若干组，从后往前进行组内成员的比较和交换，随后逐步缩小增量至 1。希尔排序类似于插入排序，只是一开始向前移动的步数从 1 变成了 gap。
 
-最好：O(n * logn)，步长不断二分。
-最坏：O(n * logn)
-平均：O(n * logn)
+最好：O(n _ logn)，步长不断二分。
+最坏：O(n _ logn)
+平均：O(n \* logn)
 
 ```js
 function shellSort(array) {

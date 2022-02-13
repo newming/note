@@ -1,4 +1,4 @@
-# JavaScript数据结构与算法
+# JavaScript 数据结构与算法
 
 第二版
 
@@ -26,6 +26,7 @@
 - palindromeChecker: 回文检查器
 
 ### [chapter5: 链表(顺序数据结构)](chapter5.md)
+
 - LinkedList: 普通单向链表
 - DoublyLinkedList: 双向链表
 - CircularLinkedList: 循环链表
@@ -71,3 +72,5 @@
 - 未完
 
 ### [chapter12: 算法复杂度](chapter12.md)
+
+### [堆](heap.md)
