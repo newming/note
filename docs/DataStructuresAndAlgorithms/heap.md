@@ -2,6 +2,9 @@
 
 堆(heap)是计算机中一类特殊的数据结构的统称，通常是一个可以被看作一个树的数组对象。堆总是一个完全二叉树。堆是优先队列的一种实现方式，优先队列还可使用链表实现
 
+- [优先队列实现](https://github.com/janogonzalez/priorityqueuejs)
+- [使用优先队列实现任务队列](https://github.com/Janlaywss/priority-worker-runner)
+
 堆适合维护：集合最值
 
 - 大根堆(大顶堆): 任意一个父节点大于子节点

@@ -83,6 +83,7 @@ keys * # 获取所有的key
 - [ot.js](https://github.com/Operational-Transformation/ot.js)
 - [CodeMirror](https://github.com/codemirror/CodeMirror)
 - [多个开源协同编辑器](https://yq.aliyun.com/articles/112818)
+- [图像图像渲染相关教程](https://docs.qq.com/doc/DUFdKZE1oVFd3ZlBs)
 
 ### 源码下载
 
