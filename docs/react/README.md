@@ -10,3 +10,7 @@ React 是由 `facebook` 推出，当下前端最流行的开源框架，学好 R
 - [jsx](jsx.md)
 - [redux guide](reduxguide.md)
 - [vdom](vdom.md)
+
+## react hooks 为啥不能放在 if 中
+
+react 是根据 useState 出现的顺序来定的，react 规定我们必须把 hooks 写在函数的最外层，不能写在 ifelse 等条件语句当中，来确保 hooks 的执行顺序一致

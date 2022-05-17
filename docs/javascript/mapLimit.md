@@ -214,8 +214,8 @@ class Scheduler {
 
   dotask(){
     if(this.doing < 2){
-      this.doing += 1;
       if(this.queue.length !== 0){
+        this.doing += 1;
         let item = this.queue.shift();
         item().then(()=>{
           this.doing -= 1;

@@ -1,17 +1,18 @@
 # 事件
 
 事件分为两部分：
-1. 行为部分：（DOM0 级事件绑定）浏览器天生就赋予其的行为，是dom对象的私有属性 onclick, onmouseover等，即使我们没有绑定也存在，只是什么都不做。在冒泡阶段执行
+
+1. 行为部分：（DOM0 级事件绑定）浏览器天生就赋予其的行为，是 dom 对象的私有属性 onclick, onmouseover 等，即使我们没有绑定也存在，只是什么都不做。在冒泡阶段执行
 2. 事件绑定：（DOM2 级事件绑定）给元素的某一个行为绑定方法 addEventListener，这个属性是定义在当前元素所属类 EventTarget 这个类的原型上的。可以对同一个事件绑定多个方法
 
 ```js
-var dom = document.getElementById('box')
+var dom = document.getElementById("box");
 // 把一个匿名函数当作值赋给了 dom 的 onclick 属性（函数表达式，没执行）
 // 这是一个异步的操作。当点击行为触发时执行，并且浏览器还默认给这个方法传递了一个参数值，即事件对象
-dom.onclick = function (e) {
-  console.log(arguments) // -> MouseEvent 对象
-  console.log(e || window.event) // IE6~8 没有事件对象e
-}
+dom.onclick = function(e) {
+  console.log(arguments); // -> MouseEvent 对象
+  console.log(e || window.event); // IE6~8 没有事件对象e
+};
 
 // MouseEvent 对象，包含了很多属性和方法，记录的是唯一鼠标触发时的信息，在各个对象上触发相同
 // MouseEvent -> UIEvent -> Event -> Object
@@ -25,26 +26,44 @@ dom.onclick = function (e) {
 // KeyboardEvent 对象，键盘事件对象
 // e.keyCode: 当前键盘上每一个键对应的值。如enter->13,space->32等
 ```
+
 ### 传播机制
 
 默认事件的传播机制：
+
 ```js
-dom.onclick = function () {} // dom 0 级
+dom.onclick = function() {}; // dom 0 级
 ```
+
 - 捕获阶段：从外向内依次查找元素
 - 目标阶段：当前事件源本身的操作
 - 冒泡阶段：从内到外依次触发相关的行为（最常用）
 
 ```js
-dom.addEventListener('click', function () {}, false) // true，在捕获阶段执行，false，在冒泡阶段执行
+dom.addEventListener("click", function() {}, false); // true，在捕获阶段执行，false，在冒泡阶段执行
 ```
 
 ### addEventListener(DOM 2)
 
-- 同一个事件可以绑定多个不同的方法，按绑定顺序执行，绑定相同的方法会忽略，只执行依次
+- 同一个事件可以绑定多个不同的方法，按绑定顺序执行，绑定相同的方法会忽略，只执行一次
 - DOM 2 可以绑定 DOM 0 中的行为，还有一些 DOM 0 中没有的事件，比如 DOMContentLoaded
 - 通过 removeEventListener 移除监听，必须三个参数完全相同
-- 在IE 6~8 中不支持，通过 attachEvent/detachEvent 实现监听/移除，没有第三个参数，只能在冒泡阶段执行，行为需要添加 on。box.attachEvent('onclick', fn)。而且顺序回乱，绑定多个相同的方法时，都会执行，this 指向为 window
+- 在 IE 6~8 中不支持，通过 attachEvent/detachEvent 实现监听/移除，没有第三个参数，只能在冒泡阶段执行，行为需要添加 on。box.attachEvent('onclick', fn)。而且顺序回乱，绑定多个相同的方法时，都会执行，this 指向为 window
+
+> 小问题: 在一个 DOM 上同时绑定两个点击事件：一个用捕获，一个用冒泡。事件会执行几次?先执行的是冒泡还是捕获?
+
+冒泡是从下向上，DOM 元素绑定的事件被触发时，此时该元素为目标元素，目标元素执行后，它的祖先元素绑定的事件会向上顺序执行。addEventListener 函数的第三个参数设置为 false，说明不为捕获事件，即为冒泡事件。
+
+捕获则和冒泡相反，目标元素被触发后，会从目标元素的最顶层祖先元素往下执行到目标元素为止。当一个元素绑定了两个事件，一个是冒泡，一个是捕获。
+
+首先需要明确的是，绑定了几个事件就会执行几次。
+
+对于执行顺序的问题需要注意以下。该 DOM 上的事件如果被触发，会有这几种情况。
+
+- 如果该 DOM 是目标元素，则按事件绑定顺序执行，不区分冒泡还是捕获
+- 如果该 DOM 是出于事件流中的非目标元素，则先执行捕获后执行冒泡
+
+因为 W3C 标准有说明，先发生捕获事件，后发生冒泡事件。所有事件的顺序是：其它元素捕获阶段事件---本元素代码顺序事件---其他元素冒泡阶段事件。需要注意的是：在冒泡阶段，向上执行的过程中，已经执行的捕获事件不再执行，只执行冒泡事件
 
 ### bind 通用事件方法
 
@@ -88,11 +107,11 @@ function unbind (curEle, eventType, Fn) {
   var arr = curEle['myBind' + eventType]
   if (arr) {
     for (var i = 0, i < arr.length, i++) {
-      var cur = arr[i]
+      var cur = arr[i];
       if (cur.photo === Fn) {
-        curEle.detachEvent('on' + eventType, cur)
-        arr.splice(i, 1)
-        break
+        curEle.detachEvent('on' + eventType, cur);
+        arr.splice(i, 1);
+        break;
       }
     }
   }
@@ -100,7 +119,7 @@ function unbind (curEle, eventType, Fn) {
 
 // 为了解决 ie 6~8 下同一个事件绑定多个方法，执行时顺序混乱问题，不用浏览器自带的事件池，而是自己模拟标准浏览器事件池实现
 // on: 创建事件池，并且把需要给当前元素绑定的方法依次的增加到事件池
-function on (curEle, eventType, Fn) {
+function on(curEle, eventType, Fn) {
   if (!curEle['myEvent' + eventType]) {
     curEle['myEvent' + eventType] = []
   }
@@ -116,6 +135,7 @@ function on (curEle, eventType, Fn) {
 
   bind(curEle, eventType, run) // bind方法已经解决了 this 问题，直接通过 bind 将事件绑定到 run 上，顺序执行
 }
+
 // off: 在自己的事件池中把某一个方法移除
 function off (curEle, eventType, Fn) {
   var arr = curEle['myEvent' + eventType] // 移除的时候只需要将 on 实现的事件池中的移除

@@ -16,3 +16,5 @@
 - [string 各种范型类型实现](string.md)
 - [Tuple 各种范型类型实现](tuple.md)
 - [对象&联合类型](object.md)
+
+## type 和 interface 区别

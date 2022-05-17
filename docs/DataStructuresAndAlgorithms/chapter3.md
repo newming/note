@@ -7,50 +7,50 @@
 ```js
 class Stack {
   constructor() {
-    this.count = 0
-    this.items = {}
+    this.count = 0;
+    this.items = {};
   }
   push(element) {
-    this.items[this.count] = element // 属性名为 count
-    this.count++
+    this.items[this.count] = element; // 属性名为 count
+    this.count++;
   }
   pop() {
     if (this.isEmpty()) {
-      return undefined
+      return undefined;
     }
-    this.count--
-    const result = this.items[this.count]
-    delete this.items[this.count]
-    return result
+    this.count--;
+    const result = this.items[this.count];
+    delete this.items[this.count];
+    return result;
   }
   peek() {
     if (this.isEmpty()) {
-      return undefined
+      return undefined;
     }
-    return this.items[this.count - 1]
+    return this.items[this.count - 1];
   }
   isEmpty() {
-    return this.count === 0
+    return this.count === 0;
   }
   size() {
-    return this.count
+    return this.count;
   }
   clear() {
     /* while (!this.isEmpty()) {
         this.pop()
       } */
-    this.items = {}
-    this.count = 0
+    this.items = {};
+    this.count = 0;
   }
   toString() {
     if (this.isEmpty()) {
-      return ''
+      return "";
     }
-    let objString = `${this.items[0]}`
+    let objString = `${this.items[0]}`;
     for (let i = 1; i < this.count; i++) {
-      objString = `${objString},${this.items[i]}`
+      objString = `${objString},${this.items[i]}`;
     }
-    return objString
+    return objString;
   }
 }
 ```
@@ -101,45 +101,45 @@ export default class StackArray {
 ```js
 // 十进制转二进制
 function decimalToBinary(decNumber) {
-  let remStack = []
-  let rem
-  let binaryString = ''
+  let remStack = [];
+  let rem;
+  let binaryString = "";
   while (decNumber > 0) {
-    rem = Math.floor(decNumber % 2)
-    remStack.push(rem)
-    decNumber = Math.floor(decNumber / 2)
+    rem = Math.floor(decNumber % 2);
+    remStack.push(rem);
+    decNumber = Math.floor(decNumber / 2);
   }
 
   while (remStack.length) {
-    binaryString += remStack.pop().toString()
+    binaryString += remStack.pop().toString();
   }
 
-  return binaryString
+  return binaryString;
 }
 
 // 十进制转换为任意进制 （要转换的数字， 基数）
-function baseConverter (decNumber, base) {
-  const remStack = []
-  const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-  let number = decNumber
-  let rem
-  let baseString = ''
+function baseConverter(decNumber, base) {
+  const remStack = [];
+  const digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  let number = decNumber;
+  let rem;
+  let baseString = "";
 
   if (!(base >= 2 && base <= 36)) {
-    return ''
+    return "";
   }
 
   while (number > 0) {
-    rem = Math.floor(number % base)
-    remStack.push(rem)
-    number = Math.floor(number / base)
+    rem = Math.floor(number % base);
+    remStack.push(rem);
+    number = Math.floor(number / base);
   }
 
   while (remStack.length) {
-    baseString += digits[remStack.pop()]
+    baseString += digits[remStack.pop()];
   }
 
-  return baseString
+  return baseString;
 }
 ```
 
@@ -148,54 +148,58 @@ function baseConverter (decNumber, base) {
 ```js
 // 两种写法都是 匹配一对删除一对，第一种方法更好，不需要遍历全部的字符串
 // 支持 ([{}])
-function parenthesesChecker (symbols) {
-  const stack = []
-  const opens = '([{'
-  const closers = ')]}'
-  let balanced = true
-  let index = 0
-  let symbol
-  let top
+function parenthesesChecker(symbols) {
+  const stack = [];
+  const opens = "([{";
+  const closers = ")]}";
+  let balanced = true;
+  let index = 0;
+  let symbol;
+  let top;
 
   while (index < symbols.length && balanced) {
-    symbol = symbols[index] // 依次拿出索引为 index 的字符
+    symbol = symbols[index]; // 依次拿出索引为 index 的字符
     if (opens.indexOf(symbol) >= 0) {
       // 如果是 ([{ 说明是左半边的一个符号，放入 stack
-      stack.push(symbol)
+      stack.push(symbol);
     } else if (stack.length === 0) {
       // 如果 stack 没有了左半边的符号，但是有右半边的符号，说明不匹配
-      balanced = false
+      balanced = false;
     } else {
       // 拿出 stack 数组中保存左半边的一位，和当前拿到的这位比较，看是否是对应的右半边，如果不是说明不符合，这里注意 while 循环会将连续的左半边一起放入 stack 中，如果某一位不是左半边，那么这位必定和 stack 中最后一位相匹配才行
-      top = stack.pop()
+      top = stack.pop();
       if (!(opens.indexOf(top) === closers.indexOf(symbol))) {
-        balanced = false
+        balanced = false;
       }
     }
-    index++
+    index++;
   }
-  return balanced && !stack.length
+  return balanced && !stack.length;
 }
 
 // 支持 [({})] 另一种写法
-function is_balance (str) {
-  const [first, ...others] = str
-  const stack = [first]
+function is_balance(str) {
+  const [first, ...others] = str;
+  const stack = [first];
   while (others.length > 0) {
-    const c = stack[stack.length - 1]
-    const n = others.shift()
+    const c = stack[stack.length - 1];
+    const n = others.shift();
     if (!match(n, c)) {
-      stack.push(n)
+      stack.push(n);
     } else {
-      stack.pop()
+      stack.pop();
     }
   }
 
-  return stack.length === 0
+  return stack.length === 0;
 }
 
-function match (n, c) {
-  return (c === '[' && n === ']') || (c === '{' && n === '}') || (c === '(' && n === ')')
+function match(n, c) {
+  return (
+    (c === "[" && n === "]") ||
+    (c === "{" && n === "}") ||
+    (c === "(" && n === ")")
+  );
 }
 ```
 
@@ -225,7 +229,7 @@ function hanoi(plates, source, helper, dest, moves = []) {
   }
   return moves;
 }
-console.log(hanoi(3, 'source', 'helper', 'dest'));
+console.log(hanoi(3, "source", "helper", "dest"));
 // [["source","dest"],["source","helper"],["dest","helper"],["source","dest"],["helper","source"],["helper","dest"],["source","dest"]]
 ```
 
@@ -235,7 +239,16 @@ console.log(hanoi(3, 'source', 'helper', 'dest'));
 /**
  * 原理同上
  */
-function towerOfHanoi(plates, source, helper, dest, sourceName, helperName, destName, moves = []) {
+function towerOfHanoi(
+  plates,
+  source,
+  helper,
+  dest,
+  sourceName,
+  helperName,
+  destName,
+  moves = []
+) {
   if (plates <= 0) {
     return moves;
   }
@@ -247,14 +260,32 @@ function towerOfHanoi(plates, source, helper, dest, sourceName, helperName, dest
     move[destName] = dest.toString();
     moves.push(move);
   } else {
-    towerOfHanoi(plates - 1, source, dest, helper, sourceName, destName, helperName, moves);
+    towerOfHanoi(
+      plates - 1,
+      source,
+      dest,
+      helper,
+      sourceName,
+      destName,
+      helperName,
+      moves
+    );
     dest.push(source.pop());
     const move = {};
     move[sourceName] = source.toString();
     move[helperName] = helper.toString();
     move[destName] = dest.toString();
     moves.push(move);
-    towerOfHanoi(plates - 1, helper, source, dest, helperName, sourceName, destName, moves);
+    towerOfHanoi(
+      plates - 1,
+      helper,
+      source,
+      dest,
+      helperName,
+      sourceName,
+      destName,
+      moves
+    );
   }
   return moves;
 }
@@ -268,7 +299,7 @@ function hanoiStack(plates) {
     source.push(i);
   }
 
-  return towerOfHanoi(plates, source, helper, dest, 'source', 'helper', 'dest');
+  return towerOfHanoi(plates, source, helper, dest, "source", "helper", "dest");
 }
 
 console.log(hanoiStack(2));
