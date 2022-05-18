@@ -38,6 +38,7 @@
 - [higherFunction: 高级函数(惰性载入函数，柯里化，级联函数)](higherFunction.md)
 - [isCloseLoop: 是否能形成闭环](isCloseLoop.md)
 - [jquery-deferred: jquery deferred 使用](jquery-deferred.md)
+- [isBridge原理](jsbridge.md)
 - [jsoutput: 页面中常用的几种输出方式](jsoutput.md)
 - [key-order: 对象 key 输出顺序&&Object.keys 原理](key-order.md)
 - [lazyload: 图片延迟加载／图片懒加载](lazyload.md)
