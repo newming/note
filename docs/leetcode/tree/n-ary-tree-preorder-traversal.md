@@ -28,8 +28,15 @@ N 叉树的高度小于或等于 1000
 ## 方案 1: 递归
 
 ```js
+/**
+ * // Definition for a Node.
+ * function Node(val, children) {
+ *    this.val = val;
+ *    this.children = children;
+ * };
+ */
 // 含义：前序遍历树 root， 将结果放入arr中
-var getNode = function(root, arr) {
+var getNode = function (root, arr) {
   if (!root) return null; // 边界条件： 树不存在则跳出
   arr.push(root.val); // 根结点放入结果数组
   root.children.forEach((item) => {
@@ -37,7 +44,7 @@ var getNode = function(root, arr) {
     getNode(item, arr);
   });
 };
-var preorder = function(root) {
+var preorder = function (root) {
   let arr = [];
   getNode(root, arr);
   return arr;
@@ -47,7 +54,7 @@ var preorder = function(root) {
 ## 方案 2: 迭代
 
 ```js
-var preorder = function(root) {
+var preorder = function (root) {
   if (!root) return [];
   let arr = [];
   let stack = [root];
