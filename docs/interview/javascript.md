@@ -286,7 +286,7 @@ function throttle(func, delay = 6000) {
 // 完善，注意this指向
 function throttle(fn, wait) {
   let lock = false;
-  return function(...args) => {
+  return function(...args) {
     if (lock) return;
     func.apply(this, args);
     lock = true;
@@ -981,90 +981,6 @@ function sum(...args) {
 
 sum(1, 2)(3, 4).valueOf(); // => 10
 sum(1, 2, 3).valueOf(); // => 6
-```
-
-## 数据转换
-
-```js
-[
-  { key: "key4", parent: "key3" },
-  { key: "key5", parent: "key2" },
-  { key: "key1", parent: "key0" },
-  { key: "key2", parent: "key0" },
-  { key: "key3", parent: "key1" },
-];
-// 转变为
-[
-  {
-    key: "key1",
-    parent: "key0",
-    children: [
-      {
-        key: "key3",
-        parent: "key1",
-        children: [
-          {
-            key: "key4",
-            parent: "key3",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    key: "key2",
-    parent: "key0",
-    children: [{ key: "key5", parent: "key2" }],
-  },
-];
-
-function convert(list) {
-  let knowedKeys = [...new Set(list.map((i) => i.key))];
-  let setMap = {};
-  let result = [];
-  function find(result, key) {
-    for (let i = 0; i < result.length; i++) {
-      let item = result[i];
-      if (item.key === key) {
-        return item;
-      }
-      if (item.children && item.children.length) {
-        let has = find(item.children, key);
-        if (has) {
-          return has;
-        }
-      }
-    }
-    return null;
-  }
-  function set(list) {
-    for (let i = 0; i < list.length; i++) {
-      const item = list[i];
-      if (!knowedKeys.includes(item.parentKey)) {
-        result.push(item);
-        setMap[item.key] = 1;
-        list.splice(i, 1);
-        i--;
-        continue;
-      }
-      if (knowedKeys.includes(item.parentKey) && setMap[item.parentKey]) {
-        let parent = find(result, item.parentKey);
-        if (parent) {
-          parent.children = parent.children || [];
-          parent.children.push(item);
-          setMap[item.key] = 1;
-          list.splice(i, 1);
-          i--;
-        }
-      }
-    }
-    if (list.length > 0) {
-      set(list);
-    }
-  }
-  set(list);
-  return result;
-}
 ```
 
 ## 数组扁平化
