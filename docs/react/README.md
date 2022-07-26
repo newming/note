@@ -4,6 +4,9 @@ React 是由 `facebook` 推出，当下前端最流行的开源框架，学好 R
 
 - [hooks 各种问题汇总](https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/)
 - [React Hooks 使用误区，驳官方文档](https://mp.weixin.qq.com/s/DLN9jjkAhJSJHksos_t43A)
+- [React 全家桶汇总](https://juejin.cn/post/7085542534943883301)
+- [How to use SVGs in React](https://blog.logrocket.com/how-to-use-svgs-in-react/)
+- [react 中实现动画](https://segmentfault.com/a/1190000030696292)
 
 ## 目录
 

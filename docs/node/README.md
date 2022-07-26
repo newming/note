@@ -5,17 +5,17 @@
 - [buffer](buffer.md)
 - [命令行动画](console-ani.md)
 - [核心模块的意义](core.md)
-- [Event模块](event.md)
-- [nodejs事件循环，计时器和process.nextTick()](eventloop-timer-nexttick.md)
+- [Event 模块](event.md)
+- [nodejs 事件循环，计时器和 process.nextTick()](eventloop-timer-nexttick.md)
 - [文件操作](file-operate.md)
-- [http模块](http.md)
-- [CommonJs模块化](module.md)
-- [获取post请求数据](post.md)
-- [process相关几个属性](process.md)
+- [http 模块](http.md)
+- [CommonJs 模块化](module.md)
+- [获取 post 请求数据](post.md)
+- [process 相关几个属性](process.md)
 - [require](require.md)
 - [处理命令行中的输入，模拟登陆](shell-login.md)
-- [Socket基础](socket.md)
-- [stream流](stream.md)
+- [Socket 基础](socket.md)
+- [stream 流](stream.md)
 
 ## 特点
 
@@ -33,13 +33,13 @@ node --use_strict
 
 - global: 如同浏览器的 window 对象
 - process: 获取当前的 Node 进程信息，一般用于获取环境变量之类的信息
-- console: 与浏览器相似process.stdin.setEncoding('utf8');
+- console: 与浏览器相似 process.stdin.setEncoding('utf8');
 
 ```js
-process.stdout.getWindowSize() // node 获取命令行窗口宽高
+process.stdout.getWindowSize(); // node 获取命令行窗口宽高
 ```
 
-## 异步编程(错误优先，callback往后)
+## 异步编程(错误优先，callback 往后)
 
 - Node 采用 Chrome V8 引擎处理 JavaScript 脚本，V8 最大的特点就是单线程运行，一次只能运行一个任务。
 - Node 大量采用异步操作(asynchronous operation)，即任务不是马上执行，而是插在任务队列的尾部，等到前面的任务运行完后再执行。
@@ -68,28 +68,29 @@ node 进程启动后会默认创建一个线程（main thread），用于执行�
   - CPU 在不同线程之间转换，有上下文转换，非常耗时
 
 node 如何充分利用单线程
-```js
-const fs = require('fs')
 
-fs.stat('./README1.md', (err, stats) => {
+```js
+const fs = require("fs");
+
+fs.stat("./README1.md", (err, stats) => {
   if (err) {
-    console.log(err)
-    fs.writeFile('./README1.md', 'haha',function (err) {
-      if (err) return console.log('new file falied')
-      console.log('文件创建成功')
-    })
-    return
+    console.log(err);
+    fs.writeFile("./README1.md", "haha", function (err) {
+      if (err) return console.log("new file falied");
+      console.log("文件创建成功");
+    });
+    return;
   }
   // console.log(stats)
-  fs.unlink('./README1.md', (err) => {
-    if (err) return console.log('remove falied')
-    console.log('already remove')
-    fs.writeFile('./README1.md', 'haha',function (err) {
-      if (err) return console.log('new file falied')
-      console.log('文件删除成功后创建')
-    })
-  })
-})
+  fs.unlink("./README1.md", (err) => {
+    if (err) return console.log("remove falied");
+    console.log("already remove");
+    fs.writeFile("./README1.md", "haha", function (err) {
+      if (err) return console.log("new file falied");
+      console.log("文件删除成功后创建");
+    });
+  });
+});
 ```
 
 node 本身将所有的阻塞操作交给了内部实现的线程池，node 本身主线程主要就是不断的调度
@@ -105,3 +106,8 @@ node --inspect-brk app.js # 在开头停住
 
 # 第二步，打开 chrome://inspect/
 ```
+
+## node 版本管理工具
+
+- nvm
+- volta
