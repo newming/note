@@ -33,6 +33,7 @@
 - [event-emmiter: 类 node 的 EventEmitter 实现](event-emmiter.md)
 - [event-loop: js 事件循环，宏任务，微任务](event-loop.md)
 - [for-in: for in 循环&其他循环对比](for-in.md)
+- [form方案](form.md)
 - [function: 高级方法举例(柯里化, bind)](function.md)
 - [handle-error: 前端异常监控、上报](handle-error.md)
 - [hashRouter: hash 路由实现](hashRouter.md)
