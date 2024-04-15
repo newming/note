@@ -11,6 +11,7 @@
 - [sass](sass.md)
 - [pug](pug.md)
 - [webpack](webpack.md)
+- [npm](npm.md)
 
 ## 其他资源
 
