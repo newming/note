@@ -167,5 +167,5 @@ BFC(Box Formatting Context):Box 是 css 布局的对象和基本单位，BFC 就
 
 一个元素占有空间的大小由几个部分构成，其中包括元素的内容(content)、元素的内边距(padding)，元素的边框(border)、元素的外边距(margin)四个部分
 
-- 标准模型: 宽度=content
-- IE 盒模型: 宽度=content+padding+border
+- 标准模型: 宽度=content(box-sizing: content-box)
+- IE 盒模型: 宽度=content+padding+border(box-sizing: border-box)

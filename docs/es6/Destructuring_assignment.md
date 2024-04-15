@@ -44,11 +44,14 @@ function test ({a}, [b], [c, d], e = 3) {
 }
 test({a:1}, [2], 'hi')
 
-// 5,6. boolean, number
+// 5,6. boolean, number, string(基本包装类型)
 // 解构赋值时，如果等号右边是数值和布尔值，则会先转为对象。
 
 let {toString: s} = 123;
 s === Number.prototype.toString // true
+
+let {toString: s} = '123';
+s === String.prototype.toString // true
 
 let {toString: s} = true;
 s === Boolean.prototype.toString // true
