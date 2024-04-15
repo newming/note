@@ -23,6 +23,10 @@
 - [正则表达式](http://regexper.com)
 - [window.name 自动转字符串](https://developer.mozilla.org/en-US/docs/Web/API/Window/name)
 - [利用 window.name 跨域](https://www.sitepen.com/blog/2008/07/22/windowname-transport/)
+- [package.json中你还不清楚的 browser，module，main 字段优先级](https://github.com/SunshowerC/blog/issues/8)
+- [前端依赖版本重写指南](https://developer.aliyun.com/article/1050105)
+- [esModuleInterop 到底做了什么？](https://zhuanlan.zhihu.com/p/148081795)
+
 
 ### webpack analyse
 
