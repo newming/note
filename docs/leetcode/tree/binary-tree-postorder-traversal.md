@@ -18,7 +18,7 @@
 进阶: 递归算法很简单，你可以通过迭代算法完成吗？
 ```
 
-## 方法1: 递归
+## 方法 1: 递归
 
 [参考](https://leetcode-cn.com/problems/binary-tree-postorder-traversal/solution/er-cha-shu-de-hou-xu-bian-li-by-leetcode-solution/)
 
@@ -29,20 +29,20 @@
 
 ```js
 var postorderTraversal = function(root) {
-  const res = []
-  postorder(root, res)
-  return res
+  const res = [];
+  postorder(root, res);
+  return res;
 };
 
-function postorder (root, res) {
+function postorder(root, res) {
   if (!root) return;
-  postorder(root.left, res)
-  postorder(root.right, res)
-  res.push(root.val)
+  postorder(root.left, res);
+  postorder(root.right, res);
+  res.push(root.val);
 }
 ```
 
-## 方法2: 迭代
+## 方法 2: 迭代
 
 复杂度分析
 
@@ -50,33 +50,33 @@ function postorder (root, res) {
 - 空间复杂度: O(n)，为迭代过程中显式栈的开销，平均情况下为 O(logn)，最坏情况下树呈现链状，为 O(n)
 
 ```js
-var postorderTraversal = function (root) {
-  const res = []
+var postorderTraversal = function(root) {
+  const res = [];
   if (!root) return res;
 
-  const stack = []
-  let prev = null
+  const stack = [];
+  let prev = null;
   while (root || stack.length) {
     while (root) {
-      stack.push(root)
-      root = root.left
+      stack.push(root);
+      root = root.left;
     }
-    root = stack.pop()
+    root = stack.pop();
     if (!root.right || root.right === prev) {
-      res.push(root.val)
-      prev = root
-      root = null
+      res.push(root.val);
+      prev = root;
+      root = null;
     } else {
-      stack.push(root)
-      root = root.right
+      stack.push(root);
+      root = root.right;
     }
   }
 
-  return res
-}
+  return res;
+};
 ```
 
-## 方法3: Morris遍历
+## 方法 3: Morris 遍历
 
 复杂度分析：比较绕，暂时没有仔细体会
 
@@ -84,13 +84,14 @@ var postorderTraversal = function (root) {
 - 空间复杂度：O(1)。只操作已经存在的指针（树的空闲指针），因此只需要常数的额外空间
 
 ```js
-var postorderTraversal = function (root) {
-  const res = []
+var postorderTraversal = function(root) {
+  const res = [];
   if (!root) {
     return res;
   }
 
-  let p1 = root, p2 = null;
+  let p1 = root,
+    p2 = null;
 
   while (p1) {
     p2 = p1.left;
@@ -111,10 +112,10 @@ var postorderTraversal = function (root) {
   }
   addPath(res, root);
   return res;
-}
+};
 
-function addPath (res, node) {
-  const tmp = []
+function addPath(res, node) {
+  const tmp = [];
   while (node != null) {
     tmp.push(node.val);
     node = node.right;
@@ -124,4 +125,3 @@ function addPath (res, node) {
   }
 }
 ```
-
