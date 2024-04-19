@@ -26,6 +26,7 @@ https://leetcode-cn.com/problemset/all/
 - [最长回文子串-中等](string/longest-palindromic-substring.md)
 - [最长公共子序列 LCS-中等-未完成](string/longest-common-subsequence.md)
 - [最长上升子序列](string/longest-increasing-subsequence.md)
+- [判断子序列-简单](string/is-subsequence.md)
 - [罗马数字转整数](string/roman-to-integer.md)
 - [字符串循环左移](string/left-rotate-string.md)
 - [字符串的全排列](string/string-permutation.md)
@@ -44,6 +45,10 @@ https://leetcode-cn.com/problemset/all/
 - [括号生成-中等](string/generate-parentheses.md)
 - [千位分割数-简单](string/thousand-separator.md)
 - [亲密字符串](string/buddy-strings.md)
+- [压缩字符串-中等](string/string-compression.md)
+- [交替合并字符串-简单](string/merge-strings-alternately.md)
+- [反转字符串中的元音字母-简单](string/reverse-vowels-of-a-string.md)
+- [反转字符串中的单词-中等](string/reverse-words-in-a-string.md)
 
 ### LCS 的定义
 
@@ -61,10 +66,12 @@ https://leetcode-cn.com/problemset/all/
 - [比较含退格的字符串](stack/backspace-string-compare.md)
 - [基本计算器 I](stack/basic-calculator.md)
 - [基本计算器 II](stack/basic-calculator-ii.md)
+- [验证图书取出顺序-判断出栈队列是否合法-中等](stack/zhan-de-ya-ru-dan-chu-xu-lie-lcof.md)
 
 ## Array/队列
 
 - [两数之和-简单](array/two-sum.md)
+- [三数之和-中等](array/3sum.md)
 - [两数相加-中等](array/add-two-numbers.md)
 - [寻找两个排序数组的中位数-困难](array/median-of-two-sorted-arrays.md)
 - [买卖股票的最佳时机](array/best-time-to-buy-and-sell-stock.md)
@@ -104,6 +111,7 @@ https://leetcode-cn.com/problemset/all/
 - [设计循环队列-中等](array/design-circular-queue.md)
 - [设计循环双端队列-中等](array/design-circular-deque.md)
 - [最近的请求次数](array/number-of-recent-calls.md)
+- [拥有最多糖果的孩子-简单](array/kids-with-the-greatest-number-of-candies.md)
 
 ## Number
 

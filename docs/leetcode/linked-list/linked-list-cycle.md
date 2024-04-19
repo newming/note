@@ -46,93 +46,93 @@ https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinke
  */
 ```
 
-## 方法1: 置空法
+## 方法 1: 置空法
 
 https://leetcode-cn.com/problems/linked-list-cycle/comments/113606
 
 ```js
 // 缺点：破坏了原链表(val&next关系)
 // 使用特殊标记重写val，当通过next找到了该特殊标记，说明有环
-var hasCycle = function (head) {
+var hasCycle = function(head) {
   if (!head) {
-    return false
+    return false;
   }
-  let specialVal = Symbol('sp') // 前端这里使用了 Symbol 的唯一性
+  let specialVal = Symbol("sp"); // 前端这里使用了 Symbol 的唯一性
   while (head.next && head.val !== specialVal) {
-    head.val = specialVal
-    head = head.next
+    head.val = specialVal;
+    head = head.next;
   }
   // 这里其实没用 当 specialVal = null 时有用
   if (!head.next) {
-    return false
+    return false;
   }
-  return true
-}
+  return true;
+};
 ```
 
-## 方法2: 类似方法1，也会破坏原链表
+## 方法 2: 类似方法 1，也会破坏原链表
 
 ```js
 // https://leetcode-cn.com/problems/linked-list-cycle/solution/huan-xing-lian-biao-by-leetcode/161824
 // 不断删除节点，如果有环，最终会出现一个节点的next指向自己
 // 缺点破坏了原链表
-var hasCycle = function (head) {
-  while(head != null){
-    if(head == head.next){
-      return true
+var hasCycle = function(head) {
+  while (head != null) {
+    if (head == head.next) {
+      return true;
     }
-    if(head.next != null){
-      head.next = head.next.next
+    if (head.next != null) {
+      head.next = head.next.next;
     }
-    head = head.next
+    head = head.next;
   }
-  return false
-}
+  return false;
+};
 ```
 
-## 方法3: 哈希表(或者也可以在每个节点上增加新的标记，标识是否访问过)
+## 方法 3: 哈希表(或者也可以在每个节点上增加新的标记，标识是否访问过)
 
 ```js
 // https://leetcode-cn.com/problems/linked-list-cycle/solution/huan-xing-lian-biao-by-leetcode/
 // 这里使用 Map 数据类型，将 node 作为 key 保存
 // 不能使用每个节点的 val 作为 key，因为不唯一
-var hasCycle = function (head) {
-  let nodesSeen = new Map()
+var hasCycle = function(head) {
+  let nodesSeen = new Map();
   while (head != null) {
     if (nodesSeen.has(head)) {
-      return true
+      return true;
     } else {
-      nodesSeen.set(head, '1')
+      nodesSeen.set(head, "1");
     }
-    head = head.next
+    head = head.next;
   }
-  return false
-}
+  return false;
+};
 ```
 
-## 方法4: 双指针 优秀
+## 方法 4: 双指针 优秀
 
 ```js
-    // https://leetcode-cn.com/problems/linked-list-cycle/solution/huan-xing-lian-biao-by-leetcode/
-    var hasCycle = function (head) {
-      if (head == null || head.next == null) {
-        return false
-      }
-      // 慢指针每次前进一步，快指针每次前进两步，快指针总是会追上慢指针
-      let slow = head
-      let fast = head.next
-      while (slow != fast) {
-        if (fast == null || fast.next == null) {
-          return false
-        }
-        slow = slow.next
-        fast = fast.next.next
-      }
-      return true
+// https://leetcode-cn.com/problems/linked-list-cycle/solution/huan-xing-lian-biao-by-leetcode/
+var hasCycle = function(head) {
+  if (head == null || head.next == null) {
+    return false;
+  }
+  // 慢指针每次前进一步，快指针每次前进两步，快指针总是会追上慢指针
+  let slow = head;
+  let fast = head.next;
+  while (slow != fast) {
+    if (fast == null || fast.next == null) {
+      return false;
     }
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  return true;
+};
 ```
 
-## 方法5: 数组判重，类似方法3 只是 Map 换成了数组
+## 方法 5: 数组判重，类似方法 3 只是 Map 换成了数组
 
 ```js
 // https://leetcode-cn.com/problems/linked-list-cycle/solution/141-huan-xing-lian-biao-by-alexer-660/
@@ -141,16 +141,16 @@ var hasCycle = function (head) {
 // https://leetcode-cn.com/problems/linked-list-cycle/solution/141-huan-xing-lian-biao-by-alexer-660/
 
 // 测试
-function ListNode (val) {
-  this.val = val
-  this.next = null
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
 }
-var node1 = new ListNode(1)
-var node2 = new ListNode(2)
-var node3 = new ListNode(3)
-node1.next = node2
-node2.next = node3
-node3.next = node1
-var head = node1
-console.log(hasCycle(head))
+var node1 = new ListNode(1);
+var node2 = new ListNode(2);
+var node3 = new ListNode(3);
+node1.next = node2;
+node2.next = node3;
+node3.next = node1;
+var head = node1;
+console.log(hasCycle(head));
 ```
