@@ -114,7 +114,7 @@ function Permutation3(from, to) {
     }
     mark[str[i]] = 1
     swap(i, from)
-    Permutation(from + 1, to)
+    Permutation3(from + 1, to)
     swap(i, from) // 回到开始状态
   }
 }

@@ -11,7 +11,6 @@
 ## 0.1 + 0.2 != 0.3
 
 - [js数值](https://javascript.ruanyifeng.com/grammar/number.html)
-- [为啥](https://bytedance.feishu.cn/space/doc/doccnRxSHaDDnP6lkQ4Oba#)
 
 > 为什么 0.1 + 0.2 != 0.3
 

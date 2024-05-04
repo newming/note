@@ -9,6 +9,7 @@ React 是由 `facebook` 推出，当下前端最流行的开源框架，学好 R
 - [react 中实现动画](https://segmentfault.com/a/1190000030696292)
 - [rc-field-form实现](https://juejin.cn/post/6922595635396870152)
 - [rc-field-form实现](https://juejin.cn/post/6897038502517555207)
+- [react源码系列文章](https://juejin.cn/post/7166547963517337614)
 
 ## 目录
 
